@@ -12,7 +12,7 @@ This document tracks requirements and specifications for the ServiceNow "New Tec
 ### Functional Requirements
 - [x] **Technology Request Intake Form** - Comprehensive React-based form for submitting new technology requests
 - [ ] **Governance Workflow** - Automated workflow to guide requests through approval process
-- [x] **Dashboard & Reporting** - Real-time dashboard with metrics, sortable table, and responsive design with executive summary cards and detailed request table
+- [x] **Dashboard & Reporting** - Real-time dashboard with interactive metrics cards, professional Recharts visualization (bar chart for request types, funnel chart for phases), sortable table with 7 columns including Status, and clickable filtering system
 - [ ] **Approval Routing** - Automated routing based on priority, cost, and department
 - [ ] **Strategic Alignment** - Integration with strategic drivers and business objectives
 
@@ -45,10 +45,12 @@ This document tracks requirements and specifications for the ServiceNow "New Tec
 The New Technology Requests Dashboard provides real-time insights into the technology request pipeline and governance workflow. Built with React and styled to match the intake form exactly.
 
 ### Dashboard Features
-- [x] **Real-time Metrics Cards**: 4 key performance indicators
-- [x] **Interactive Data Table**: Complete request listing with sorting
+- [x] **Interactive Metrics Cards**: 4 key performance indicators with click-to-filter functionality
+- [x] **Professional Charts**: 2 Recharts visualizations (Request Type bar chart, Phase funnel chart)
+- [x] **Sortable Data Table**: 7-column table with professional CSS triangle sort indicators  
+- [x] **Interactive Filtering**: Click metric cards to filter table data by specific criteria
 - [x] **Responsive Design**: Works on desktop, tablet, and mobile devices
-- [x] **Professional Styling**: Matches intake form branding exactly
+- [x] **Professional Styling**: Matches intake form branding exactly with consistent layout
 
 ### Metrics Cards
 1. **📋 # of New Requests (Submitted)** - Counts records with status "1.2 - Submitted"
@@ -56,12 +58,39 @@ The New Technology Requests Dashboard provides real-time insights into the techn
 3. **❌ # of Requests Rejected** - Counts records with status "9.4 - Rejected"
 4. **🚀 # of Requests Fast Track** - Counts records with priority "1- Fast Track"
 
+### Professional Charts
+Built using Recharts library for enterprise-grade data visualization:
+
+#### **Chart 1: Requests by Type (Bar Chart)**
+- **Interactive Bar Chart** showing distribution of request types (New Technology, SaaS, etc.)
+- **Color-coded bars** with different colors for each request type using brand color palette
+- **Professional tooltips** with hover information showing exact counts
+- **Y-axis optimization** showing only whole numbers (no decimals)
+- **Angled labels** on X-axis for better readability of long type names
+- **Grid lines** for professional appearance
+
+#### **Chart 2: Requests by Phase (Funnel Chart)**  
+- **Workflow Funnel Chart** showing progression through governance phases
+- **Sequential visualization** from "1 - New Request" → "5 - Trigger Funding"
+- **Color-coded sections** matching phase badge colors for consistency
+- **Visual workflow representation** where wider sections indicate more requests
+- **Interactive tooltips** showing request counts per phase
+- **Brand color mapping** for each phase level
+
+### Chart Layout
+- **Same container styling** as metrics container for visual consistency
+- **2-column grid** with each chart taking 50% width
+- **Same height as metric cards** (280px) for perfect alignment
+- **Professional spacing** and hover effects matching metric cards
+
 ### Interactive Table Features
-- **Sortable Columns**: Click any header to sort (Number, Priority, Description, Opened By, Phase, Created Date)
-- **Visual Sort Indicators**: ↑↓↕️ icons show current sort direction
-- **Clickable Rows**: Click any row to open the full request record
-- **Color-coded Badges**: Priority and Phase fields use branded color coding
-- **Responsive Layout**: Horizontal scrolling on mobile devices
+- **7 Sortable Columns**: Number, Priority, Short Description, Opened By, Phase, Status, Created Date
+- **Professional Sort Indicators**: CSS triangle indicators with hover effects (no emoji)
+- **Clickable Rows**: Click any row to open the full request record in new tab
+- **Color-coded Status Badges**: Phase and Status fields use branded color coding with proper contrast
+- **Interactive Filtering**: Metric cards filter table data when clicked
+- **Clear Filter Functionality**: Orange "Clear Filter" button appears when filters are active
+- **Responsive Layout**: Horizontal scrolling on mobile devices with 700px minimum width
 
 ### Data Sources
 - **Primary Table**: `x_snc_newtech_request`

@@ -697,7 +697,6 @@ export default function DashboardApp() {
                   <span>📊</span>
                   Requests by Type
                 </h3>
-                <p className="chart-subtitle">Distribution of technology request types</p>
               </div>
               <div className="chart-content">
                 {loading ? (
@@ -720,7 +719,7 @@ export default function DashboardApp() {
                         textAnchor="end"
                         height={60}
                       />
-                      <YAxis />
+                      <YAxis allowDecimals={false} />
                       <Tooltip 
                         formatter={(value, name) => [value, 'Count']}
                         labelFormatter={(label) => `Type: ${label}`}
@@ -743,7 +742,6 @@ export default function DashboardApp() {
                   <span>🔄</span>
                   Requests by Phase
                 </h3>
-                <p className="chart-subtitle">Current workflow phase distribution</p>
               </div>
               <div className="chart-content">
                 {loading ? (
@@ -793,13 +791,6 @@ export default function DashboardApp() {
                 </button>
               )}
             </h2>
-            <p className="table-subtitle">
-              {getFilterDescription()} 
-              {activeFilter && (
-                <span className="filter-count"> • Showing {getFilteredCount()} of {requests.length} records</span>
-              )}
-              {!activeFilter && <span> with current status and priority</span>}
-            </p>
           </div>
           
           <div className="table-content">

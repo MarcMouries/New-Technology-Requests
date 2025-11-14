@@ -323,6 +323,14 @@ declare global {
                         id: '6b9d22926d394cc5b69f0a79018f060a'
                         deleted: true
                     }
+                    'x_snc_newtech/DashboardApp-CuZldbVL': {
+                        table: 'sys_ux_lib_asset'
+                        id: '2d29313b7771433ca0287a528d92d85e'
+                    }
+                    'x_snc_newtech/DashboardApp-CuZldbVL.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'cd9f279d520b425fabce9b4db0f78968'
+                    }
                     'x_snc_newtech/DashboardApp-D5qBAnvi': {
                         table: 'sys_ux_lib_asset'
                         id: 'bac330b6a9ae40c5b5a24fd627109a6c'
@@ -386,10 +394,12 @@ declare global {
                     'x_snc_newtech/DashboardApp-naDar0yl': {
                         table: 'sys_ux_lib_asset'
                         id: '7f379ec9aa6143de826c9ae475937070'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-naDar0yl.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '79409156a2c64bc1b29daf0ad9a4a309'
+                        deleted: true
                     }
                     'x_snc_newtech/main': {
                         table: 'sys_ux_lib_asset'
