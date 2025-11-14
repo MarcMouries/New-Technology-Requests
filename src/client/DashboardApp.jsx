@@ -240,7 +240,13 @@ export default function DashboardApp() {
       'three_architecture_review': '3 - Architecture Review',
       'four_proposal': '4 - Proposal',
       'five_trigger_funding': '5 - Trigger Funding',
-      // Display values (in case they're already formatted)
+      // Display values with en-dashes (from database)
+      '1 – New Request Submitted': '1 - New Request',
+      '2 – Initial Review': '2 - Initial Review',
+      '3 – Architecture Review': '3 - Architecture Review',
+      '4 – Proposal': '4 - Proposal',
+      '5 – Trigger Funding Governance': '5 - Trigger Funding',
+      // Display values with regular hyphens
       '1 - New Request Submitted': '1 - New Request',
       '1 - New Request': '1 - New Request',
       '2 - Initial Review': '2 - Initial Review',
