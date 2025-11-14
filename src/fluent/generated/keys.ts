@@ -273,6 +273,16 @@ declare global {
                         id: 'c3b68f821b6e45c3b752e166af6c701c'
                         deleted: true
                     }
+                    'x_snc_newtech/DashboardApp-Bc3IxXV-': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'ca04fd7b8cc045acbfdd02f21e89a7a0'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-Bc3IxXV-.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'c607345b59d545ef87b65644ed53382d'
+                        deleted: true
+                    }
                     'x_snc_newtech/DashboardApp-BdMXU17M': {
                         table: 'sys_ux_lib_asset'
                         id: '10a646507a9748c398732f1b02c373c6'
@@ -293,13 +303,25 @@ declare global {
                         id: '310047ebf78c4ed88c404e532999c119'
                         deleted: true
                     }
+                    'x_snc_newtech/DashboardApp-BmPjq8qz': {
+                        table: 'sys_ux_lib_asset'
+                        id: '7b79b4d3af014ef69e0591e2cdd7aa36'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-BmPjq8qz.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '747e531fa0804ffdb14f9693b48182b1'
+                        deleted: true
+                    }
                     'x_snc_newtech/DashboardApp-Clq8vq5I': {
                         table: 'sys_ux_lib_asset'
                         id: 'b0aaf7fa44c149888ad5ea4f67fdf034'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-Clq8vq5I.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '6b9d22926d394cc5b69f0a79018f060a'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-D5qBAnvi': {
                         table: 'sys_ux_lib_asset'
@@ -360,6 +382,14 @@ declare global {
                         table: 'sys_ux_lib_asset'
                         id: '9a4d2d759d3444d0a2dfba4866a6a150'
                         deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-naDar0yl': {
+                        table: 'sys_ux_lib_asset'
+                        id: '7f379ec9aa6143de826c9ae475937070'
+                    }
+                    'x_snc_newtech/DashboardApp-naDar0yl.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '79409156a2c64bc1b29daf0ad9a4a309'
                     }
                     'x_snc_newtech/main': {
                         table: 'sys_ux_lib_asset'
@@ -2523,6 +2553,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: '77bef8dc3359b6d04890955a7e5c7be9'
+                        key: {
+                            list_id: {
+                                id: '532e604c3395b2d04890955a7e5c7b69'
+                                key: {
+                                    name: 'x_snc_newtech_request'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_snc_newtech_problem_statement'
+                        }
+                    },
+                    {
                         table: 'sys_choice'
                         id: '78d373c8292841ebad099c19c06a8851'
                         deleted: true
@@ -2550,6 +2598,24 @@ declare global {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
                             value: 'two_three_draft_review'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '7fbef8dc3359b6d04890955a7e5c7bea'
+                        key: {
+                            list_id: {
+                                id: '532e604c3395b2d04890955a7e5c7b69'
+                                key: {
+                                    name: 'x_snc_newtech_request'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_snc_newtech_estimated_user_count'
                         }
                     },
                     {
@@ -4902,6 +4968,24 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_ui_list_element'
+                        id: 'f7bef8dc3359b6d04890955a7e5c7bea'
+                        key: {
+                            list_id: {
+                                id: '532e604c3395b2d04890955a7e5c7b69'
+                                key: {
+                                    name: 'x_snc_newtech_request'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_snc_newtech_target_user_departments'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: 'f7ef79f885e3467697a0485a81f45917'
                         key: {
@@ -4962,6 +5046,24 @@ declare global {
                             name: 'x_snc_newtech_u_newtech_request'
                             element: 'x_snc_newtech_comments'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'fbbef8dc3359b6d04890955a7e5c7be9'
+                        key: {
+                            list_id: {
+                                id: '532e604c3395b2d04890955a7e5c7b69'
+                                key: {
+                                    name: 'x_snc_newtech_request'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_snc_newtech_strategic_driver'
                         }
                     },
                     {
@@ -5053,6 +5155,24 @@ declare global {
                             name: 'x_snc_newtech_u_newtech_request'
                             element: 'x_snc_newtech_cost_center'
                             language: 'en'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'ffbef8dc3359b6d04890955a7e5c7be5'
+                        key: {
+                            list_id: {
+                                id: '532e604c3395b2d04890955a7e5c7b69'
+                                key: {
+                                    name: 'x_snc_newtech_request'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_snc_newtech_request_type'
                         }
                     },
                 ]

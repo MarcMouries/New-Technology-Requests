@@ -244,6 +244,98 @@ body {
   gap: 1rem;
 }
 
+/* Chart Container - EXACT Copy of Metrics Container */
+.chart-container {
+  background: var(--seven-eleven-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--seven-eleven-shadow);
+  border: 1px solid var(--seven-eleven-gray-medium);
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.chart-card {
+  background: linear-gradient(135deg, var(--seven-eleven-white) 0%, var(--seven-eleven-gray-light) 100%);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  border: 2px solid var(--seven-eleven-gray-medium);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  height: 280px; /* Same height as metric cards */
+}
+
+.chart-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--seven-eleven-shadow-hover);
+  border-color: var(--seven-eleven-spanish-viridian);
+}
+
+.chart-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--seven-eleven-spanish-viridian);
+}
+
+.chart-title {
+  color: var(--seven-eleven-maximum-red);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.chart-subtitle {
+  color: var(--seven-eleven-gray-dark);
+  font-size: 0.8rem;
+  margin: 0 0 1rem 0;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.chart-content {
+  height: calc(100% - 80px); /* Subtract header height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loading-chart, .empty-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--seven-eleven-gray-dark);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.spinner-small {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--seven-eleven-gray-medium);
+  border-top: 2px solid var(--seven-eleven-spanish-viridian);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 0.5rem;
+}
+
 .metric-card {
   background: linear-gradient(135deg, var(--seven-eleven-white) 0%, var(--seven-eleven-gray-light) 100%);
   border-radius: 8px;
@@ -773,6 +865,16 @@ body {
     gap: 0.5rem;
   }
   
+  .charts-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .chart-card {
+    height: 250px;
+    padding: 1rem;
+  }
+  
   .metric-card {
     padding: 1rem;
   }
@@ -839,3 +941,4 @@ body {
     padding: 0.4rem 0.8rem;
   }
 }
+

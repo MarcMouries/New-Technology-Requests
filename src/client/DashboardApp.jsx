@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './DashboardApp.css'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer, FunnelChart, Funnel } from 'recharts'
 
 export default function DashboardApp() {
   const [requests, setRequests] = useState([])
@@ -15,8 +16,9 @@ export default function DashboardApp() {
     key: 'sys_created_on',
     direction: 'desc'
   })
-  const [requestTypeData, setRequestTypeData] = useState([])
   const [activeFilter, setActiveFilter] = useState(null)
+  const [requestTypeData, setRequestTypeData] = useState([])
+  const [phaseData, setPhaseData] = useState([])
 
   useEffect(() => {
     loadRequests()
@@ -105,6 +107,31 @@ export default function DashboardApp() {
 
       setRequestTypeData(requestTypeArray)
       console.log('📈 Request Type Data:', requestTypeArray)
+
+      // Calculate phase data for funnel chart
+      const phaseCounts = {}
+      console.log('🔄 Calculating phase data from', requestsData.length, 'records...')
+      
+      requestsData.forEach(request => {
+        const phase = getValue(request.x_snc_newtech_phase)
+        console.log('Raw phase value:', phase)
+        const phaseDisplay = getPhaseDisplay(phase)
+        console.log('Phase display value:', phaseDisplay)
+        phaseCounts[phaseDisplay] = (phaseCounts[phaseDisplay] || 0) + 1
+      })
+
+      console.log('🔄 Phase counts:', phaseCounts)
+
+      // Convert to array for funnel chart - ordered by typical workflow sequence
+      const phaseOrder = ['1 - New Request', '2 - Initial Review', '3 - Architecture Review', '4 - Proposal', '5 - Trigger Funding']
+      const phaseArray = phaseOrder.map(phase => ({
+        name: phase,
+        value: phaseCounts[phase] || 0,
+        fill: getPhaseColor(phase)
+      })) // Show all phases, even with 0 count
+
+      console.log('🔄 Final phase array:', phaseArray)
+      setPhaseData(phaseArray)
 
       console.log(`✅ Successfully loaded ${requestsData.length} requests`)
       
@@ -207,17 +234,23 @@ export default function DashboardApp() {
 
   const getPhaseDisplay = (phase) => {
     const phaseMap = {
+      // Internal values to display values
       'one_new_request': '1 - New Request',
-      '1 - New Request Submitted': '1 - New Request',
-      'two_initial_review': '2 - Initial Review',
-      '2 - Initial Review': '2 - Initial Review',
+      'two_initial_review': '2 - Initial Review', 
       'three_architecture_review': '3 - Architecture Review',
-      '3 - Architecture Review': '3 - Architecture Review',
       'four_proposal': '4 - Proposal',
-      '4 - Proposal': '4 - Proposal',
       'five_trigger_funding': '5 - Trigger Funding',
-      '5 - Trigger Funding Governance': '5 - Trigger Funding'
+      // Display values (in case they're already formatted)
+      '1 - New Request Submitted': '1 - New Request',
+      '1 - New Request': '1 - New Request',
+      '2 - Initial Review': '2 - Initial Review',
+      '3 - Architecture Review': '3 - Architecture Review',
+      '4 - Proposal': '4 - Proposal', 
+      '5 - Trigger Funding Governance': '5 - Trigger Funding',
+      '5 - Trigger Funding': '5 - Trigger Funding'
     }
+    
+    console.log('🔄 Phase field value:', phase, '-> Mapped to:', phaseMap[phase])
     return phaseMap[phase] || phase || 'Unknown'
   }
 
@@ -513,6 +546,17 @@ export default function DashboardApp() {
     return colors[index % colors.length]
   }
 
+  const getPhaseColor = (phase) => {
+    const phaseColors = {
+      '1 - New Request': 'var(--seven-eleven-maximum-red)',
+      '2 - Initial Review': 'var(--seven-eleven-orange-red)',
+      '3 - Architecture Review': '#3498db',
+      '4 - Proposal': 'var(--seven-eleven-spanish-viridian)',
+      '5 - Trigger Funding': '#9b59b6'
+    }
+    return phaseColors[phase] || 'var(--seven-eleven-gray-medium)'
+  }
+
   const handleMetricClick = (filterType) => {
     // Toggle filter - if same filter is clicked, clear it
     if (activeFilter === filterType) {
@@ -643,48 +687,93 @@ export default function DashboardApp() {
           </div>
         </div>
 
-        {/* Request Type Chart */}
+        {/* Charts Container */}
         <div className="chart-container">
-          <div className="chart-header">
-            <h3 className="chart-title">
-              <span>📊</span>
-              Requests by Type
-            </h3>
-            <p className="chart-subtitle">Distribution of technology request types</p>
-          </div>
-          <div className="chart-content">
-            {loading ? (
-              <div className="loading-chart">
-                <div className="spinner-small"></div>
-                <span>Loading chart data...</span>
+          <div className="charts-grid">
+            {/* Request Type Chart */}
+            <div className="chart-card">
+              <div className="chart-header">
+                <h3 className="chart-title">
+                  <span>📊</span>
+                  Requests by Type
+                </h3>
+                <p className="chart-subtitle">Distribution of technology request types</p>
               </div>
-            ) : requestTypeData.length === 0 ? (
-              <div className="empty-chart">
-                <p>No request type data available</p>
-              </div>
-            ) : (
-              <div className="bar-chart">
-                {requestTypeData.map((item, index) => (
-                  <div key={item.key} className="chart-bar-row">
-                    <div className="chart-label">
-                      <span className="type-name">{item.displayName}</span>
-                      <span className="type-count">{item.count}</span>
-                    </div>
-                    <div className="chart-bar-container">
-                      <div 
-                        className="chart-bar" 
-                        style={{
-                          width: `${item.percentage}%`,
-                          backgroundColor: getBarColor(index)
-                        }}
-                      >
-                        <span className="bar-percentage">{item.percentage}%</span>
-                      </div>
-                    </div>
+              <div className="chart-content">
+                {loading ? (
+                  <div className="loading-chart">
+                    <div className="spinner-small"></div>
+                    <span>Loading chart data...</span>
                   </div>
-                ))}
+                ) : requestTypeData.length === 0 ? (
+                  <div className="empty-chart">
+                    <p>No request type data available</p>
+                  </div>
+                ) : (
+                  <ResponsiveContainer width="100%" height={200}>
+                    <BarChart data={requestTypeData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis 
+                        dataKey="displayName" 
+                        tick={{ fontSize: 10 }}
+                        angle={-45}
+                        textAnchor="end"
+                        height={60}
+                      />
+                      <YAxis />
+                      <Tooltip 
+                        formatter={(value, name) => [value, 'Count']}
+                        labelFormatter={(label) => `Type: ${label}`}
+                      />
+                      <Bar dataKey="count" radius={[4, 4, 0, 0]}>
+                        {requestTypeData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={getBarColor(index)} />
+                        ))}
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                )}
               </div>
-            )}
+            </div>
+
+            {/* Phase Chart */}
+            <div className="chart-card">
+              <div className="chart-header">
+                <h3 className="chart-title">
+                  <span>🔄</span>
+                  Requests by Phase
+                </h3>
+                <p className="chart-subtitle">Current workflow phase distribution</p>
+              </div>
+              <div className="chart-content">
+                {loading ? (
+                  <div className="loading-chart">
+                    <div className="spinner-small"></div>
+                    <span>Loading chart data...</span>
+                  </div>
+                ) : phaseData.length === 0 ? (
+                  <div className="empty-chart">
+                    <p>No phase data available</p>
+                    <p>Debug: {JSON.stringify(phaseData)}</p>
+                  </div>
+                ) : (
+                  <ResponsiveContainer width="100%" height={200}>
+                    <FunnelChart>
+                      <Tooltip formatter={(value, name) => [value, 'Requests']} />
+                      <Funnel
+                        dataKey="value"
+                        data={phaseData}
+                        isAnimationActive
+                      >
+                        {phaseData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.fill} />
+                        ))}
+                      </Funnel>
+                    </FunnelChart>
+                  </ResponsiveContainer>
+                )}
+              </div>
+            </div>
           </div>
         </div>
 

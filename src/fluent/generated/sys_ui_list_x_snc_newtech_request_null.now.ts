@@ -7,6 +7,7 @@ List({
         'number',
         'priority',
         'x_snc_newtech_priority',
+        'x_snc_newtech_request_type',
         'short_description',
         'assigned_to',
         'opened_by',
@@ -15,6 +16,10 @@ List({
         'sys_created_by',
         'x_snc_newtech_requester_department',
         'impact',
+        'x_snc_newtech_problem_statement',
+        'x_snc_newtech_strategic_driver',
         'sys_created_on',
+        'x_snc_newtech_target_user_departments',
+        'x_snc_newtech_estimated_user_count',
     ],
 })
