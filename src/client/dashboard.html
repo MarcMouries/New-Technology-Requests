@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Technology Requests Dashboard</title>
+    <style>
+        /* 7-Eleven Dashboard Styles */
+        :root {
+            --seven-eleven-spanish-viridian: #007A53;
+            --seven-eleven-maximum-red: #DA291C;
+            --seven-eleven-orange-red: #FF6720;
+            --seven-eleven-white: #FFFFFF;
+            --seven-eleven-gray-light: #F8F9FA;
+            --seven-eleven-gray-medium: #E9ECEF;
+            --seven-eleven-gray-dark: #343A40;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--seven-eleven-gray-light);
+            margin: 0;
+            padding: 0;
+            color: var(--seven-eleven-gray-dark);
+        }
+
+        .dashboard-header {
+            background: var(--seven-eleven-spanish-viridian);
+            color: var(--seven-eleven-white);
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .seven-eleven-logo {
+            height: 2.5rem;
+            width: auto;
+            background: var(--seven-eleven-white);
+            padding: 0.5rem;
+            border-radius: 8px;
+            border: 2px solid var(--seven-eleven-white);
+        }
+
+        .seven-eleven-logo-fallback {
+            font-size: 2rem;
+            font-weight: bold;
+            background: var(--seven-eleven-white);
+            color: var(--seven-eleven-maximum-red);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 2px solid var(--seven-eleven-white);
+        }
+
+        .dashboard-title h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .dashboard-title p {
+            margin: 0.25rem 0 0 0;
+            opacity: 0.95;
+            font-size: 1rem;
+        }
+
+        .dashboard-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: var(--seven-eleven-white);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid var(--seven-eleven-spanish-viridian);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--seven-eleven-spanish-viridian);
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            color: var(--seven-eleven-gray-dark);
+            font-weight: 500;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .dashboard-item {
+            background: var(--seven-eleven-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-item h3 {
+            margin: 0 0 1rem 0;
+            color: var(--seven-eleven-maximum-red);
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--seven-eleven-spanish-viridian);
+            padding-bottom: 0.5rem;
+        }
+
+        .chart-container {
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .bar-chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 100%;
+            padding: 1rem 0;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .bar {
+            background: linear-gradient(135deg, var(--seven-eleven-spanish-viridian) 0%, var(--seven-eleven-orange-red) 100%);
+            border-radius: 4px 4px 0 0;
+            min-width: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+            color: var(--seven-eleven-white);
+            font-weight: bold;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            color: var(--seven-eleven-gray-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .bar-label {
+            margin-top: 0.5rem;
+            color: var(--seven-eleven-gray-dark);
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-align: center;
+            max-width: 60px;
+            word-wrap: break-word;
+        }
+
+        .request-list {
+            background: var(--seven-eleven-white);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .request-list h3 {
+            margin: 0 0 1rem 0;
+            color: var(--seven-eleven-maximum-red);
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-bottom: 2px solid var(--seven-eleven-spanish-viridian);
+            padding-bottom: 0.5rem;
+        }
+
+        .request-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .request-table th,
+        .request-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid var(--seven-eleven-gray-medium);
+        }
+
+        .request-table th {
+            background: var(--seven-eleven-gray-light);
+            color: var(--seven-eleven-gray-dark);
+            font-weight: 600;
+        }
+
+        .request-table tr:hover td {
+            background: var(--seven-eleven-gray-light);
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            display: inline-block;
+            min-width: 80px;
+        }
+
+        .phase-new { background: rgba(218, 41, 28, 0.1); color: var(--seven-eleven-maximum-red); }
+        .phase-review { background: rgba(255, 103, 32, 0.1); color: var(--seven-eleven-orange-red); }
+        .phase-architecture { background: rgba(0, 122, 83, 0.1); color: var(--seven-eleven-spanish-viridian); }
+        .phase-proposal { background: rgba(0, 122, 83, 0.2); color: var(--seven-eleven-spanish-viridian); }
+        .phase-funding { background: rgba(0, 122, 83, 0.3); color: var(--seven-eleven-spanish-viridian); }
+
+        .priority-fast_track { background: var(--seven-eleven-maximum-red); color: var(--seven-eleven-white); }
+        .priority-high { background: var(--seven-eleven-orange-red); color: var(--seven-eleven-white); }
+        .priority-medium { background: var(--seven-eleven-spanish-viridian); color: var(--seven-eleven-white); }
+        .priority-low { background: var(--seven-eleven-gray-medium); color: var(--seven-eleven-gray-dark); }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--seven-eleven-gray-dark);
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 3px solid var(--seven-eleven-gray-medium);
+            border-top: 3px solid var(--seven-eleven-spanish-viridian);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            color: var(--seven-eleven-maximum-red);
+            background: rgba(218, 41, 28, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--seven-eleven-maximum-red);
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container { padding: 1rem; }
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <header class="dashboard-header">
+        <div class="header-content">
+            <img src="https://www.7-eleven.com/assets/img/header/7e-logo-color.svg" 
+                 alt="7-Eleven Logo" class="seven-eleven-logo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="seven-eleven-logo-fallback" style="display: none;">7-ELEVEn</div>
+            <div class="dashboard-title">
+                <h1>New Technology Requests Dashboard</h1>
+                <p>Real-time insights into technology request pipeline and governance</p>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-container">
+        <!-- Summary Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value" id="total-requests">-</div>
+                <div class="metric-label">Total Requests</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="fast-track-count">-</div>
+                <div class="metric-label">Fast Track</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="funding-count">-</div>
+                <div class="metric-label">In Funding</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" id="avg-age">-</div>
+                <div class="metric-label">Avg Age (Days)</div>
+            </div>
+        </div>
+
+        <!-- Charts Grid -->
+        <div class="dashboard-grid">
+            <div class="dashboard-item">
+                <h3>Requests by Phase</h3>
+                <div class="chart-container">
+                    <div id="phase-chart" class="loading">
+                        <div class="spinner"></div>
+                        Loading chart data...
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-item">
+                <h3>Requests by Priority</h3>
+                <div class="chart-container">
+                    <div id="priority-chart" class="loading">
+                        <div class="spinner"></div>
+                        Loading chart data...
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-item">
+                <h3>Average Age by Phase (Days)</h3>
+                <div class="chart-container">
+                    <div id="age-chart" class="loading">
+                        <div class="spinner"></div>
+                        Loading chart data...
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-item">
+                <h3>Cost Distribution</h3>
+                <div class="chart-container">
+                    <div id="cost-chart" class="loading">
+                        <div class="spinner"></div>
+                        Loading chart data...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Request List -->
+        <div class="request-list">
+            <h3>Recent Technology Requests</h3>
+            <div id="request-table-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    Loading request data...
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./dashboard.js" type="module"></script>
+    <script>
+        // Dashboard JavaScript
+        class TechnologyDashboard {
+            constructor() {
+                this.data = {
+                    requests: [],
+                    loading: true,
+                    error: null
+                };
+                this.init();
+            }
+
+            async init() {
+                try {
+                    await this.fetchData();
+                    this.renderMetrics();
+                    this.renderCharts();
+                    this.renderRequestTable();
+                } catch (error) {
+                    this.handleError(error);
+                }
+            }
+
+            async fetchData() {
+                try {
+                    const response = await fetch('/api/now/table/x_snc_newtech_request?sysparm_display_value=all&sysparm_limit=100', {
+                        headers: {
+                            'Accept': 'application/json',
+                            'X-UserToken': window.g_ck
+                        }
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        this.data.requests = data.result || [];
+                        this.data.loading = false;
+                    } else {
+                        throw new Error('Failed to fetch dashboard data');
+                    }
+                } catch (error) {
+                    this.data.error = error.message;
+                    this.data.loading = false;
+                    throw error;
+                }
+            }
+
+            renderMetrics() {
+                const requests = this.data.requests;
+                const totalRequests = requests.length;
+                const fastTrackCount = requests.filter(r => this.getDisplayValue(r.x_snc_newtech_priority) === 'fast_track').length;
+                const fundingCount = requests.filter(r => this.getDisplayValue(r.x_snc_newtech_phase) === 'five_trigger_funding').length;
+                
+                // Calculate average age
+                const today = new Date();
+                const ages = requests.map(r => {
+                    const created = new Date(this.getDisplayValue(r.sys_created_on));
+                    return Math.floor((today - created) / (1000 * 60 * 60 * 24));
+                });
+                const avgAge = ages.length > 0 ? Math.round(ages.reduce((a, b) => a + b, 0) / ages.length) : 0;
+
+                document.getElementById('total-requests').textContent = totalRequests;
+                document.getElementById('fast-track-count').textContent = fastTrackCount;
+                document.getElementById('funding-count').textContent = fundingCount;
+                document.getElementById('avg-age').textContent = avgAge;
+            }
+
+            renderCharts() {
+                this.renderPhaseChart();
+                this.renderPriorityChart();
+                this.renderAgeChart();
+                this.renderCostChart();
+            }
+
+            renderPhaseChart() {
+                const phaseData = this.getPhaseData();
+                const chartHtml = this.createBarChart(phaseData);
+                document.getElementById('phase-chart').innerHTML = chartHtml;
+            }
+
+            renderPriorityChart() {
+                const priorityData = this.getPriorityData();
+                const chartHtml = this.createBarChart(priorityData);
+                document.getElementById('priority-chart').innerHTML = chartHtml;
+            }
+
+            renderAgeChart() {
+                const ageData = this.getAgeByPhaseData();
+                const chartHtml = this.createBarChart(ageData);
+                document.getElementById('age-chart').innerHTML = chartHtml;
+            }
+
+            renderCostChart() {
+                const costData = this.getCostData();
+                const chartHtml = this.createBarChart(costData);
+                document.getElementById('cost-chart').innerHTML = chartHtml;
+            }
+
+            getPhaseData() {
+                const phaseMap = {
+                    'one_new_request': 'New Request',
+                    'two_initial_review': 'Initial Review',
+                    'three_architecture_review': 'Architecture',
+                    'four_proposal': 'Proposal',
+                    'five_trigger_funding': 'Funding'
+                };
+
+                const data = {};
+                this.data.requests.forEach(req => {
+                    const phase = this.getDisplayValue(req.x_snc_newtech_phase);
+                    const phaseName = phaseMap[phase] || 'Unknown';
+                    data[phaseName] = (data[phaseName] || 0) + 1;
+                });
+                return data;
+            }
+
+            getPriorityData() {
+                const priorityMap = {
+                    'fast_track': 'Fast Track',
+                    'high': 'High',
+                    'medium': 'Medium',
+                    'low': 'Low'
+                };
+
+                const data = {};
+                this.data.requests.forEach(req => {
+                    const priority = this.getDisplayValue(req.x_snc_newtech_priority);
+                    const priorityName = priorityMap[priority] || 'Unknown';
+                    data[priorityName] = (data[priorityName] || 0) + 1;
+                });
+                return data;
+            }
+
+            getAgeByPhaseData() {
+                const phaseMap = {
+                    'one_new_request': 'New Request',
+                    'two_initial_review': 'Initial Review',
+                    'three_architecture_review': 'Architecture',
+                    'four_proposal': 'Proposal',
+                    'five_trigger_funding': 'Funding'
+                };
+
+                const ageByPhase = {};
+                const countByPhase = {};
+                const today = new Date();
+
+                this.data.requests.forEach(req => {
+                    const phase = this.getDisplayValue(req.x_snc_newtech_phase);
+                    const phaseName = phaseMap[phase] || 'Unknown';
+                    const created = new Date(this.getDisplayValue(req.sys_created_on));
+                    const age = Math.floor((today - created) / (1000 * 60 * 60 * 24));
+
+                    if (!ageByPhase[phaseName]) {
+                        ageByPhase[phaseName] = 0;
+                        countByPhase[phaseName] = 0;
+                    }
+
+                    ageByPhase[phaseName] += age;
+                    countByPhase[phaseName] += 1;
+                });
+
+                const avgAgeByPhase = {};
+                Object.keys(ageByPhase).forEach(phase => {
+                    avgAgeByPhase[phase] = Math.round(ageByPhase[phase] / countByPhase[phase]);
+                });
+
+                return avgAgeByPhase;
+            }
+
+            getCostData() {
+                const costMap = {
+                    'under_fifty_k': '<$50K',
+                    'fifty_to_two_fifty_k': '$50K-$249K',
+                    'two_fifty_k_to_one_m': '$250K-$999K',
+                    'one_to_five_m': '$1M-$4.9M',
+                    'five_m_plus': '$5M+',
+                    'unknown': 'Unknown'
+                };
+
+                const data = {};
+                this.data.requests.forEach(req => {
+                    const cost = this.getDisplayValue(req.x_snc_newtech_estimated_cost_band);
+                    const costName = costMap[cost] || 'Unknown';
+                    data[costName] = (data[costName] || 0) + 1;
+                });
+                return data;
+            }
+
+            createBarChart(data) {
+                const entries = Object.entries(data);
+                if (entries.length === 0) {
+                    return '<div>No data available</div>';
+                }
+
+                const maxValue = Math.max(...Object.values(data));
+                let html = '<div class="bar-chart">';
+
+                entries.forEach(([label, value]) => {
+                    const height = maxValue > 0 ? (value / maxValue) * 80 : 0;
+                    html += `
+                        <div class="bar" style="height: ${height}%">
+                            <div class="bar-value">${value}</div>
+                            <div class="bar-label">${label}</div>
+                        </div>
+                    `;
+                });
+
+                html += '</div>';
+                return html;
+            }
+
+            renderRequestTable() {
+                const requests = this.data.requests.slice(0, 10);
+                let html = `
+                    <table class="request-table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Phase</th>
+                                <th>Priority</th>
+                                <th>Cost Band</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                requests.forEach(req => {
+                    const phase = this.getPhaseDisplayName(this.getDisplayValue(req.x_snc_newtech_phase));
+                    const priority = this.getPriorityDisplayName(this.getDisplayValue(req.x_snc_newtech_priority));
+                    const cost = this.getCostDisplayName(this.getDisplayValue(req.x_snc_newtech_estimated_cost_band));
+                    const created = new Date(this.getDisplayValue(req.sys_created_on)).toLocaleDateString();
+
+                    html += `
+                        <tr>
+                            <td>${this.getDisplayValue(req.short_description) || 'N/A'}</td>
+                            <td><span class="status-badge ${this.getPhaseClass(this.getDisplayValue(req.x_snc_newtech_phase))}">${phase}</span></td>
+                            <td><span class="status-badge ${this.getPriorityClass(this.getDisplayValue(req.x_snc_newtech_priority))}">${priority}</span></td>
+                            <td>${cost}</td>
+                            <td>${created}</td>
+                        </tr>
+                    `;
+                });
+
+                html += '</tbody></table>';
+                document.getElementById('request-table-container').innerHTML = html;
+            }
+
+            getDisplayValue(field) {
+                if (!field) return '';
+                if (typeof field === 'string') return field;
+                if (field.display_value !== undefined) return field.display_value;
+                if (field.value !== undefined) return field.value;
+                return field;
+            }
+
+            getPhaseDisplayName(phase) {
+                const phaseMap = {
+                    'one_new_request': 'New Request',
+                    'two_initial_review': 'Initial Review',
+                    'three_architecture_review': 'Architecture Review',
+                    'four_proposal': 'Proposal',
+                    'five_trigger_funding': 'Funding Governance'
+                };
+                return phaseMap[phase] || phase;
+            }
+
+            getPriorityDisplayName(priority) {
+                const priorityMap = {
+                    'fast_track': 'Fast Track',
+                    'high': 'High',
+                    'medium': 'Medium',
+                    'low': 'Low'
+                };
+                return priorityMap[priority] || priority;
+            }
+
+            getCostDisplayName(cost) {
+                const costMap = {
+                    'under_fifty_k': '<$50K',
+                    'fifty_to_two_fifty_k': '$50K-$249K',
+                    'two_fifty_k_to_one_m': '$250K-$999K',
+                    'one_to_five_m': '$1M-$4.9M',
+                    'five_m_plus': '$5M+',
+                    'unknown': 'Unknown'
+                };
+                return costMap[cost] || cost || 'N/A';
+            }
+
+            getPhaseClass(phase) {
+                const phaseClassMap = {
+                    'one_new_request': 'phase-new',
+                    'two_initial_review': 'phase-review',
+                    'three_architecture_review': 'phase-architecture',
+                    'four_proposal': 'phase-proposal',
+                    'five_trigger_funding': 'phase-funding'
+                };
+                return phaseClassMap[phase] || 'phase-new';
+            }
+
+            getPriorityClass(priority) {
+                return `priority-${priority}`;
+            }
+
+            handleError(error) {
+                console.error('Dashboard error:', error);
+                document.querySelector('.dashboard-container').innerHTML = `
+                    <div class="error-message">
+                        Error loading dashboard: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize dashboard when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            new TechnologyDashboard();
+        });
+    </script>
+</body>
+</html>

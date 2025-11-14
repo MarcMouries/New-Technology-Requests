@@ -1,0 +1,700 @@
+/* Official 7-Eleven Brand Colors */
+:root {
+  --seven-eleven-spanish-viridian: #007A53;  /* Primary green */
+  --seven-eleven-maximum-red: #DA291C;       /* Primary red */
+  --seven-eleven-orange-red: #FF6720;        /* Primary orange */
+  --seven-eleven-white: #FFFFFF;             /* Primary white */
+  
+  /* Supporting colors for UI */
+  --seven-eleven-gray-light: #F8F9FA;
+  --seven-eleven-gray-medium: #E9ECEF;
+  --seven-eleven-gray-dark: #343A40;
+  --seven-eleven-shadow: 0 2px 8px rgba(218, 41, 28, 0.1);
+  --seven-eleven-shadow-hover: 0 4px 16px rgba(218, 41, 28, 0.15);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--seven-eleven-white);
+  margin: 0;
+  padding: 0;
+  color: var(--seven-eleven-gray-dark);
+}
+
+.intake-app {
+  min-height: 100vh;
+  background: var(--seven-eleven-white);
+}
+
+/* Header with Official 7-Eleven Branding */
+.app-header {
+  background: var(--seven-eleven-spanish-viridian);
+  color: var(--seven-eleven-white);
+  padding: 1.5rem 2rem;
+  box-shadow: var(--seven-eleven-shadow);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.seven-eleven-logo {
+  height: 2.5rem;
+  width: auto;
+  background: var(--seven-eleven-white);
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 2px solid var(--seven-eleven-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.seven-eleven-logo-fallback {
+  font-size: 2rem;
+  font-weight: bold;
+  background: var(--seven-eleven-white);
+  color: var(--seven-eleven-maximum-red);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 3px solid var(--seven-eleven-white);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-title {
+  flex: 1;
+}
+
+.app-title h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--seven-eleven-white);
+}
+
+.app-title p {
+  margin: 0.25rem 0 0 0;
+  opacity: 0.95;
+  font-size: 1rem;
+  color: var(--seven-eleven-white);
+}
+
+/* Main Container */
+.main-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--seven-eleven-white);
+}
+
+/* Progress Indicator - TurboTax Style with 7-Eleven Colors */
+.progress-container {
+  background: var(--seven-eleven-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--seven-eleven-shadow);
+  border: 1px solid var(--seven-eleven-gray-medium);
+}
+
+.progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  height: 4px;
+  background: var(--seven-eleven-gray-medium);
+  z-index: 1;
+  border-radius: 2px;
+}
+
+.progress-fill {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--seven-eleven-spanish-viridian) 0%, var(--seven-eleven-orange-red) 100%);
+  z-index: 2;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.progress-step {
+  background: var(--seven-eleven-white);
+  border: 3px solid var(--seven-eleven-gray-medium);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 3;
+  position: relative;
+  color: var(--seven-eleven-gray-dark);
+  transition: all 0.3s ease;
+}
+
+.progress-step.completed {
+  background: var(--seven-eleven-spanish-viridian);
+  border-color: var(--seven-eleven-spanish-viridian);
+  color: var(--seven-eleven-white);
+}
+
+.progress-step.active {
+  background: var(--seven-eleven-orange-red);
+  border-color: var(--seven-eleven-orange-red);
+  color: var(--seven-eleven-white);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 4px rgba(255, 103, 32, 0.2);
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.progress-label {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--seven-eleven-gray-dark);
+  font-weight: 500;
+  flex: 1;
+}
+
+.progress-label.active {
+  color: var(--seven-eleven-orange-red);
+  font-weight: 600;
+}
+
+.progress-label.completed {
+  color: var(--seven-eleven-spanish-viridian);
+  font-weight: 600;
+}
+
+/* Form Container */
+.form-container {
+  background: var(--seven-eleven-white);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: var(--seven-eleven-shadow);
+  margin-bottom: 2rem;
+  border: 1px solid var(--seven-eleven-gray-medium);
+}
+
+/* Step Content */
+.step-content {
+  min-height: 400px;
+}
+
+.step-header {
+  border-bottom: 3px solid var(--seven-eleven-spanish-viridian);
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  background: linear-gradient(135deg, var(--seven-eleven-gray-light) 0%, var(--seven-eleven-white) 100%);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: -1rem -1rem 2rem -1rem;
+}
+
+.step-title {
+  color: var(--seven-eleven-maximum-red);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.step-icon {
+  font-size: 1.5rem;
+  color: var(--seven-eleven-orange-red);
+}
+
+.step-description {
+  color: var(--seven-eleven-gray-dark);
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Form Sections within Steps */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+.form-section h3 {
+  color: var(--seven-eleven-spanish-viridian);
+  font-size: 1.25rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  border-left: 4px solid var(--seven-eleven-orange-red);
+  padding-left: 1rem;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--seven-eleven-gray-dark);
+  font-size: 0.95rem;
+}
+
+.form-group label.required::after {
+  content: ' *';
+  color: var(--seven-eleven-maximum-red);
+  font-weight: bold;
+}
+
+/* Form Controls */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 2px solid var(--seven-eleven-gray-medium);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: var(--seven-eleven-white);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--seven-eleven-orange-red);
+  box-shadow: 0 0 0 3px rgba(255, 103, 32, 0.1);
+}
+
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+  border-color: var(--seven-eleven-maximum-red);
+  background-color: rgba(218, 41, 28, 0.05);
+}
+
+.form-group input:disabled {
+  background: var(--seven-eleven-gray-light);
+  color: var(--seven-eleven-gray-dark);
+  cursor: not-allowed;
+  border-color: var(--seven-eleven-gray-medium);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Two Column Layout */
+.form-row {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .form-row .form-group {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Multi-select Containers */
+.multi-select-container {
+  border: 2px solid var(--seven-eleven-gray-medium);
+  border-radius: 8px;
+  padding: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--seven-eleven-white);
+}
+
+.multi-select-container.error {
+  border-color: var(--seven-eleven-maximum-red);
+  background-color: rgba(218, 41, 28, 0.05);
+}
+
+.multi-select-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--seven-eleven-gray-light);
+}
+
+.multi-select-item:last-child {
+  border-bottom: none;
+}
+
+.multi-select-item input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  accent-color: var(--seven-eleven-spanish-viridian);
+  transform: scale(1.2);
+}
+
+.multi-select-item label {
+  margin: 0;
+  cursor: pointer;
+  font-weight: normal;
+  flex: 1;
+  color: var(--seven-eleven-gray-dark);
+}
+
+.multi-select-item input[type="checkbox"]:checked + label {
+  color: var(--seven-eleven-spanish-viridian);
+  font-weight: 500;
+}
+
+/* Help Text */
+.help-text {
+  font-size: 0.875rem;
+  color: var(--seven-eleven-gray-dark);
+  opacity: 0.8;
+  margin-top: 0.25rem;
+  font-style: italic;
+}
+
+/* Error Messages */
+.error-message {
+  color: var(--seven-eleven-maximum-red);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.error-message::before {
+  content: '⚠';
+  font-size: 1rem;
+}
+
+/* Conditional Fields */
+.conditional-field {
+  background: var(--seven-eleven-gray-light);
+  border-left: 4px solid var(--seven-eleven-orange-red);
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+/* Navigation Buttons */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: var(--seven-eleven-white);
+  border-radius: 12px;
+  box-shadow: var(--seven-eleven-shadow);
+  margin-top: 1rem;
+  border: 1px solid var(--seven-eleven-gray-medium);
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Buttons with Official 7-Eleven Colors */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  box-shadow: var(--seven-eleven-shadow);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--seven-eleven-shadow-hover);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--seven-eleven-shadow);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--seven-eleven-maximum-red) 0%, var(--seven-eleven-orange-red) 100%);
+  color: var(--seven-eleven-white);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, var(--seven-eleven-orange-red) 0%, var(--seven-eleven-maximum-red) 100%);
+}
+
+.btn-secondary {
+  background: var(--seven-eleven-white);
+  color: var(--seven-eleven-gray-dark);
+  border: 2px solid var(--seven-eleven-spanish-viridian);
+}
+
+.btn-secondary:hover {
+  background: var(--seven-eleven-spanish-viridian);
+  color: var(--seven-eleven-white);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--seven-eleven-spanish-viridian);
+  border: 2px solid var(--seven-eleven-spanish-viridian);
+}
+
+.btn-outline:hover {
+  background: var(--seven-eleven-spanish-viridian);
+  color: var(--seven-eleven-white);
+}
+
+/* Loading States */
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success Message */
+.success-container {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--seven-eleven-white);
+  border-radius: 12px;
+  box-shadow: var(--seven-eleven-shadow);
+  border: 1px solid var(--seven-eleven-gray-medium);
+}
+
+.success-icon {
+  font-size: 4rem;
+  color: var(--seven-eleven-spanish-viridian);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.success-title {
+  color: var(--seven-eleven-spanish-viridian);
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.success-message {
+  color: var(--seven-eleven-gray-dark);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.success-details {
+  background: var(--seven-eleven-gray-light);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  text-align: left;
+  border-left: 4px solid var(--seven-eleven-spanish-viridian);
+}
+
+.success-details dt {
+  font-weight: 600;
+  color: var(--seven-eleven-maximum-red);
+}
+
+.success-details dd {
+  margin: 0 0 0.5rem 0;
+  padding-left: 1rem;
+  color: var(--seven-eleven-gray-dark);
+}
+
+/* Review Section Styling */
+.form-section h4 {
+  color: var(--seven-eleven-maximum-red);
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.form-section dl {
+  margin: 0;
+}
+
+.form-section dt {
+  font-weight: bold;
+  color: var(--seven-eleven-spanish-viridian);
+  margin-top: 0.5rem;
+}
+
+.form-section dd {
+  margin: 0 0 0.5rem 1rem;
+  color: var(--seven-eleven-gray-dark);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .main-container {
+    padding: 1rem;
+  }
+  
+  .form-container {
+    padding: 1.5rem;
+  }
+  
+  .form-navigation {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .nav-buttons {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .btn {
+    flex: 1;
+    justify-content: center;
+  }
+  
+  .app-header {
+    padding: 1rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .seven-eleven-logo {
+    font-size: 1.5rem;
+  }
+  
+  .app-title h1 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Focus styles for accessibility */
+.btn:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid rgba(255, 103, 32, 0.3);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --seven-eleven-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --seven-eleven-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Print styles */
+@media print {
+  .form-navigation,
+  .app-header {
+    display: none;
+  }
+  
+  .form-container {
+    box-shadow: none;
+    border: 1px solid #ccc;
+  }
+}
+
+/* Additional 7-Eleven specific styling */
+.seven-eleven-accent {
+  background: linear-gradient(135deg, 
+    var(--seven-eleven-spanish-viridian) 0%, 
+    var(--seven-eleven-maximum-red) 50%, 
+    var(--seven-eleven-orange-red) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Charts and data visualization colors */
+.chart-color-1 { color: var(--seven-eleven-spanish-viridian); }
+.chart-color-2 { color: var(--seven-eleven-maximum-red); }
+.chart-color-3 { color: var(--seven-eleven-orange-red); }
+
+/* Status indicators using brand colors */
+.status-approved { 
+  background-color: var(--seven-eleven-spanish-viridian); 
+  color: var(--seven-eleven-white); 
+}
+.status-pending { 
+  background-color: var(--seven-eleven-orange-red); 
+  color: var(--seven-eleven-white); 
+}
+.status-rejected { 
+  background-color: var(--seven-eleven-maximum-red); 
+  color: var(--seven-eleven-white); 
+}
