@@ -1,6 +1,6 @@
 {
     "scope": "x_snc_newtech",
     "scopeId": "d50ad0043351b2d04890955a7e5c7b31",
-    "name": "New Tech Requests",
+    "name": "newtech",
     "tsconfigPath": "./src/server/tsconfig.json"
 }

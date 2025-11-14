@@ -12,7 +12,7 @@ This document tracks requirements and specifications for the ServiceNow "New Tec
 ### Functional Requirements
 - [x] **Technology Request Intake Form** - Comprehensive React-based form for submitting new technology requests
 - [ ] **Governance Workflow** - Automated workflow to guide requests through approval process
-- [ ] **Dashboard & Reporting** - Real-time visibility into request status and metrics
+- [x] **Dashboard & Reporting** - Real-time dashboard with metrics, sortable table, and responsive design with executive summary cards and detailed request table
 - [ ] **Approval Routing** - Automated routing based on priority, cost, and department
 - [ ] **Strategic Alignment** - Integration with strategic drivers and business objectives
 
@@ -29,13 +29,51 @@ This document tracks requirements and specifications for the ServiceNow "New Tec
 - [x] **Tables**: 
   - `x_snc_newtech_request` (New Technology Request) - extends Task
   - `x_snc_newtech_department` (Department lookup table)
-- [x] **UI Pages**: React-based guided intake form
+  - `x_snc_newtech_priority` (Priority lookup table with short/long descriptions)
+- [x] **UI Pages**: React-based guided intake form and interactive dashboard
 - [x] **Records**: Pre-populated department data (28 departments)
 - [x] **Properties**: Cost band configuration system property
+- [x] **Dashboard**: Real-time metrics, sortable table, responsive design
 - [ ] **Business Rules**: Validation rules, auto-population logic
 - [ ] **Roles**: Department-specific roles, approval roles
 - [ ] **ACLs**: Field-level security based on roles and phases
 - [ ] **Client Scripts**: Additional validation and field interactions
+
+## Dashboard Specifications
+
+### Dashboard Overview
+The New Technology Requests Dashboard provides real-time insights into the technology request pipeline and governance workflow. Built with React and styled to match the intake form exactly.
+
+### Dashboard Features
+- [x] **Real-time Metrics Cards**: 4 key performance indicators
+- [x] **Interactive Data Table**: Complete request listing with sorting
+- [x] **Responsive Design**: Works on desktop, tablet, and mobile devices
+- [x] **Professional Styling**: Matches intake form branding exactly
+
+### Metrics Cards
+1. **📋 # of New Requests (Submitted)** - Counts records with status "1.2 - Submitted"
+2. **⏸️ # of Requests On Hold** - Counts records with status "9.1 - On Hold"  
+3. **❌ # of Requests Rejected** - Counts records with status "9.4 - Rejected"
+4. **🚀 # of Requests Fast Track** - Counts records with priority "1- Fast Track"
+
+### Interactive Table Features
+- **Sortable Columns**: Click any header to sort (Number, Priority, Description, Opened By, Phase, Created Date)
+- **Visual Sort Indicators**: ↑↓↕️ icons show current sort direction
+- **Clickable Rows**: Click any row to open the full request record
+- **Color-coded Badges**: Priority and Phase fields use branded color coding
+- **Responsive Layout**: Horizontal scrolling on mobile devices
+
+### Data Sources
+- **Primary Table**: `x_snc_newtech_request`
+- **API Endpoint**: `/api/now/table/x_snc_newtech_request`
+- **Real-time Updates**: Data refreshes on page load
+- **Display Values**: Uses `sysparm_display_value=all` for proper field resolution
+
+### User Experience
+- **Loading States**: Spinner animation during data fetch
+- **Error Handling**: User-friendly error messages with retry functionality
+- **Empty States**: Helpful message when no records exist
+- **Mobile Responsive**: 90% max-width with adaptive grid layout
 
 ## Complete Field Specifications
 
@@ -48,11 +86,10 @@ This document tracks requirements and specifications for the ServiceNow "New Tec
 5. **requester_department** (Reference): label "Requestor Department". Mandatory = true. References x_snc_newtech_department table.
 5b. **requester_department_other** (String 100): label "If Other (Department)". Visible when requester_department = "Other".
 6. **cost_center** (Integer): label "Funding Cost Center". Length 4; add regex validation for exactly 4 digits. Mandatory = true.
-7. **priority** (Choice): label "Priority". Mandatory = true. Choices:
-   - Fast Track – Urgent and critical (requires CIO & President approval)
-   - High – Needed within the Year's Capital Planning (requires CIO approval)
-   - Medium – Needed within the next year
-   - Low – Needed when funding and capacity allows
+7. **priority** (Reference): label "Priority". Mandatory = true. References x_snc_newtech_priority table:
+   - Intake form displays: Long descriptions (e.g., "1- Fast Track - Urgent and critical, requires CIO & President approval")
+   - Lists/Tables display: Short descriptions (e.g., "1- Fast Track")
+   - Values: 1_fast_track, 2_high, 3_medium, 4_low
 8. **target_usage_date** (Date): label "Target Usage Date". Mandatory = true. Help: "When do you need to be able to use the tool?"
 9. **request_type** (Choice): label "Type of Request". Mandatory = true. Choices:
    - New Technology / Capability
@@ -171,6 +208,26 @@ This document tracks requirements and specifications for the ServiceNow "New Tec
 38. **followups** (String 4000): label "Follow Up / Action Items"
 39. **closing_comments** (String 4000): label "Closing Comments"
 
+## Priority Lookup Table
+
+### x_snc_newtech_priority Fields:
+- **x_snc_newtech_value** (String): Internal value/key (e.g., "1_fast_track")
+- **x_snc_newtech_short_description** (String): Short display name for lists/tables (e.g., "1- Fast Track")
+- **x_snc_newtech_long_description** (String): Full description for intake form (e.g., "1- Fast Track - Urgent and critical, requires CIO & President approval")
+- **x_snc_newtech_sequence** (Integer): Display order
+- **x_snc_newtech_active** (Boolean): Active status for visibility control
+
+### Pre-loaded Priority Levels (4 total):
+1. **Fast Track** - Urgent and critical, requires CIO & President approval
+2. **High** - Needed within the Years Capital Planning, Requires CIO Approval  
+3. **Medium** - Needed within the next year
+4. **Low** - Needed when funding and capacity allows
+
+### Priority Display Logic:
+- **Intake Form**: Uses `x_snc_newtech_long_description` to help users understand approval requirements
+- **Lists/Tables**: Uses `x_snc_newtech_short_description` (table display field) for clean, scannable display
+- **Dashboard Metrics**: Counts records by priority level using reference field values
+
 ## Department Lookup Table
 
 ### x_snc_newtech_department Fields:
@@ -257,9 +314,167 @@ IT, 7International, Accounting, Asset Protection, Construction, Corporate PMO, D
 - [ ] **Business Rules**: Auto-routing based on priority and cost
 - [ ] **Workflow Engine**: Automated approval processes
 - [ ] **Notifications**: Email alerts for status changes
-- [ ] **Dashboard**: Executive reporting and analytics
+- [x] **Dashboard**: Executive reporting and analytics
 - [ ] **Integration**: Connection to funding governance systems
 - [ ] **Mobile App**: Native mobile interface for approvers
+
+## Dashboard Specifications
+
+### Overview
+The New Technology Requests Dashboard provides real-time visibility and analytics for all technology requests submitted through the intake form. It serves as the primary governance and monitoring interface for request administrators, department heads, and executives.
+
+### Dashboard Requirements
+
+#### Visual Design Requirements
+- **Consistent Branding**: Maintain exact same styling as intake form for brand consistency
+- **Header Layout**: Identical header with 7-Eleven logo, app title, and description
+- **Color Scheme**: Use official 7-Eleven brand colors (Spanish Viridian #007A53, Maximum Red #DA291C, Orange-Red #FF6720)
+- **Responsive Design**: Support for desktop, tablet, and mobile viewing
+- **Professional Layout**: Clean, modern interface with proper spacing and typography
+
+#### Functional Requirements
+
+##### 1. Metrics Cards (Summary Statistics)
+Display key performance indicators in a 4-card grid layout:
+
+1. **# of New Requests (Submitted)** 
+   - Count: Records with status = "1.2 - Submitted" 
+   - Icon: 📋
+   - Color: Default green theme
+
+2. **# of Requests On Hold**
+   - Count: Records with status = "9.1 - On Hold"
+   - Icon: ⏸️  
+   - Color: Orange theme
+
+3. **# of Requests Rejected**
+   - Count: Records with status = "9.4 - Rejected"
+   - Icon: ❌
+   - Color: Dark gray theme
+
+4. **# of Requests Fast Track**
+   - Count: Records with priority = "Fast Track – Urgent and critical"
+   - Icon: 🚀
+   - Color: Red theme (high priority)
+
+##### 2. Request Data Table
+Display comprehensive list of all technology requests with the following columns:
+
+1. **Number** - Request number (clickable to open full record)
+2. **Priority** - Color-coded priority badges (Fast Track, High, Medium, Low)
+3. **Short Description** - Brief description of the request
+4. **Opened By** - Name of person who submitted the request
+5. **Phase** - Current phase with color-coded badges (New Request, Initial Review, Architecture Review, Proposal, Funding)
+6. **Created Date** - Formatted date when request was submitted
+
+##### 3. Interactive Features
+- **Clickable Rows**: Click any table row to open the full request record in a new tab
+- **Real-time Data**: Dashboard loads current data from x_snc_newtech_request table
+- **Loading States**: Professional loading indicators while data is fetched
+- **Error Handling**: Graceful error messages if data cannot be loaded
+- **Responsive Table**: Table adjusts for mobile viewing
+
+#### Technical Requirements
+
+##### Data Source
+- **Primary Table**: x_snc_newtech_request (New Technology Request table)
+- **API Endpoint**: ServiceNow Table API with display values
+- **Query Parameters**: Order by sys_created_on DESC, limit 100 records
+- **Authentication**: Use ServiceNow session authentication
+
+##### Performance Requirements
+- **Load Time**: Dashboard should load within 3 seconds
+- **Data Refresh**: Real-time data loading on page refresh
+- **Browser Support**: Support for modern browsers (Chrome, Firefox, Safari, Edge)
+- **Mobile Optimization**: Responsive design for mobile devices
+
+##### Security Requirements
+- **Access Control**: Dashboard should respect ServiceNow ACLs for the table
+- **Session Management**: Use proper ServiceNow session tokens
+- **HTTPS Only**: All API calls must use secure connections
+- **Data Validation**: Validate all data before display
+
+#### User Experience Requirements
+
+##### Navigation
+- **Header Navigation**: Consistent header with same branding as intake form
+- **Footer Attribution**: "Powered by ServiceNow Build Agent – built by Marc.Mouries@ServiceNow.com"
+- **Breadcrumbs**: Clear indication of current page location
+
+##### Accessibility
+- **Color Contrast**: Meet WCAG 2.1 AA standards for color contrast
+- **Keyboard Navigation**: Support for keyboard-only users
+- **Screen Readers**: Proper ARIA labels and semantic HTML
+- **Alternative Text**: Alt text for all images and icons
+
+##### Error States
+- **No Data**: Professional message when no requests exist
+- **Loading Errors**: Clear error messages with retry options
+- **Network Issues**: Graceful handling of connection problems
+
+#### Content Requirements
+
+##### Header Section
+- **Logo**: 7-Eleven official logo with fallback text
+- **Title**: "New Technology Requests Dashboard"
+- **Subtitle**: "Real-time insights into your technology request pipeline and governance workflow"
+
+##### Metrics Section
+- **Section Title**: Key metrics displayed prominently
+- **Card Layout**: 4 cards in a single row with consistent spacing
+- **Icons**: Relevant emoji icons for each metric type
+- **Number Display**: Large, bold numbers with appropriate color coding
+
+##### Table Section
+- **Section Title**: "📊 New Technology Requests"
+- **Section Subtitle**: "Complete list of technology request submissions with current status and priority"
+- **Table Headers**: Clear, descriptive column headers
+- **Data Formatting**: Consistent date formats, proper text truncation
+
+#### Implementation Standards
+
+##### CSS Framework
+- **Shared Stylesheets**: Reuse CSS variables and classes from intake form
+- **CSS Custom Properties**: Use CSS variables for colors and spacing
+- **Grid Layout**: Use CSS Grid for responsive card layout
+- **Flexbox**: Use Flexbox for internal component alignment
+
+##### JavaScript Requirements
+- **Modern ES6+**: Use modern JavaScript features
+- **Async/Await**: For API calls and data handling
+- **Error Handling**: Try/catch blocks for all async operations
+- **Console Logging**: Detailed logging for debugging
+
+##### API Integration
+- **Fetch API**: Use native Fetch API for HTTP requests
+- **JSON Processing**: Proper JSON parsing and validation
+- **Display Values**: Request display values from ServiceNow API
+- **Query Optimization**: Efficient queries with proper limits
+
+### Success Criteria
+
+#### Functional Success
+- ✅ Dashboard loads within 3 seconds
+- ✅ All 4 metrics cards display accurate counts
+- ✅ Data table shows all requests with proper formatting
+- ✅ Clicking table rows opens request records
+- ✅ Dashboard styling matches intake form exactly
+
+#### Technical Success
+- ✅ No JavaScript errors in browser console
+- ✅ Responsive design works on all device sizes
+- ✅ API calls return data successfully
+- ✅ Proper error handling for all edge cases
+- ✅ Code follows ServiceNow development standards
+
+#### User Experience Success
+- ✅ Interface is intuitive and easy to navigate
+- ✅ Loading states provide clear feedback
+- ✅ Error messages are helpful and actionable
+- ✅ Visual hierarchy guides user attention
+- ✅ Brand consistency maintained throughout
+
+## Future Enhancements
 
 ## BEST PRACTICES
 
@@ -272,9 +487,36 @@ IT, 7International, Accounting, Asset Protection, Construction, Corporate PMO, D
   - White: `#FFFFFF` (Primary white)
 - **Component-Based Styling:** Use CSS custom properties (variables) for maintainable color schemes
 - **Responsive Design:** Ensure all UI components work across desktop, tablet, and mobile devices
-- **Accessibility:** Follow WCAG guidelines for color contrast and keyboard navigation
+### Professional UI Design Standards
+- **Enterprise-Grade Visual Elements:** Avoid emoji characters (↕️, 🚀, 📊) in production interfaces - use CSS-based icons, triangles, or Unicode symbols instead
+- **Sortable Table Design:** 
+  - Use pure CSS triangles for sort indicators instead of emoji arrows
+  - Implement three states: neutral (both triangles muted), ascending (up triangle active), descending (down triangle active)
+  - Apply hover effects with brand colors for better user feedback
+  - Ensure adequate padding (2.5rem) for sort indicators on clickable headers
+- **Professional Color Schemes:** 
+  - Active sort indicators should use primary brand color (Spanish Viridian: #007A53)
+  - Inactive/neutral states should use muted grays (#ccc, #eee)
+  - Hover states should provide clear visual feedback with contrasting colors
+- **Visual Hierarchy:** Use consistent font weights, sizes, and spacing to create clear information hierarchy
+- **Loading States:** Implement professional loading spinners and progress indicators instead of basic text
+- **Status Badges:** Design color-coded badges for status, priority, and phase indicators using brand colors
+- **Interactive Elements:** Ensure all clickable elements have proper hover states, cursor changes, and visual feedback
 
-### ServiceNow Development Standards
+### Table Design Best Practices
+- **Responsive Tables:** Use table wrappers with horizontal scroll for mobile compatibility
+- **Header Styling:** Apply gradient backgrounds and proper typography hierarchy for table headers
+- **Row Interactions:** Implement subtle hover effects (transform: translateY(-1px)) for interactive rows
+- **Cell Content:** Truncate long text with ellipsis in constrained columns while maintaining readability
+- **Sort Functionality:** Provide clear visual indicators for current sort column and direction
+- **Performance:** Limit displayed rows and implement pagination or virtual scrolling for large datasets
+
+### User Experience Guidelines
+- **Consistent Navigation:** Maintain same header structure, logo placement, and navigation patterns across all pages
+- **Error Handling:** Display user-friendly error messages with actionable steps for resolution
+- **Loading Feedback:** Show progress indicators during API calls and data loading operations
+- **Mobile Responsiveness:** Ensure all features work seamlessly across desktop, tablet, and mobile devices
+- **Accessibility Compliance:** Follow WCAG 2.1 guidelines for color contrast, keyboard navigation, and screen readers
 - **Fluent API Usage:** Use ServiceNow Fluent DSL for all metadata definitions
 - **Naming Conventions:** Consistently prefix custom fields and tables with application scope
 - **Data Integrity:** Use reference fields instead of hardcoded choice values where possible

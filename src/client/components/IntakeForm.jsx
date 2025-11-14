@@ -406,10 +406,10 @@ export default function IntakeForm({ currentUser, onSubmitSuccess }) {
                   className={errors.x_snc_newtech_priority ? 'error' : ''}
                 >
                   <option value="">-- Select Priority --</option>
-                  <option value="fast_track">Fast Track – Urgent and critical (requires CIO & President approval)</option>
-                  <option value="high">High – Needed within the Year's Capital Planning (requires CIO approval)</option>
-                  <option value="medium">Medium – Needed within the next year</option>
-                  <option value="low">Low – Needed when funding and capacity allows</option>
+                  <option value="fast_track_urgent_critical">Fast Track - Urgent and critical, requires CIO & President approval</option>
+                  <option value="high_capital_planning">High - Needed within the Years Capital Planning, Requires CIO Approval</option>
+                  <option value="medium_next_year">Medium - Needed within the next year</option>
+                  <option value="low_funding_capacity">Low - Needed when funding and capacity allows</option>
                 </select>
                 {errors.x_snc_newtech_priority && (
                   <div className="error-message">{errors.x_snc_newtech_priority}</div>
