@@ -286,10 +286,20 @@ declare global {
                     'x_snc_newtech/DashboardApp-BK0mH0bc': {
                         table: 'sys_ux_lib_asset'
                         id: 'eb957209a4524704946334f049fb195f'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-BK0mH0bc.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '310047ebf78c4ed88c404e532999c119'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-Clq8vq5I': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'b0aaf7fa44c149888ad5ea4f67fdf034'
+                    }
+                    'x_snc_newtech/DashboardApp-Clq8vq5I.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '6b9d22926d394cc5b69f0a79018f060a'
                     }
                     'x_snc_newtech/DashboardApp-D5qBAnvi': {
                         table: 'sys_ux_lib_asset'
@@ -1811,6 +1821,24 @@ declare global {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_estimated_cost_band'
                             value: 'fifty_to_two_fifty_k'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: '541d30583359b6d04890955a7e5c7bf3'
+                        key: {
+                            list_id: {
+                                id: '532e604c3395b2d04890955a7e5c7b69'
+                                key: {
+                                    name: 'x_snc_newtech_request'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'x_snc_newtech_requester_department'
                         }
                     },
                     {
@@ -4334,6 +4362,24 @@ declare global {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
                             value: 'nine_four_rejected'
+                        }
+                    },
+                    {
+                        table: 'sys_ui_list_element'
+                        id: 'd81d30583359b6d04890955a7e5c7bf3'
+                        key: {
+                            list_id: {
+                                id: '532e604c3395b2d04890955a7e5c7b69'
+                                key: {
+                                    name: 'x_snc_newtech_request'
+                                    view: 'Default view'
+                                    sys_domain: 'global'
+                                    element: 'NULL'
+                                    relationship: 'NULL'
+                                    parent: 'NULL'
+                                }
+                            }
+                            element: 'impact'
                         }
                     },
                     {

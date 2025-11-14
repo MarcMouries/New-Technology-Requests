@@ -27,7 +27,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'ten_thousand_plus',
         x_snc_newtech_email: 'abel.tuter@7eleven.com',
         x_snc_newtech_cost_center: 1001,
-        opened_by: '62826bf03710200044e0bfc8bcbe5df1', // Abel Tuter
+        x_snc_newtech_requester_department: 'operations', // Operations - POS systems are operations-related
         sys_created_on: '2025-11-13 10:00:00'
     }
 })
@@ -56,6 +56,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'hundred_to_five_hundred',
         x_snc_newtech_email: 'anna.becker@7eleven.com',
         x_snc_newtech_cost_center: 2002,
+        x_snc_newtech_requester_department: 'supply_chain_logistics', // Supply Chain - Analytics platform for supply chain
         opened_by: '1436cfaf8f976300a3c953ac37bdeeba', // Anna Becker
         sys_created_on: '2025-11-12 14:30:00'
     }
@@ -85,6 +86,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'five_to_ten_thousand',
         x_snc_newtech_email: 'danielle.smith@7eleven.com',
         x_snc_newtech_cost_center: 3003,
+        x_snc_newtech_requester_department: 'hr', // HR - Employee mobile app
         opened_by: '50d6fbef8fd76300a3c953ac37bdeef9', // Danielle Smith
         sys_created_on: '2025-11-11 09:15:00'
     }
@@ -114,6 +116,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'twenty_to_fifty',
         x_snc_newtech_email: 'jeff.clark@7eleven.com',
         x_snc_newtech_cost_center: 4004,
+        x_snc_newtech_requester_department: 'marketing', // Marketing - Campaign automation tool
         opened_by: '5cdb7fbf53221010448addeeff7b120e', // Jeff Clark
         sys_created_on: '2025-11-10 16:45:00'
     }
@@ -144,6 +147,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'fifty_to_hundred',
         x_snc_newtech_email: 'kristen.goyal@7eleven.com',
         x_snc_newtech_cost_center: 5005,
+        x_snc_newtech_requester_department: 'it', // IT - Security incident response platform
         opened_by: '91cbd00053b21010448addeeff7b1238', // Kristen Goyal
         sys_created_on: '2025-11-06 11:20:00'
     }
@@ -173,6 +177,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'five_hundred_to_thousand',
         x_snc_newtech_email: 'marc.mouries@7eleven.com',
         x_snc_newtech_cost_center: 6006,
+        x_snc_newtech_requester_department: 'facilities', // Facilities - Energy management system
         opened_by: 'ac13175b937142102494bcd97bba1041', // Marc Mouries
         sys_created_on: '2025-10-30 13:00:00'
     }
@@ -203,6 +208,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'one_to_five_thousand',
         x_snc_newtech_email: 'melissa.pena@7eleven.com',
         x_snc_newtech_cost_center: 7007,
+        x_snc_newtech_requester_department: 'asset_protection', // Asset Protection - Emergency communication system
         opened_by: 'd999e5fc77e72300454792718a10611d', // Melissa Pena
         sys_created_on: '2025-10-23 08:45:00'
     }
@@ -232,6 +238,7 @@ Record({
         x_snc_newtech_estimated_user_count: 'five_to_ten_thousand',
         x_snc_newtech_email: 'sean.adams@7eleven.com',
         x_snc_newtech_cost_center: 8008,
+        x_snc_newtech_requester_department: 'learning_development', // Learning & Development - LMS upgrade
         opened_by: '79e83b238f1b6300a3c953ac37bdeef6', // Sean Adams
         sys_created_on: '2025-08-13 15:30:00'
     }

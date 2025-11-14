@@ -12,7 +12,9 @@ List({
         'opened_by',
         'x_snc_newtech_phase',
         'x_snc_newtech_status',
-        'sys_created_on',
         'sys_created_by',
+        'x_snc_newtech_requester_department',
+        'impact',
+        'sys_created_on',
     ],
 })

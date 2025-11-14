@@ -15,6 +15,7 @@ export default function DashboardApp() {
     key: 'sys_created_on',
     direction: 'desc'
   })
+  const [requestTypeData, setRequestTypeData] = useState([])
   const [activeFilter, setActiveFilter] = useState(null)
 
   useEffect(() => {
@@ -84,6 +85,27 @@ export default function DashboardApp() {
         fastTrack: fastTrackCount
       })
 
+      // Calculate request type data for bar chart
+      const requestTypeCounts = {}
+      requestsData.forEach(request => {
+        const requestType = getValue(request.x_snc_newtech_request_type) || 'Unknown'
+        requestTypeCounts[requestType] = (requestTypeCounts[requestType] || 0) + 1
+      })
+
+      // Convert to array and get display names
+      const requestTypeArray = Object.entries(requestTypeCounts).map(([key, count]) => {
+        const displayName = getRequestTypeDisplay(key)
+        return {
+          key,
+          displayName,
+          count,
+          percentage: Math.round((count / requestsData.length) * 100)
+        }
+      }).sort((a, b) => b.count - a.count) // Sort by count, highest first
+
+      setRequestTypeData(requestTypeArray)
+      console.log('📈 Request Type Data:', requestTypeArray)
+
       console.log(`✅ Successfully loaded ${requestsData.length} requests`)
       
     } catch (error) {
@@ -100,6 +122,33 @@ export default function DashboardApp() {
     if (field.display_value !== undefined) return field.display_value
     if (field.value !== undefined) return field.value
     return String(field)
+  }
+
+  const getRequestTypeDisplay = (requestType) => {
+    const requestTypeMap = {
+      'new_technology_capability': 'New Technology',
+      'adding_capability_existing': 'Add Capability',
+      'correcting_capability_existing': 'Correct Capability',
+      'change_design_architecture': 'Design/Architecture',
+      'build_modify_integration': 'Integration/API',
+      'on_prem_software': 'On Prem Software',
+      'saas': 'SaaS',
+      'paas': 'PaaS',
+      'cloud_hyperscaler': 'Cloud Services',
+      'iaas': 'IaaS',
+      // Handle display values
+      'New Technology / Capability': 'New Technology',
+      'Adding a capability to an existing platform': 'Add Capability',
+      'Correcting a capability to an existing platform': 'Correct Capability',
+      'Change in Design/Architecture': 'Design/Architecture',
+      'Build / Modify Integration(s) / API(s) between software application systems': 'Integration/API',
+      'On Prem Software': 'On Prem Software',
+      'Software as a Service (SaaS)': 'SaaS',
+      'Platform as a Service (PaaS)': 'PaaS',
+      'Cloud Hyperscaler Services (Azure, AWS, OCI, Google, etc.)': 'Cloud Services',
+      'Infrastructure as a Service (IaaS)': 'IaaS'
+    }
+    return requestTypeMap[requestType] || requestType || 'Unknown'
   }
 
   const getPriorityDisplay = (priority) => {
@@ -448,6 +497,22 @@ export default function DashboardApp() {
     )
   }
 
+  const getBarColor = (index) => {
+    const colors = [
+      'var(--seven-eleven-spanish-viridian)',    // Green
+      'var(--seven-eleven-orange-red)',          // Orange  
+      'var(--seven-eleven-maximum-red)',         // Red
+      '#6366f1',                                 // Indigo
+      '#8b5cf6',                                 // Violet
+      '#06b6d4',                                 // Cyan
+      '#84cc16',                                 // Lime
+      '#f59e0b',                                 // Amber
+      '#ef4444',                                 // Red
+      '#6b7280'                                  // Gray
+    ]
+    return colors[index % colors.length]
+  }
+
   const handleMetricClick = (filterType) => {
     // Toggle filter - if same filter is clicked, clear it
     if (activeFilter === filterType) {
@@ -575,6 +640,51 @@ export default function DashboardApp() {
               <div className="metric-value">{metrics.fastTrack}</div>
               <div className="metric-label"># of Requests<br/>Fast Track</div>
             </div>
+          </div>
+        </div>
+
+        {/* Request Type Chart */}
+        <div className="chart-container">
+          <div className="chart-header">
+            <h3 className="chart-title">
+              <span>📊</span>
+              Requests by Type
+            </h3>
+            <p className="chart-subtitle">Distribution of technology request types</p>
+          </div>
+          <div className="chart-content">
+            {loading ? (
+              <div className="loading-chart">
+                <div className="spinner-small"></div>
+                <span>Loading chart data...</span>
+              </div>
+            ) : requestTypeData.length === 0 ? (
+              <div className="empty-chart">
+                <p>No request type data available</p>
+              </div>
+            ) : (
+              <div className="bar-chart">
+                {requestTypeData.map((item, index) => (
+                  <div key={item.key} className="chart-bar-row">
+                    <div className="chart-label">
+                      <span className="type-name">{item.displayName}</span>
+                      <span className="type-count">{item.count}</span>
+                    </div>
+                    <div className="chart-bar-container">
+                      <div 
+                        className="chart-bar" 
+                        style={{
+                          width: `${item.percentage}%`,
+                          backgroundColor: getBarColor(index)
+                        }}
+                      >
+                        <span className="bar-percentage">{item.percentage}%</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
