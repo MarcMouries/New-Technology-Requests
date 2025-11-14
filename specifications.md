@@ -507,58 +507,17 @@ Display comprehensive list of all technology requests with the following columns
 
 ## BEST PRACTICES
 
-### CSS and Styling Standards
-- **Reusable Stylesheets:** Create shared CSS files that can be used across multiple UI Pages instead of duplicating styles in each component
+### New Technology Request App Specific Standards
 - **7-Eleven Brand Consistency:** Maintain consistent use of official brand colors across all components:
   - Spanish Viridian: `#007A53` (Primary green)
   - Maximum Red: `#DA291C` (Primary red) 
   - Orange-Red: `#FF6720` (Primary orange)
   - White: `#FFFFFF` (Primary white)
-- **Component-Based Styling:** Use CSS custom properties (variables) for maintainable color schemes
-- **Responsive Design:** Ensure all UI components work across desktop, tablet, and mobile devices
-### Professional UI Design Standards
-- **Enterprise-Grade Visual Elements:** Avoid emoji characters (↕️, 🚀, 📊) in production interfaces - use CSS-based icons, triangles, or Unicode symbols instead
-- **Sortable Table Design:** 
-  - Use pure CSS triangles for sort indicators instead of emoji arrows
-  - Implement three states: neutral (both triangles muted), ascending (up triangle active), descending (down triangle active)
-  - Apply hover effects with brand colors for better user feedback
-  - Ensure adequate padding (2.5rem) for sort indicators on clickable headers
-- **Professional Color Schemes:** 
-  - Active sort indicators should use primary brand color (Spanish Viridian: #007A53)
-  - Inactive/neutral states should use muted grays (#ccc, #eee)
-  - Hover states should provide clear visual feedback with contrasting colors
-- **Visual Hierarchy:** Use consistent font weights, sizes, and spacing to create clear information hierarchy
-- **Loading States:** Implement professional loading spinners and progress indicators instead of basic text
-- **Status Badges:** Design color-coded badges for status, priority, and phase indicators using brand colors
-- **Interactive Elements:** Ensure all clickable elements have proper hover states, cursor changes, and visual feedback
-
-### Table Design Best Practices
-- **Responsive Tables:** Use table wrappers with horizontal scroll for mobile compatibility
-- **Header Styling:** Apply gradient backgrounds and proper typography hierarchy for table headers
-- **Row Interactions:** Implement subtle hover effects (transform: translateY(-1px)) for interactive rows
-- **Cell Content:** Truncate long text with ellipsis in constrained columns while maintaining readability
-- **Sort Functionality:** Provide clear visual indicators for current sort column and direction
-- **Performance:** Limit displayed rows and implement pagination or virtual scrolling for large datasets
-
-### User Experience Guidelines
-- **Consistent Navigation:** Maintain same header structure, logo placement, and navigation patterns across all pages
-- **Error Handling:** Display user-friendly error messages with actionable steps for resolution
-- **Loading Feedback:** Show progress indicators during API calls and data loading operations
-- **Mobile Responsiveness:** Ensure all features work seamlessly across desktop, tablet, and mobile devices
-- **Accessibility Compliance:** Follow WCAG 2.1 guidelines for color contrast, keyboard navigation, and screen readers
-- **Fluent API Usage:** Use ServiceNow Fluent DSL for all metadata definitions
-- **Naming Conventions:** Consistently prefix custom fields and tables with application scope
-- **Data Integrity:** Use reference fields instead of hardcoded choice values where possible
-- **Error Handling:** Implement proper error handling in client scripts and UI Pages
-- **Performance:** Optimize API calls and limit query results for dashboard performance
-- **Reusable Components:** Create shared CSS and JavaScript libraries that can be referenced by multiple UI Pages
-
-### Code Organization
-- **File Structure:** Organize code into logical directories (fluent/, client/, server/)
-- **Separation of Concerns:** Keep business logic, presentation, and data access layers separate
-- **Documentation:** Maintain up-to-date specifications and inline code comments
-- **Version Control:** Use consistent commit messages and branching strategies
-- **Shared Resources:** Place common CSS, JavaScript, and utility files in reusable locations
+- **Application Scope Naming:** Consistently prefix all custom fields and tables with `x_snc_newtech_`
+- **Department Reference Integration:** Use the `x_snc_newtech_department` lookup table for all department fields
+- **Priority System:** Implement numbered priority system (1-4) with context-appropriate descriptions
+- **Multi-choice Field Handling:** Use comma-separated values for strategic drivers and target departments
+- **Status Badge Design:** Color-code priority, phase, and status badges using brand colors with proper contrast
 
 ## Future Enhancements
 - [ ] **Business Rules**: Auto-routing based on priority and cost
