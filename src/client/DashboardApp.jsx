@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './DashboardApp.css'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer, FunnelChart, Funnel } from 'recharts'
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer, FunnelChart, Funnel, Legend, LabelList } from 'recharts'
 
 export default function DashboardApp() {
   const [requests, setRequests] = useState([])
@@ -563,6 +563,28 @@ export default function DashboardApp() {
     return phaseColors[phase] || 'var(--seven-eleven-gray-medium)'
   }
 
+  // Custom label renderer for Request Type chart
+  const renderCustomizedLabel = (props) => {
+    const { x, y, width, height, value } = props
+    
+    const showOutside = value.toString().length < 2
+    const offset = showOutside ? -40 : 5
+    const textColor = showOutside ? "var(--seven-eleven-spanish-viridian)" : "#fff"
+    
+    return (
+      <text 
+        x={x + width - offset} 
+        y={y + height - 5} 
+        fill={textColor} 
+        textAnchor="end"
+        fontSize="12"
+        fontWeight="600"
+      >
+        {value}
+      </text>
+    )
+  }
+
   const handleMetricClick = (filterType) => {
     // Toggle filter - if same filter is clicked, clear it
     if (activeFilter === filterType) {
@@ -715,22 +737,35 @@ export default function DashboardApp() {
                     <p>No request type data available</p>
                   </div>
                 ) : (
-                  <ResponsiveContainer width="100%" height={200}>
-                    <BarChart data={requestTypeData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis 
-                        dataKey="displayName" 
-                        tick={{ fontSize: 10 }}
-                        angle={-45}
-                        textAnchor="end"
-                        height={60}
+                  <ResponsiveContainer width="100%" height={220}>
+                    <BarChart
+                      data={requestTypeData}
+                      layout="vertical"
+                      margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
+                    >
+                      <XAxis type="number" orientation="top" allowDecimals={false} />
+                      <YAxis 
+                        type="category" 
+                        dataKey="displayName"
+                        axisLine={false}
+                        tickLine={false}
+                        tick={{ fontSize: 10, fill: "var(--seven-eleven-gray-dark)" }}
+                        width={80}
                       />
-                      <YAxis allowDecimals={false} />
                       <Tooltip 
-                        formatter={(value, name) => [value, 'Count']}
-                        labelFormatter={(label) => `Type: ${label}`}
+                        formatter={(value) => [value, 'Requests']}
+                        labelFormatter={(label) => `${label}`}
                       />
-                      <Bar dataKey="count" radius={[4, 4, 0, 0]}>
+                      <Bar 
+                        background 
+                        dataKey="count" 
+                        barSize={26}
+                      >
+                        <LabelList 
+                          dataKey="count" 
+                          content={renderCustomizedLabel} 
+                          position="insideRight"
+                        />
                         {requestTypeData.map((entry, index) => (
                           <Cell key={`cell-${index}`} fill={getBarColor(index)} />
                         ))}
@@ -758,7 +793,6 @@ export default function DashboardApp() {
                 ) : phaseData.length === 0 ? (
                   <div className="empty-chart">
                     <p>No phase data available</p>
-                    <p>Debug: {JSON.stringify(phaseData)}</p>
                   </div>
                 ) : (
                   <ResponsiveContainer width="100%" height={200}>
