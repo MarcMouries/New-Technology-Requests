@@ -336,10 +336,12 @@ declare global {
                     'x_snc_newtech/DashboardApp-BOA1ZHSD': {
                         table: 'sys_ux_lib_asset'
                         id: '59577d4485564c42b9813236d69bab46'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-BOA1ZHSD.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '240c3acbe0ee42a19a026becd24d5e97'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-BparEotB': {
                         table: 'sys_ux_lib_asset'
@@ -389,6 +391,16 @@ declare global {
                     'x_snc_newtech/DashboardApp-CuZldbVL.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: 'cd9f279d520b425fabce9b4db0f78968'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-CVShPMEo': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'cbfd3f1ca2014adf91b64f15e8017f80'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-CVShPMEo.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '2607442bd4b84341b630c00cbadc962a'
                         deleted: true
                     }
                     'x_snc_newtech/DashboardApp-CZHh7uJ2': {
@@ -470,6 +482,14 @@ declare global {
                         table: 'sys_ux_lib_asset'
                         id: '9a4d2d759d3444d0a2dfba4866a6a150'
                         deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-DvQJC1Z0': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'd99a1697b5b940a786ecabc8a3776a1e'
+                    }
+                    'x_snc_newtech/DashboardApp-DvQJC1Z0.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '4220d0e02c2f45da90b615c487801033'
                     }
                     'x_snc_newtech/DashboardApp-naDar0yl': {
                         table: 'sys_ux_lib_asset'

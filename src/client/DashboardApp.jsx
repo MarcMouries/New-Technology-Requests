@@ -187,29 +187,35 @@ export default function DashboardApp() {
     
     // Create comprehensive mapping for all possible priority values
     const priorityMap = {
-      // New numbered format (display values from choice field)
-      '1- Fast Track - Urgent and critical, requires CIO & President approval': '1- Fast Track',
-      '2- High - Needed within the Years Capital Planning, Requires CIO Approval': '2- High',  
-      '3- Medium - Needed within the next year': '3- Medium',
-      '4- Low - Needed when funding and capacity allows': '4- Low',
+      // New numbered format (display values from choice field) - return without number prefix
+      '1- Fast Track - Urgent and critical, requires CIO & President approval': 'Fast Track',
+      '2- High - Needed within the Years Capital Planning, Requires CIO Approval': 'High',  
+      '3- Medium - Needed within the next year': 'Medium',
+      '4- Low - Needed when funding and capacity allows': 'Low',
       
-      // New numbered format (internal values)
-      '1_fast_track': '1- Fast Track',
-      '2_high': '2- High',
-      '3_medium': '3- Medium', 
-      '4_low': '4- Low',
+      // New numbered format (internal values) - return without number prefix
+      '1_fast_track': 'Fast Track',
+      '2_high': 'High',
+      '3_medium': 'Medium', 
+      '4_low': 'Low',
       
-      // Legacy format (for backward compatibility)
-      'fast_track_urgent_critical': '1- Fast Track',
-      'high_capital_planning': '2- High',
-      'medium_next_year': '3- Medium',
-      'low_funding_capacity': '4- Low',
+      // Legacy format (for backward compatibility) - return without number prefix
+      'fast_track_urgent_critical': 'Fast Track',
+      'high_capital_planning': 'High',
+      'medium_next_year': 'Medium',
+      'low_funding_capacity': 'Low',
       
-      // Additional string matching for flexibility
-      'Fast Track': '1- Fast Track',
-      'High': '2- High',
-      'Medium': '3- Medium',
-      'Low': '4- Low'
+      // Additional string matching for flexibility - return without number prefix
+      'Fast Track': 'Fast Track',
+      'High': 'High',
+      'Medium': 'Medium',
+      'Low': 'Low',
+      
+      // Handle cases where the number prefix might already be present
+      '1- Fast Track': 'Fast Track',
+      '2- High': 'High',
+      '3- Medium': 'Medium',
+      '4- Low': 'Low'
     }
     
     // Try direct mapping first
@@ -217,16 +223,16 @@ export default function DashboardApp() {
       return priorityMap[priorityValue]
     }
     
-    // Fallback: intelligent string matching
+    // Fallback: intelligent string matching - return without number prefix
     const lowerPriority = String(priorityValue).toLowerCase()
     if (lowerPriority.includes('fast') || lowerPriority.includes('urgent') || lowerPriority.includes('critical') || lowerPriority.includes('1-') || lowerPriority.includes('1_')) {
-      return '1- Fast Track'
+      return 'Fast Track'
     } else if (lowerPriority.includes('high') || lowerPriority.includes('capital') || lowerPriority.includes('2-') || lowerPriority.includes('2_')) {
-      return '2- High'  
+      return 'High'  
     } else if (lowerPriority.includes('medium') || lowerPriority.includes('next year') || lowerPriority.includes('3-') || lowerPriority.includes('3_')) {
-      return '3- Medium'
+      return 'Medium'
     } else if (lowerPriority.includes('low') || lowerPriority.includes('funding') || lowerPriority.includes('4-') || lowerPriority.includes('4_')) {
-      return '4- Low'
+      return 'Low'
     }
     
     console.warn('⚠️ Unknown priority value:', priorityValue)

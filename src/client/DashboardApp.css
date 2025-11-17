@@ -207,7 +207,7 @@ body {
 
 .chart-title {
   color: var(--seven-eleven-maximum-red);
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
   display: flex;
@@ -380,8 +380,8 @@ body {
 }
 
 .chart-title {
-  color: var(--seven-eleven-maximum-red);
-  font-size: 0.9rem;
+  color: var(--seven-eleven-maximum-red) !important;
+  font-size: 0.9rem !important;
   font-weight: 600;
   margin: 0;
   padding: 0.5rem;
@@ -538,8 +538,8 @@ body {
 }
 
 .table-title {
-  color: var(--seven-eleven-maximum-red);
-  font-size: 1.25rem;
+  color: var(--seven-eleven-maximum-red) !important;
+  font-size: 0.9rem !important;
   font-weight: 600;
   margin: 0 0 0.5rem 0;
   display: flex;
@@ -913,6 +913,12 @@ body {
 .retry-button:hover {
   background: #005a3d;
   transform: translateY(-2px);
+}
+
+/* Force font sizes to be consistent - Override ServiceNow platform styles */
+.dashboard-app .table-title,
+.dashboard-app .chart-title {
+  font-size: 0.9rem !important;
 }
 
 /* Footer */
