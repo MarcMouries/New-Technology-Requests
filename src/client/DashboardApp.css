@@ -115,7 +115,7 @@ body {
   padding: 0;
   color: var(--seven-eleven-gray-dark);
   line-height: 1.4;
-  font-size: 0.85rem;
+  font-size: 16px;
 }
 
 .dashboard-app {
@@ -135,7 +135,7 @@ body {
 }
 
 .header-content {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -183,7 +183,7 @@ body {
 
 /* Main Container - Same as Intake Form */
 .main-container {
-  max-width:100%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -200,10 +200,7 @@ body {
 
 .chart-header {
   border-bottom: 3px solid var(--seven-eleven-spanish-viridian);
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
   background: linear-gradient(135deg, var(--seven-eleven-gray-light) 0%, var(--seven-eleven-white) 100%);
-  padding: 1.5rem;
   border-radius: 8px;
   margin: -0.5rem -0.5rem 1.5rem -0.5rem;
 }
@@ -357,7 +354,7 @@ body {
 .chart-card {
   background: linear-gradient(135deg, var(--seven-eleven-white) 0%, var(--seven-eleven-gray-light) 100%);
   border-radius: 8px;
-  padding: 0.5rem;
+  padding: 0.25rem;
   text-align: center;
   border: 2px solid var(--seven-eleven-gray-medium);
   transition: all 0.3s ease;
@@ -515,7 +512,7 @@ body {
 }
 
 .metric-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--seven-eleven-gray-dark);
   font-weight: 600;
   line-height: 1.3;
@@ -594,12 +591,12 @@ body {
 .requests-table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .requests-table th {
   background: linear-gradient(135deg, var(--seven-eleven-gray-light) 0%, var(--seven-eleven-white) 100%);
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.8rem;
   text-align: left;
   font-weight: 600;
   font-size: 0.75rem;
@@ -703,7 +700,10 @@ body {
 }
 
 .requests-table td {
-  padding: 0.75rem 1rem;
+  padding-left:   0.25rem;
+  padding-right:  0.25rem;
+  padding-top:    0.5rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--seven-eleven-gray-medium);
   vertical-align: middle;
 }
@@ -965,7 +965,7 @@ body {
   
   .chart-card {
     height: 220px;
-    padding: 0.5rem;
+    padding: 0.25rem;
   }
   
   .metric-card {
@@ -981,13 +981,13 @@ body {
   }
   
   .requests-table {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     min-width: 700px;
   }
   
   .requests-table th,
   .requests-table td {
-    padding: 0.75rem;
+    padding: 0.6rem;
   }
   
   .sortable-header {
