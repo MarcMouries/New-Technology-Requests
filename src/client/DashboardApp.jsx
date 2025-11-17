@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './DashboardApp.css'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer, FunnelChart, Funnel, Legend, LabelList } from 'recharts'
+import { formatDistanceToNow, parseISO } from 'date-fns'
 
 export default function DashboardApp() {
   const [requests, setRequests] = useState([])
@@ -412,11 +413,37 @@ export default function DashboardApp() {
 
   const formatDate = (dateString) => {
     if (!dateString) return 'N/A'
-    return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'short',
-      day: 'numeric'
-    })
+    
+    try {
+      // Parse the date string (handles both ISO and ServiceNow date formats)
+      const date = parseISO(dateString) || new Date(dateString)
+      
+      // Get relative time distance 
+      const relativeTime = formatDistanceToNow(date, { addSuffix: true })
+      
+      // Convert to shorter format
+      return relativeTime
+        .replace('about ', '')
+        .replace(' ago', ' ago')
+        .replace('in about', 'in')
+        .replace(' seconds', 's')
+        .replace(' second', 's') 
+        .replace(' minutes', 'm')
+        .replace(' minute', 'm')
+        .replace(' hours', 'h')
+        .replace(' hour', 'h')
+        .replace(' days', 'd')
+        .replace(' day', 'd')
+        .replace(' weeks', 'w')
+        .replace(' week', 'w')
+        .replace(' months', 'mo')
+        .replace(' month', 'mo')
+        .replace(' years', 'y')
+        .replace(' year', 'y')
+    } catch (error) {
+      console.warn('Error formatting date:', dateString, error)
+      return 'Invalid date'
+    }
   }
 
   const openRequest = (sysId) => {
@@ -819,7 +846,6 @@ export default function DashboardApp() {
         <div className="table-container">
           <div className="table-header">
             <h2 className="table-title">
-              <span>📊</span>
               New Technology Requests
               {activeFilter && (
                 <button 
@@ -855,20 +881,20 @@ export default function DashboardApp() {
                     <th onClick={() => handleSort('priority')} className="sortable-header">
                       Priority {getSortIndicator('priority')}
                     </th>
-                    <th onClick={() => handleSort('short_description')} className="sortable-header">
+                    <th onClick={() => handleSort('short_description')} className="sortable-header description-column">
                       Short Description {getSortIndicator('short_description')}
                     </th>
                     <th onClick={() => handleSort('opened_by')} className="sortable-header">
                       Opened By {getSortIndicator('opened_by')}
                     </th>
-                    <th onClick={() => handleSort('phase')} className="sortable-header">
+                    <th onClick={() => handleSort('phase')} className="sortable-header phase-column">
                       Phase {getSortIndicator('phase')}
                     </th>
-                    <th onClick={() => handleSort('status')} className="sortable-header">
+                    <th onClick={() => handleSort('status')} className="sortable-header status-column">
                       Status {getSortIndicator('status')}
                     </th>
-                    <th onClick={() => handleSort('sys_created_on')} className="sortable-header">
-                      Created Date {getSortIndicator('sys_created_on')}
+                    <th onClick={() => handleSort('sys_created_on')} className="sortable-header created-column">
+                      Created {getSortIndicator('sys_created_on')}
                     </th>
                   </tr>
                 </thead>
@@ -897,17 +923,17 @@ export default function DashboardApp() {
                         </td>
                         <td className="description-cell">{description}</td>
                         <td><strong>{openedBy}</strong></td>
-                        <td>
+                        <td className="phase-column">
                           <span className={`status-badge ${getPhaseClass(phase)}`}>
                             {getPhaseDisplay(phase)}
                           </span>
                         </td>
-                        <td>
+                        <td className="status-column">
                           <span className={`status-badge ${getStatusClass(status)}`}>
                             {getStatusDisplay(status)}
                           </span>
                         </td>
-                        <td>{formatDate(createdDate)}</td>
+                        <td className="created-column">{formatDate(createdDate)}</td>
                       </tr>
                     )
                   })}

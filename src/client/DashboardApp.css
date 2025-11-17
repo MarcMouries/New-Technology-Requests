@@ -11,6 +11,99 @@
   --seven-eleven-shadow-hover: 0 4px 16px rgba(218, 41, 28, 0.15);
 }
 
+/* Column width adjustments */
+.description-column {
+  width: 30%;
+  min-width: 200px;
+}
+
+.phase-column {
+  width: 80px; 
+  max-width: 80px;
+  text-align: center;
+}
+
+.status-column {
+  width: 80px; 
+  max-width: 80px;
+  text-align: center;
+}
+
+.created-column {
+  width: 80px; 
+  max-width: 80px;
+  text-align: center;
+}
+
+/* Ensure table cell widths follow header widths */
+.requests-table td.description-cell {
+  width: 30%;
+  min-width: 200px;
+  max-width: 300px; 
+}
+
+.requests-table td.phase-column {
+  width: 80px; 
+  max-width: 80px;
+  text-align: center;
+}
+
+.requests-table td.status-column {
+  width: 80px; 
+  max-width: 80px;
+  text-align: center;
+}
+
+.requests-table td.created-column {
+  width: 80px;
+  min-width: 80px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  /* Adjust column widths for mobile */
+  .description-column {
+    width: 25%;
+    min-width: 150px;
+  }
+  
+  .phase-column {
+    width: 100px;
+    min-width: 100px;
+  }
+  
+  .status-column {
+    width: 110px;
+    min-width: 110px;
+  }
+  
+  .created-column {
+    width: 70px;
+    min-width: 70px;
+  }
+  
+  .requests-table td.description-cell {
+    width: 25%;
+    min-width: 150px;
+    max-width: 200px;
+  }
+  
+  .requests-table td.phase-column {
+    width: 100px;
+    min-width: 100px;
+  }
+  
+  .requests-table td.status-column {
+    width: 110px;
+    min-width: 110px;
+  }
+  
+  .requests-table td.created-column {
+    width: 70px;
+    min-width: 70px;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -90,7 +183,7 @@ body {
 
 /* Main Container - Same as Intake Form */
 .main-container {
-  max-width: 90%;
+  max-width:100%;
   margin: 0 auto;
   padding: 2rem;
 }
@@ -454,7 +547,6 @@ body {
   margin: 0 0 0.5rem 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.75rem;
   flex-wrap: wrap;
 }
@@ -633,7 +725,6 @@ body {
 }
 
 .description-cell {
-  max-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
