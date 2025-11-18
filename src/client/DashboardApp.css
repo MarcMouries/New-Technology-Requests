@@ -186,6 +186,7 @@ body {
   max-width: 100%;
   margin: 0 auto;
   padding: 2rem;
+  margin-bottom: 1rem;
 }
 
 /* Request Type Bar Chart */
@@ -193,7 +194,7 @@ body {
   background: var(--seven-eleven-white);
   border-radius: 12px;
   padding: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-shadow: var(--seven-eleven-shadow);
   border: 1px solid var(--seven-eleven-gray-medium);
 }
@@ -324,7 +325,7 @@ body {
   background: var(--seven-eleven-white);
   border-radius: 12px;
   padding: 0.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-shadow: var(--seven-eleven-shadow);
   border: 1px solid var(--seven-eleven-gray-medium);
 }
@@ -340,7 +341,7 @@ body {
   background: var(--seven-eleven-white);
   border-radius: 12px;
   padding: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   box-shadow: var(--seven-eleven-shadow);
   border: 1px solid var(--seven-eleven-gray-medium);
 }
@@ -523,6 +524,7 @@ body {
   background: var(--seven-eleven-white);
   border-radius: 12px;
   padding: 0.5rem;
+  margin-bottom: 1rem;
   box-shadow: var(--seven-eleven-shadow);
   border: 1px solid var(--seven-eleven-gray-medium);
 }
