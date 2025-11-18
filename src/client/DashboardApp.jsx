@@ -1,7 +1,13 @@
+/*
+ * New Technology Request Dashboard App
+ * Version: 2024122001
+ * Last Updated: 2024-12-20
+ */
 import React, { useState, useEffect } from 'react'
 import './DashboardApp.css'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer, FunnelChart, Funnel, Legend, LabelList } from 'recharts'
 import { formatDistanceToNow, parseISO } from 'date-fns'
+import { APP_VERSION, getVersionInfo } from './utils/version.js'
 
 export default function DashboardApp() {
   const [requests, setRequests] = useState([])
@@ -22,6 +28,8 @@ export default function DashboardApp() {
   const [phaseData, setPhaseData] = useState([])
 
   useEffect(() => {
+    console.log('📊 Dashboard App Loading - Version:', APP_VERSION)
+    console.log('ℹ️ Version Info:', getVersionInfo())
     loadRequests()
   }, [])
 
@@ -187,24 +195,18 @@ export default function DashboardApp() {
     
     // Create comprehensive mapping for all possible priority values
     const priorityMap = {
-      // New numbered format (display values from choice field) - return without number prefix
+      // Nmbered format (display values from choice field) - return without number prefix
       '1- Fast Track - Urgent and critical, requires CIO & President approval': 'Fast Track',
       '2- High - Needed within the Years Capital Planning, Requires CIO Approval': 'High',  
       '3- Medium - Needed within the next year': 'Medium',
       '4- Low - Needed when funding and capacity allows': 'Low',
       
-      // New numbered format (internal values) - return without number prefix
+      // Numbered format (internal values) - return without number prefix
       '1_fast_track': 'Fast Track',
       '2_high': 'High',
       '3_medium': 'Medium', 
       '4_low': 'Low',
-      
-      // Legacy format (for backward compatibility) - return without number prefix
-      'fast_track_urgent_critical': 'Fast Track',
-      'high_capital_planning': 'High',
-      'medium_next_year': 'Medium',
-      'low_funding_capacity': 'Low',
-      
+            
       // Additional string matching for flexibility - return without number prefix
       'Fast Track': 'Fast Track',
       'High': 'High',

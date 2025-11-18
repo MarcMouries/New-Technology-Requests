@@ -1,8 +1,14 @@
+/*
+ * New Technology Request Intake App
+ * Version: 2024122001
+ * Last Updated: 2024-12-20
+ */
 import React, { useState, useEffect } from 'react'
 import './IntakeApp.css'
 import { display, value } from './utils/fields.js'
 import IntakeForm from './components/IntakeForm.jsx'
 import SuccessMessage from './components/SuccessMessage.jsx'
+import { APP_VERSION, getVersionInfo } from './utils/version.js'
 
 export default function IntakeApp() {
   const [currentUser, setCurrentUser] = useState(null)
@@ -10,6 +16,9 @@ export default function IntakeApp() {
   const [submittedData, setSubmittedData] = useState(null)
 
   useEffect(() => {
+    console.log('📝 Intake App Loading - Version:', APP_VERSION)
+    console.log('ℹ️ Version Info:', getVersionInfo())
+    
     // Get current user information from ServiceNow
     if (window.g_user) {
       setCurrentUser({

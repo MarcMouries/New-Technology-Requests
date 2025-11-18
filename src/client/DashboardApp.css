@@ -1,3 +1,11 @@
+/* 
+ * New Technology Request Dashboard Styles
+ * Version: 2024122001
+ * Cache-Control: no-cache, no-store, must-revalidate
+ * Pragma: no-cache
+ * Expires: 0
+ */
+
 /* Official 7-Eleven Brand Colors - EXACT Same as Intake Form */
 :root {
   /* === BRAND COLORS === */
@@ -91,9 +99,9 @@
   --z-tooltip: 2000;
 }
 
+/******************/
 /* TABLE COLUMNS  */
-/* TABLE COLUMNS  */
-/* TABLE COLUMNS  */
+/******************/
 
 .description-column {
   width: 30%;
@@ -127,41 +135,6 @@
   width: auto;
   max-width: fit-content;
   text-align: center;
-}
-
-@media (max-width: 768px) {
-  /* Adjust column widths for mobile */
-  .description-column {
-    width: 25%;
-    min-width: 150px;
-  }
-  .created-column {
-    width: 70px;
-    min-width: 70px;
-  }
-  
-  .requests-table td.description-cell {
-    width: 25%;
-    min-width: 150px;
-    max-width: 200px;
-  }
-  
-  .requests-table td.phase-column {
-    width: auto;
-    max-width: fit-content;
-    text-align: left;
-  }
-  
-  .requests-table td.status-column {
-    width: auto;
-    max-width: fit-content;
-    text-align: left;
-  }
-  
-  .requests-table td.created-column {
-    width: 70px;
-    min-width: 70px;
-  }
 }
 
 * {
@@ -241,7 +214,7 @@ body {
   color: var(--seven-eleven-white);
 }
 
-/* Main Container - Same as Intake Form */
+/* -- Main Container  -- */
 .dashboard-app .main-container {
   max-width: 100%;
   margin: 0 auto;
@@ -249,7 +222,7 @@ body {
   margin-bottom: var(--container-margin-bottom);
 }
 
-/* Chart Container - Unified Definition */
+/* -- Chart Container -- */
 .chart-container {
   background: var(--seven-eleven-white);
   border-radius: var(--border-radius-large);

@@ -306,10 +306,12 @@ declare global {
                     'x_snc_newtech/DashboardApp-BHG1kGMl': {
                         table: 'sys_ux_lib_asset'
                         id: '7f81f3013f0a415999253bded187baa7'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-BHG1kGMl.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '59e2795a9206488ea1b2f9c0ea490ed7'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-BhW55EtJ': {
                         table: 'sys_ux_lib_asset'
@@ -510,6 +512,14 @@ declare global {
                         table: 'sys_ux_lib_asset'
                         id: '79409156a2c64bc1b29daf0ad9a4a309'
                         deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-pHCY-LoL': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'b7a32eb75b7a4279885ccfdecdcbe7bf'
+                    }
+                    'x_snc_newtech/DashboardApp-pHCY-LoL.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'fcd3fc1607e04a4db1a18e9096672bb3'
                     }
                     'x_snc_newtech/DashboardApp-ZdCxVjyX': {
                         table: 'sys_ux_lib_asset'
