@@ -508,43 +508,7 @@ export const x_snc_newtech_request = Table({
                 nine_one_on_hold: { label: '9.1 - On Hold', sequence: 19 },
                 nine_two_deferred: { label: '9.2 - Deferred', sequence: 20 },
                 nine_three_cancelled: { label: '9.3 - Cancelled', sequence: 21 },
-                nine_four_rejected: { label: '9.4 - Rejected', sequence: 22 },
-                on_hold: {
-                    label: 'On Hold',
-                    sequence: 3,
-                },
-                referred_existing_accepted: {
-                    label: 'Referred to existing technology & accepted',
-                    sequence: 7,
-                },
-                deferred: {
-                    label: 'Deferred',
-                    sequence: 4,
-                },
-                referred_existing_denied: {
-                    label: 'Referred to existing technology & denied',
-                    sequence: 8,
-                },
-                approved_fg_immediate: {
-                    label: 'Approved and moved to FG for immediate action',
-                    sequence: 0,
-                },
-                cancelled: {
-                    label: 'Cancelled',
-                    sequence: 5,
-                },
-                approved_roadmap: {
-                    label: 'Approved and moved to Roadmap (we have a date)',
-                    sequence: 1,
-                },
-                rejected: {
-                    label: 'Rejected',
-                    sequence: 6,
-                },
-                approved_backlog: {
-                    label: 'Approved and moved to Backlog (no date)',
-                    sequence: 2,
-                },
+                nine_four_rejected: { label: '9.4 - Rejected', sequence: 22 }
             },
             dropdown: 'dropdown_with_none',
         }),
