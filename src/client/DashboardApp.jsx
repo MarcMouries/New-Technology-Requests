@@ -188,8 +188,6 @@ export default function DashboardApp() {
   }
 
   const getPriorityDisplay = (priority) => {
-    console.log('🎯 Priority field value:', priority)
-    
     // Handle both display values and internal values for priority
     const priorityValue = getValue(priority)
     
