@@ -473,103 +473,11 @@ export const x_snc_newtech_request = Table({
         x_snc_newtech_phase: ChoiceColumn({
             label: 'Phase',
             choices: {
-                one_new_request: { label: '1 – New Request Submitted', sequence: 0 },
-                two_initial_review: { label: '2 – Initial Review', sequence: 3 },
-                three_architecture_review: { label: '3 – Architecture Review', sequence: 9 },
-                four_proposal: { label: '4 – Proposal', sequence: 13 },
-                five_trigger_funding: { label: '5 – Trigger Funding Governance', sequence: 18 },
-                four_two_proposal_draft: {
-                    label: '4.2 – Proposal Draft',
-                    sequence: 15,
-                },
-                five_one_fg_backlog: {
-                    label: '5.1 – FG Backlog',
-                    sequence: 19,
-                },
-                two_four_in_revision: {
-                    label: '2.4 – In Revision',
-                    sequence: 7,
-                },
-                five_five_trigger_fg: {
-                    label: '5.5 – Trigger to FG',
-                    sequence: 23,
-                },
-                three_two_ar_scheduled: {
-                    label: '3.2 – AR Scheduled',
-                    sequence: 11,
-                },
-                nine_four_rejected: {
-                    label: '9.4 – Rejected',
-                    sequence: 27,
-                },
-                four_three_proposal_communicated: {
-                    label: '4.3 – Proposal Communicated',
-                    sequence: 16,
-                },
-                two_one_backlog: {
-                    label: '2.1 – Backlog',
-                    sequence: 4,
-                },
-                five_two_planning_updated: {
-                    label: '5.2 – Planning Tool Updated',
-                    sequence: 20,
-                },
-                two_five_prep_complete: {
-                    label: '2.5 – Prep Complete',
-                    sequence: 8,
-                },
-                nine_one_on_hold: {
-                    label: '9.1 – On Hold',
-                    sequence: 24,
-                },
-                three_three_ar_conducted: {
-                    label: '3.3 – AR Conducted',
-                    sequence: 12,
-                },
-                one_one_draft: {
-                    label: '1.1 – In Draft',
-                    sequence: 1,
-                },
-                four_four_proposal_accepted: {
-                    label: '4.4 – Proposal Accepted',
-                    sequence: 17,
-                },
-                two_two_initial_draft: {
-                    label: '2.2 – Initial Draft',
-                    sequence: 5,
-                },
-                five_three_app_rat_updated: {
-                    label: '5.3 – App Rat Updated',
-                    sequence: 21,
-                },
-                nine_two_deferred: {
-                    label: '9.2 – Deferred',
-                    sequence: 25,
-                },
-                one_two_submitted: {
-                    label: '1.2 – Submitted',
-                    sequence: 2,
-                },
-                two_three_draft_review: {
-                    label: '2.3 – Draft Review',
-                    sequence: 6,
-                },
-                five_four_cmdb_updated: {
-                    label: '5.4 – CMDB Tool Updated',
-                    sequence: 22,
-                },
-                three_one_ar_backlog: {
-                    label: '3.1 – AR Backlog',
-                    sequence: 10,
-                },
-                nine_three_cancelled: {
-                    label: '9.3 – Cancelled',
-                    sequence: 26,
-                },
-                four_one_proposal_backlog: {
-                    label: '4.1 – Proposal Backlog',
-                    sequence: 14,
-                },
+                new_request_submitted: { label: '1 - New Request Submitted', sequence: 0 },
+                initial_review: { label: '2 - Initial Review', sequence: 1 },
+                architecture_review: { label: '3 - Architecture Review', sequence: 2 },
+                proposal: { label: '4 - Proposal', sequence: 3 },
+                trigger_funding_governance: { label: '5 - Trigger Funding Governance', sequence: 4 },
             },
             dropdown: 'dropdown_with_none',
         }),

@@ -486,10 +486,12 @@ declare global {
                     'x_snc_newtech/DashboardApp-DvQJC1Z0': {
                         table: 'sys_ux_lib_asset'
                         id: 'd99a1697b5b940a786ecabc8a3776a1e'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-DvQJC1Z0.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '4220d0e02c2f45da90b615c487801033'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-naDar0yl': {
                         table: 'sys_ux_lib_asset'
@@ -500,6 +502,14 @@ declare global {
                         table: 'sys_ux_lib_asset'
                         id: '79409156a2c64bc1b29daf0ad9a4a309'
                         deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-ZdCxVjyX': {
+                        table: 'sys_ux_lib_asset'
+                        id: '940000dcce2b4787a42421e5810358e7'
+                    }
+                    'x_snc_newtech/DashboardApp-ZdCxVjyX.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '6536494e61d04bd1904ea1429fde8df0'
                     }
                     'x_snc_newtech/main': {
                         table: 'sys_ux_lib_asset'
@@ -761,7 +771,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '1371c604e15b4b0ebdcba9b33d260b62'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -770,8 +780,17 @@ declare global {
                     },
                     {
                         table: 'sys_choice'
+                        id: '13e49258b54b4dda80a6a9b2e56a95a9'
+                        key: {
+                            name: 'x_snc_newtech_request'
+                            element: 'x_snc_newtech_phase'
+                            value: 'new_request_submitted'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
                         id: '14042076de5c4a968c5f90b1c9f95391'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -1023,7 +1042,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '222c5ef83f2940d889141a6ca7a4b99f'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -1210,7 +1229,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '3001a4d2e52b4534b7a54685ee236cb3'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -1245,6 +1264,15 @@ declare global {
                             name: 'x_snc_newtech_u_newtech_request'
                             element: 'x_snc_newtech_data_sensitivity'
                             value: 'medium'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '31662a43343845728a2d32b30fdfea06'
+                        key: {
+                            name: 'x_snc_newtech_request'
+                            element: 'x_snc_newtech_phase'
+                            value: 'initial_review'
                         }
                     },
                     {
@@ -1409,6 +1437,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '3a7f0c292a2349d282ee51941b5c0f22'
+                        key: {
+                            name: 'x_snc_newtech_request'
+                            element: 'x_snc_newtech_phase'
+                            value: 'architecture_review'
+                        }
+                    },
+                    {
                         table: 'sys_dictionary'
                         id: '3aa751f5bd8b491dbcb3c0b5371bd959'
                         deleted: true
@@ -1430,7 +1467,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '3b55b57b7a294c5bb2901608f606a590'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -1533,6 +1570,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '3ee671fe5bd2457c978d1e22aa93a879'
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -1587,7 +1625,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '432cc20989df4181b3469e8b3635c053'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -1758,7 +1796,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '4ab08eb79ae14b60bd6051375b135fe3'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -2050,7 +2088,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '5823832153c64acc8619820eab16814a'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -2098,7 +2136,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '5a2091fc97f84c14bcdc93bc79bd6fb4'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -2123,6 +2161,15 @@ declare global {
                             name: 'x_snc_newtech_u_newtech_request'
                             element: 'x_snc_newtech_request_type'
                             value: 'saas'
+                        }
+                    },
+                    {
+                        table: 'sys_choice'
+                        id: '5b963b0288b24246b80d873e4959e15f'
+                        key: {
+                            name: 'x_snc_newtech_request'
+                            element: 'x_snc_newtech_phase'
+                            value: 'proposal'
                         }
                     },
                     {
@@ -2392,6 +2439,15 @@ declare global {
                         }
                     },
                     {
+                        table: 'sys_choice'
+                        id: '6dab11b156004ec8a3f2ffa162dcc2ee'
+                        key: {
+                            name: 'x_snc_newtech_request'
+                            element: 'x_snc_newtech_phase'
+                            value: 'trigger_funding_governance'
+                        }
+                    },
+                    {
                         table: 'sys_documentation'
                         id: '6db23477e08e4baeb866c81f28f45e3b'
                         key: {
@@ -2474,6 +2530,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '7359768873a84738bd584b272a515078'
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -2502,7 +2559,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '73f4e3160f654fce8dcdb078b61b432a'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -2655,7 +2712,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '77952173cd26427c941e809a590eaf51'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -2703,7 +2760,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '7d00d65d33644736a1709ebe3b913ab1'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -3049,7 +3106,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '9293047c47494dc686f5714abff9331c'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -3411,6 +3468,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'a0a141ea625e42718f7768b9842bb008'
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -3467,7 +3525,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'a4ac25023d6d4735ad95f3be8eb7506f'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -3652,7 +3710,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ab4e3a1423c740a2b70d7c001353c589'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -3737,7 +3795,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'af9daa0c65a3497a8c907033c5095105'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -3782,7 +3840,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'b1fa38c5b1434bc9a4b1894d0297a631'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -4276,7 +4334,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'c991a65455ed47dabf38ec327d9852a2'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -4314,6 +4372,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'cb11fdeee5a24325834cc1bccd489f71'
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -4343,7 +4402,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'ce1d6600e09d41d8a46568ad58130128'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -4382,6 +4441,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'cf74082815344a8bb41f2b437c632b09'
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -4636,7 +4696,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'dd2dd56a37f34c09817d8256db89c26f'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -4755,7 +4815,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'e2cc2f24fa194c359e70ff8cf44e48dc'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -4826,7 +4886,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'e6ef937668e7499d9addd2eae5d933db'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'
@@ -5032,7 +5092,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'f1b167cdffb5491f8128bf84b7b29d60'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_phase'

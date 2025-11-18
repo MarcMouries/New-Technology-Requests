@@ -242,11 +242,11 @@ export default function DashboardApp() {
   const getPhaseDisplay = (phase) => {
     const phaseMap = {
       // Internal values to display values
-      'one_new_request': '1 - New Request',
-      'two_initial_review': '2 - Initial Review', 
-      'three_architecture_review': '3 - Architecture Review',
-      'four_proposal': '4 - Proposal',
-      'five_trigger_funding': '5 - Trigger Funding',
+      'new_request_submitted': '1 - New Request',
+      'initial_review': '2 - Initial Review', 
+      'architecture_review': '3 - Architecture Review',
+      'proposal': '4 - Proposal',
+      'trigger_funding_governance': '5 - Trigger Funding',
       // Display values with en-dashes (from database)
       '1 – New Request Submitted': '1 - New Request',
       '2 – Initial Review': '2 - Initial Review',
