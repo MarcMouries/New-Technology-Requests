@@ -303,6 +303,14 @@ declare global {
                         id: 'c73dab0e945f4c788df30b3409237034'
                         deleted: true
                     }
+                    'x_snc_newtech/DashboardApp-BHG1kGMl': {
+                        table: 'sys_ux_lib_asset'
+                        id: '7f81f3013f0a415999253bded187baa7'
+                    }
+                    'x_snc_newtech/DashboardApp-BHG1kGMl.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '59e2795a9206488ea1b2f9c0ea490ed7'
+                    }
                     'x_snc_newtech/DashboardApp-BhW55EtJ': {
                         table: 'sys_ux_lib_asset'
                         id: '0b66c9b19f0b4875ac1d7f5e9ab70fd6'
@@ -506,10 +514,12 @@ declare global {
                     'x_snc_newtech/DashboardApp-ZdCxVjyX': {
                         table: 'sys_ux_lib_asset'
                         id: '940000dcce2b4787a42421e5810358e7'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-ZdCxVjyX.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '6536494e61d04bd1904ea1429fde8df0'
+                        deleted: true
                     }
                     'x_snc_newtech/main': {
                         table: 'sys_ux_lib_asset'
@@ -987,7 +997,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '1eea5b61ad0e4b35bf6368c1a946e3f5'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -1249,7 +1259,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '304ea0036ace40558384d6ef49a2f980'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -2692,7 +2702,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '76edcc9db9174283a808858a820fd671'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -3271,7 +3281,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '97cc95f68e104dd3a1832b999f20c101'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -3374,7 +3384,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: '9bd1e1eead2c4ba1b29f366471b464e7'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -3959,7 +3969,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'b8107d4e0a9746c8b59c3113ba658606'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -3998,7 +4008,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'bbbe5d793cc344aebbe02347bacfeec7'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -4138,7 +4148,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'c05159641540450f8f13f2d8e7495499'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
@@ -4546,7 +4556,7 @@ declare global {
                     {
                         table: 'sys_choice'
                         id: 'd432ff37dda04cda9a7e1caf087fee33'
-                        deleted: false
+                        deleted: true
                         key: {
                             name: 'x_snc_newtech_request'
                             element: 'x_snc_newtech_status'
