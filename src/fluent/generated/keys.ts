@@ -61,6 +61,7 @@ declare global {
                     'DashboardApp.css': {
                         table: 'sys_ux_theme_asset'
                         id: 'a9e2281c6bf24f5a9d0e4be8d883d767'
+                        deleted: true
                     }
                     dept_accounting: {
                         table: 'x_snc_newtech_department'
@@ -363,6 +364,16 @@ declare global {
                         id: 'bc62325d689c4afb8868c8a3111ec755'
                         deleted: true
                     }
+                    'x_snc_newtech/DashboardApp-BYGpOOh4': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'a9b3b206f6e44672ad7039f466160211'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-BYGpOOh4.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'd7db78c06b0b4578b37f299df8eec0b8'
+                        deleted: true
+                    }
                     'x_snc_newtech/DashboardApp-C5VNu-zw': {
                         table: 'sys_ux_lib_asset'
                         id: 'a37862150b03462d82a364470174d563'
@@ -371,6 +382,16 @@ declare global {
                     'x_snc_newtech/DashboardApp-C5VNu-zw.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '49c2f1909f064af99c7e362898c11b2b'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-CC_Iz_cl': {
+                        table: 'sys_ux_lib_asset'
+                        id: '9d3acb9e63f14fcd8304d0afd09bd20a'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-CC_Iz_cl.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '036200a09c974e13aa6825f511afb6b1'
                         deleted: true
                     }
                     'x_snc_newtech/DashboardApp-Clq8vq5I': {
@@ -411,6 +432,16 @@ declare global {
                     'x_snc_newtech/DashboardApp-CVShPMEo.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '2607442bd4b84341b630c00cbadc962a'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-CwPRSKD6': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'f20d172c19de4ee08a7525e4a0cdcb3b'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-CwPRSKD6.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '4c48511348b742c5a811903c5bc59ae3'
                         deleted: true
                     }
                     'x_snc_newtech/DashboardApp-CZHh7uJ2': {
@@ -493,6 +524,14 @@ declare global {
                         id: '9a4d2d759d3444d0a2dfba4866a6a150'
                         deleted: true
                     }
+                    'x_snc_newtech/DashboardApp-DutQQpBx': {
+                        table: 'sys_ux_lib_asset'
+                        id: '76783a12e2b747ba80fdb7235656616b'
+                    }
+                    'x_snc_newtech/DashboardApp-DutQQpBx.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'c040d9e0250c4680862ecb700b030df4'
+                    }
                     'x_snc_newtech/DashboardApp-DvQJC1Z0': {
                         table: 'sys_ux_lib_asset'
                         id: 'd99a1697b5b940a786ecabc8a3776a1e'
@@ -516,10 +555,12 @@ declare global {
                     'x_snc_newtech/DashboardApp-pHCY-LoL': {
                         table: 'sys_ux_lib_asset'
                         id: 'b7a32eb75b7a4279885ccfdecdcbe7bf'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-pHCY-LoL.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: 'fcd3fc1607e04a4db1a18e9096672bb3'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-ZdCxVjyX': {
                         table: 'sys_ux_lib_asset'

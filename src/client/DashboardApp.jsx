@@ -1,13 +1,57 @@
-/*
- * New Technology Request Dashboard App
- * Version: 2024122001
- * Last Updated: 2024-12-20
- */
+// Dashboard App - Fully Converted to styled-components
+// Version: 2024122001 - No More CSS Caching Issues!
+
 import React, { useState, useEffect } from 'react'
-import './DashboardApp.css'
+import { ThemeProvider } from 'styled-components'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, PieChart, Pie, Cell, ResponsiveContainer, FunnelChart, Funnel, Legend, LabelList } from 'recharts'
 import { formatDistanceToNow, parseISO } from 'date-fns'
-import { APP_VERSION, getVersionInfo } from './utils/version.js'
+
+// Import all styled components
+import {
+  GlobalStyles,
+  DashboardApp as StyledDashboardApp,
+  AppHeader,
+  HeaderContent,
+  Logo,
+  LogoFallback,
+  AppTitle,
+  MainContainer,
+  MetricsContainer,
+  MetricsGrid,
+  MetricCard,
+  MetricIcon,
+  MetricValue,
+  MetricLabel,
+  ChartContainer,
+  ChartsGrid,
+  ChartCard,
+  ChartHeader,
+  ChartTitle,
+  ChartContent,
+  LoadingChart,
+  EmptyChart,
+  SpinnerSmall,
+  TableContainer,
+  TableHeader,
+  TableTitle,
+  ClearFilterBtn,
+  TableWrapper,
+  RequestsTable,
+  TableTh,
+  SortIndicator,
+  TableTd,
+  TableRow,
+  RequestNumber,
+  StatusBadge,
+  Loading,
+  Spinner,
+  EmptyState,
+  ErrorContainer,
+  RetryButton,
+  DashboardFooter,
+  FooterText,
+  theme
+} from './styles/StyledComponents.jsx'
 
 export default function DashboardApp() {
   const [requests, setRequests] = useState([])
@@ -28,8 +72,6 @@ export default function DashboardApp() {
   const [phaseData, setPhaseData] = useState([])
 
   useEffect(() => {
-    console.log('📊 Dashboard App Loading - Version:', APP_VERSION)
-    console.log('ℹ️ Version Info:', getVersionInfo())
     loadRequests()
   }, [])
 
@@ -75,7 +117,6 @@ export default function DashboardApp() {
       
       const fastTrackCount = requestsData.filter(r => {
         const priority = getValue(r.x_snc_newtech_priority)
-        console.log('Priority value for metrics:', priority)
         return priority && (
           priority.includes('Fast Track') || 
           priority.includes('urgent') ||
@@ -193,7 +234,7 @@ export default function DashboardApp() {
     
     // Create comprehensive mapping for all possible priority values
     const priorityMap = {
-      // Nmbered format (display values from choice field) - return without number prefix
+      // Numbered format (display values from choice field) - return without number prefix
       '1- Fast Track - Urgent and critical, requires CIO & President approval': 'Fast Track',
       '2- High - Needed within the Years Capital Planning, Requires CIO Approval': 'High',  
       '3- Medium - Needed within the next year': 'Medium',
@@ -331,90 +372,90 @@ export default function DashboardApp() {
   }
 
   const getPriorityClass = (priority) => {
-    if (!priority) return 'badge-priority-unknown'
+    if (!priority) return 'priority-unknown'
     
     // Handle reference field display values (short descriptions)
     const lowerPriority = priority.toLowerCase()
     if (lowerPriority.includes('fast') || lowerPriority.includes('1')) {
-      return 'badge-priority-fast-track'
+      return 'priority-fast-track'
     } else if (lowerPriority.includes('high') || lowerPriority.includes('2')) {
-      return 'badge-priority-high'
+      return 'priority-high'
     } else if (lowerPriority.includes('medium') || lowerPriority.includes('3')) {
-      return 'badge-priority-medium'
+      return 'priority-medium'
     } else if (lowerPriority.includes('low') || lowerPriority.includes('4')) {
-      return 'badge-priority-low'
+      return 'priority-low'
     }
     
-    return 'badge-priority-unknown'
+    return 'priority-unknown'
   }
 
   const getPhaseClass = (phase) => {
-    if (!phase) return 'badge-phase-new'
+    if (!phase) return 'phase-new'
     
     const lowerPhase = phase.toLowerCase()
     if (lowerPhase.includes('new') || lowerPhase.includes('1')) {
-      return 'badge-phase-new'
+      return 'phase-new'
     } else if (lowerPhase.includes('initial') || lowerPhase.includes('2')) {
-      return 'badge-phase-review'
+      return 'phase-review'
     } else if (lowerPhase.includes('architecture') || lowerPhase.includes('3')) {
-      return 'badge-phase-architecture'
+      return 'phase-architecture'
     } else if (lowerPhase.includes('proposal') || lowerPhase.includes('4')) {
-      return 'badge-phase-proposal'
+      return 'phase-proposal'
     } else if (lowerPhase.includes('funding') || lowerPhase.includes('5')) {
-      return 'badge-phase-funding'
+      return 'phase-funding'
     }
     
-    return 'badge-phase-new'
+    return 'phase-new'
   }
 
   const getStatusClass = (status) => {
-    if (!status) return 'badge-status-draft'
+    if (!status) return 'status-draft'
     
     const lowerStatus = status.toLowerCase()
     
     // Phase 1 - New Request (Red tones)
     if (lowerStatus.includes('draft') || lowerStatus.includes('1.1')) {
-      return 'badge-status-draft'
+      return 'status-draft'
     } else if (lowerStatus.includes('submitted') || lowerStatus.includes('1.2')) {
-      return 'badge-status-submitted'
+      return 'status-submitted'
     }
     
     // Phase 2 - Initial Review (Orange tones)
     else if (lowerStatus.includes('backlog') || lowerStatus.includes('2.1')) {
-      return 'badge-status-backlog'
+      return 'status-backlog'
     } else if (lowerStatus.includes('initial') || lowerStatus.includes('2.2') || lowerStatus.includes('2.3') || lowerStatus.includes('2.4')) {
-      return 'badge-status-review'
+      return 'status-review'
     } else if (lowerStatus.includes('prep') || lowerStatus.includes('2.5')) {
-      return 'badge-status-prep'
+      return 'status-prep'
     }
     
     // Phase 3 - Architecture Review (Blue tones)
     else if (lowerStatus.includes('ar') || lowerStatus.includes('3.')) {
-      return 'badge-status-architecture'
+      return 'status-architecture'
     }
     
     // Phase 4 - Proposal (Green tones)
     else if (lowerStatus.includes('proposal') || lowerStatus.includes('4.')) {
-      return 'badge-status-proposal'
+      return 'status-proposal'
     }
     
     // Phase 5 - Funding Governance (Purple tones)
     else if (lowerStatus.includes('fg') || lowerStatus.includes('planning') || lowerStatus.includes('5.')) {
-      return 'badge-status-funding'
+      return 'status-funding'
     }
     
     // Phase 9 - Final States (Special colors)
     else if (lowerStatus.includes('hold') || lowerStatus.includes('9.1')) {
-      return 'badge-status-hold'
+      return 'status-hold'
     } else if (lowerStatus.includes('deferred') || lowerStatus.includes('9.2')) {
-      return 'badge-status-deferred'
+      return 'status-deferred'
     } else if (lowerStatus.includes('cancelled') || lowerStatus.includes('9.3')) {
-      return 'badge-status-cancelled'
+      return 'status-cancelled'
     } else if (lowerStatus.includes('rejected') || lowerStatus.includes('9.4')) {
-      return 'badge-status-rejected'
+      return 'status-rejected'
     }
     
-    return 'badge-status-draft'
+    return 'status-draft'
   }
 
   const formatDate = (dateString) => {
@@ -562,38 +603,38 @@ export default function DashboardApp() {
     }
     
     return (
-      <span className={`sort-indicator ${sortClass}`}>
+      <SortIndicator className={sortClass}>
         <div className="sort-triangle sort-triangle-up"></div>
         <div className="sort-triangle sort-triangle-down"></div>
-      </span>
+      </SortIndicator>
     )
   }
 
   const getBarColor = (index) => {
     const colors = [
-      'var(--seven-eleven-spanish-viridian)',    // Green
-      'var(--seven-eleven-orange-red)',          // Orange  
-      'var(--seven-eleven-maximum-red)',         // Red
-      '#6366f1',                                 // Indigo
-      '#8b5cf6',                                 // Violet
-      '#06b6d4',                                 // Cyan
-      '#84cc16',                                 // Lime
-      '#f59e0b',                                 // Amber
-      '#ef4444',                                 // Red
-      '#6b7280'                                  // Gray
+      '#007A53',    // 7-Eleven Spanish Viridian (Primary Green)
+      '#DA291C',    // 7-Eleven Maximum Red (Primary Red)
+      '#FF6720',    // 7-Eleven Orange Red (Primary Orange)
+      '#005a3d',    // Dark Green (complementary)
+      '#b8241a',    // Dark Red (complementary)
+      '#e55a1c',    // Dark Orange (complementary)
+      '#00a86b',    // Light Green (complementary)
+      '#ff4757',    // Light Red (complementary)
+      '#ff7f50',    // Light Orange (complementary)
+      '#343A40'     // 7-Eleven Gray Dark (neutral)
     ]
     return colors[index % colors.length]
   }
 
   const getPhaseColor = (phase) => {
     const phaseColors = {
-      '1 - New Request': 'var(--seven-eleven-maximum-red)',
-      '2 - Initial Review': 'var(--seven-eleven-orange-red)',
-      '3 - Architecture Review': '#3498db',
-      '4 - Proposal': 'var(--seven-eleven-spanish-viridian)',
-      '5 - Trigger Funding': '#9b59b6'
+      '1 - New Request': '#DA291C',        // 7-Eleven Maximum Red
+      '2 - Initial Review': '#FF6720',     // 7-Eleven Orange Red
+      '3 - Architecture Review': '#007A53', // 7-Eleven Spanish Viridian
+      '4 - Proposal': '#005a3d',           // Dark Green (complementary)
+      '5 - Trigger Funding': '#b8241a'     // Dark Red (complementary)
     }
-    return phaseColors[phase] || 'var(--seven-eleven-gray-medium)'
+    return phaseColors[phase] || '#E9ECEF' // 7-Eleven Gray Medium
   }
 
   // Custom label renderer for Request Type chart
@@ -647,316 +688,324 @@ export default function DashboardApp() {
 
   if (error) {
     return (
-      <div className="dashboard-app">
-        <header className="app-header">
-          <div className="header-content">
-            <img 
-              src="https://www.7-eleven.com/assets/img/header/7e-logo-color.svg" 
-              alt="7-Eleven Logo" 
-              className="seven-eleven-logo"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.nextElementSibling.style.display = 'block';
-              }}
-            />
-            <div className="seven-eleven-logo-fallback" style={{display: 'none'}}>
-              7-ELEVEn
-            </div>
-            <div className="app-title">
-              <h1>New Technology Requests Dashboard</h1>
-              <p>Real-time insights into your technology request pipeline and governance workflow</p>
-            </div>
-          </div>
-        </header>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <StyledDashboardApp>
+          <AppHeader>
+            <HeaderContent>
+              <Logo 
+                src="https://www.7-eleven.com/assets/img/header/7e-logo-color.svg" 
+                alt="7-Eleven Logo"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.nextElementSibling.style.display = 'block';
+                }}
+              />
+              <LogoFallback>
+                7-ELEVEn
+              </LogoFallback>
+              <AppTitle>
+                <h1>New Technology Requests Dashboard</h1>
+                <p>Real-time insights into your technology request pipeline and governance workflow</p>
+              </AppTitle>
+            </HeaderContent>
+          </AppHeader>
 
-        <main className="main-container">
-          <div className="error-container">
-            <h3>⚠️ Dashboard Error</h3>
-            <p><strong>Unable to load dashboard data:</strong></p>
-            <p>{error}</p>
-            <button onClick={loadRequests} className="retry-button">
-              🔄 Reload Dashboard
-            </button>
-          </div>
-        </main>
-      </div>
+          <MainContainer>
+            <ErrorContainer>
+              <h3>⚠️ Dashboard Error</h3>
+              <p><strong>Unable to load dashboard data:</strong></p>
+              <p>{error}</p>
+              <RetryButton onClick={loadRequests}>
+                🔄 Reload Dashboard
+              </RetryButton>
+            </ErrorContainer>
+          </MainContainer>
+        </StyledDashboardApp>
+      </ThemeProvider>
     )
   }
 
   const sortedRequests = getSortedRequests()
 
   return (
-    <div className="dashboard-app">
-      {/* Header - EXACT Same as Intake Form */}
-      <header className="app-header">
-        <div className="header-content">
-          <img 
-            src="https://www.7-eleven.com/assets/img/header/7e-logo-color.svg" 
-            alt="7-Eleven Logo" 
-            className="seven-eleven-logo"
-            onError={(e) => {
-              e.target.style.display = 'none';
-              e.target.nextElementSibling.style.display = 'block';
-            }}
-          />
-          <div className="seven-eleven-logo-fallback" style={{display: 'none'}}>
-            7-ELEVEn
-          </div>
-          <div className="app-title">
-            <h1>New Technology Requests Dashboard</h1>
-            <p>Real-time insights into your technology request pipeline and governance workflow</p>
-          </div>
-        </div>
-      </header>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <StyledDashboardApp>
+        {/* Header */}
+        <AppHeader>
+          <HeaderContent>
+            <Logo 
+              src="https://www.7-eleven.com/assets/img/header/7e-logo-color.svg" 
+              alt="7-Eleven Logo"
+              onError={(e) => {
+                e.target.style.display = 'none';
+                e.target.nextElementSibling.style.display = 'block';
+              }}
+            />
+            <LogoFallback>
+              7-ELEVEn
+            </LogoFallback>
+            <AppTitle>
+              <h1>New Technology Requests Dashboard</h1>
+              <p>Real-time insights into your technology request pipeline and governance workflow</p>
+            </AppTitle>
+          </HeaderContent>
+        </AppHeader>
 
-      <main className="main-container">
-        {/* Metrics Cards */}
-        <div className="metrics-container">
-          <div className="metrics-grid">
-            <div 
-              className={`metric-card ${activeFilter === 'submitted' ? 'active' : ''}`}
-              onClick={() => handleMetricClick('submitted')}
-            >
-              <span className="metric-icon">📋</span>
-              <div className="metric-value">{metrics.submitted}</div>
-              <div className="metric-label"># of New Requests<br/>(Submitted)</div>
-            </div>
-            <div 
-              className={`metric-card on-hold ${activeFilter === 'onHold' ? 'active' : ''}`}
-              onClick={() => handleMetricClick('onHold')}
-            >
-              <span className="metric-icon">⏸️</span>
-              <div className="metric-value">{metrics.onHold}</div>
-              <div className="metric-label"># of Requests<br/>On Hold</div>
-            </div>
-            <div 
-              className={`metric-card rejected ${activeFilter === 'rejected' ? 'active' : ''}`}
-              onClick={() => handleMetricClick('rejected')}
-            >
-              <span className="metric-icon">❌</span>
-              <div className="metric-value">{metrics.rejected}</div>
-              <div className="metric-label"># of Requests<br/>Rejected</div>
-            </div>
-            <div 
-              className={`metric-card fast-track ${activeFilter === 'fastTrack' ? 'active' : ''}`}
-              onClick={() => handleMetricClick('fastTrack')}
-            >
-              <span className="metric-icon">🚀</span>
-              <div className="metric-value">{metrics.fastTrack}</div>
-              <div className="metric-label"># of Requests<br/>Fast Track</div>
-            </div>
-          </div>
-        </div>
+        <MainContainer>
+          {/* Metrics Cards */}
+          <MetricsContainer>
+            <MetricsGrid>
+              <MetricCard 
+                $active={activeFilter === 'submitted'}
+                onClick={() => handleMetricClick('submitted')}
+              >
+                <MetricIcon>📋</MetricIcon>
+                <MetricValue $active={activeFilter === 'submitted'}>{metrics.submitted}</MetricValue>
+                <MetricLabel $active={activeFilter === 'submitted'}># of New Requests<br/>(Submitted)</MetricLabel>
+              </MetricCard>
+              
+              <MetricCard 
+                $variant="on-hold"
+                $active={activeFilter === 'onHold'}
+                onClick={() => handleMetricClick('onHold')}
+              >
+                <MetricIcon>⏸️</MetricIcon>
+                <MetricValue $variant="on-hold" $active={activeFilter === 'onHold'}>{metrics.onHold}</MetricValue>
+                <MetricLabel $active={activeFilter === 'onHold'}># of Requests<br/>On Hold</MetricLabel>
+              </MetricCard>
+              
+              <MetricCard 
+                $variant="rejected"
+                $active={activeFilter === 'rejected'}
+                onClick={() => handleMetricClick('rejected')}
+              >
+                <MetricIcon>❌</MetricIcon>
+                <MetricValue $variant="rejected" $active={activeFilter === 'rejected'}>{metrics.rejected}</MetricValue>
+                <MetricLabel $active={activeFilter === 'rejected'}># of Requests<br/>Rejected</MetricLabel>
+              </MetricCard>
+              
+              <MetricCard 
+                $variant="fast-track"
+                $active={activeFilter === 'fastTrack'}
+                onClick={() => handleMetricClick('fastTrack')}
+              >
+                <MetricIcon>🚀</MetricIcon>
+                <MetricValue $variant="fast-track" $active={activeFilter === 'fastTrack'}>{metrics.fastTrack}</MetricValue>
+                <MetricLabel $active={activeFilter === 'fastTrack'}># of Requests<br/>Fast Track</MetricLabel>
+              </MetricCard>
+            </MetricsGrid>
+          </MetricsContainer>
 
-        {/* Charts Container */}
-        <div className="chart-container">
-          <div className="charts-grid">
-            {/* Request Type Chart */}
-            <div className="chart-card">
-              <div className="chart-header">
-                <h3 className="chart-title">
-                  <span>📊</span>
-                  Requests by Type
-                </h3>
-              </div>
-              <div className="chart-content">
-                {loading ? (
-                  <div className="loading-chart">
-                    <div className="spinner-small"></div>
-                    <span>Loading chart data...</span>
-                  </div>
-                ) : requestTypeData.length === 0 ? (
-                  <div className="empty-chart">
-                    <p>No request type data available</p>
-                  </div>
-                ) : (
-                  <ResponsiveContainer width="100%" height={220}>
-                    <BarChart
-                      data={requestTypeData}
-                      layout="vertical"
-                      margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
-                    >
-                      <XAxis type="number" orientation="top" allowDecimals={false} />
-                      <YAxis 
-                        type="category" 
-                        dataKey="displayName"
-                        axisLine={false}
-                        tickLine={false}
-                        tick={{ fontSize: 10, fill: "var(--seven-eleven-gray-dark)" }}
-                        width={80}
-                      />
-                      <Tooltip 
-                        formatter={(value) => [value, 'Requests']}
-                        labelFormatter={(label) => `${label}`}
-                      />
-                      <Bar 
-                        background 
-                        dataKey="count" 
-                        barSize={26}
+          {/* Charts Container */}
+          <ChartContainer>
+            <ChartsGrid>
+              {/* Request Type Chart */}
+              <ChartCard>
+                <ChartHeader>
+                  <ChartTitle>
+                    <span>📊</span>
+                    Requests by Type
+                  </ChartTitle>
+                </ChartHeader>
+                <ChartContent>
+                  {loading ? (
+                    <LoadingChart>
+                      <SpinnerSmall />
+                      <span>Loading chart data...</span>
+                    </LoadingChart>
+                  ) : requestTypeData.length === 0 ? (
+                    <EmptyChart>
+                      <p>No request type data available</p>
+                    </EmptyChart>
+                  ) : (
+                    <ResponsiveContainer width="100%" height={220}>
+                      <BarChart
+                        data={requestTypeData}
+                        layout="vertical"
+                        margin={{ top: 10, right: 30, left: 10, bottom: 10 }}
                       >
-                        <LabelList 
-                          dataKey="count" 
-                          content={renderCustomizedLabel} 
-                          position="insideRight"
+                        <XAxis type="number" orientation="top" allowDecimals={false} />
+                        <YAxis 
+                          type="category" 
+                          dataKey="displayName"
+                          axisLine={false}
+                          tickLine={false}
+                          tick={{ fontSize: 10, fill: "var(--seven-eleven-gray-dark)" }}
+                          width={80}
                         />
-                        {requestTypeData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={getBarColor(index)} />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                )}
-              </div>
-            </div>
+                        <Tooltip 
+                          formatter={(value) => [value, 'Requests']}
+                          labelFormatter={(label) => `${label}`}
+                        />
+                        <Bar 
+                          background 
+                          dataKey="count" 
+                          barSize={26}
+                        >
+                          <LabelList 
+                            dataKey="count" 
+                            content={renderCustomizedLabel} 
+                            position="insideRight"
+                          />
+                          {requestTypeData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={getBarColor(index)} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  )}
+                </ChartContent>
+              </ChartCard>
 
-            {/* Phase Chart */}
-            <div className="chart-card">
-              <div className="chart-header">
-                <h3 className="chart-title">
-                  <span>🔄</span>
-                  Requests by Phase
-                </h3>
-              </div>
-              <div className="chart-content">
-                {loading ? (
-                  <div className="loading-chart">
-                    <div className="spinner-small"></div>
-                    <span>Loading chart data...</span>
-                  </div>
-                ) : phaseData.length === 0 ? (
-                  <div className="empty-chart">
-                    <p>No phase data available</p>
-                  </div>
-                ) : (
-                  <ResponsiveContainer width="100%" height={200}>
-                    <FunnelChart>
-                      <Tooltip formatter={(value, name) => [value, 'Requests']} />
-                      <Funnel
-                        dataKey="value"
-                        data={phaseData}
-                        isAnimationActive
-                      >
-                        {phaseData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={entry.fill} />
-                        ))}
-                      </Funnel>
-                    </FunnelChart>
-                  </ResponsiveContainer>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
+              {/* Phase Chart */}
+              <ChartCard>
+                <ChartHeader>
+                  <ChartTitle>
+                    <span>🔄</span>
+                    Requests by Phase
+                  </ChartTitle>
+                </ChartHeader>
+                <ChartContent>
+                  {loading ? (
+                    <LoadingChart>
+                      <SpinnerSmall />
+                      <span>Loading chart data...</span>
+                    </LoadingChart>
+                  ) : phaseData.length === 0 ? (
+                    <EmptyChart>
+                      <p>No phase data available</p>
+                    </EmptyChart>
+                  ) : (
+                    <ResponsiveContainer width="100%" height={200}>
+                      <FunnelChart>
+                        <Tooltip formatter={(value, name) => [value, 'Requests']} />
+                        <Funnel
+                          dataKey="value"
+                          data={phaseData}
+                          isAnimationActive
+                        >
+                          {phaseData.map((entry, index) => (
+                            <Cell key={`cell-${index}`} fill={entry.fill} />
+                          ))}
+                        </Funnel>
+                      </FunnelChart>
+                    </ResponsiveContainer>
+                  )}
+                </ChartContent>
+              </ChartCard>
+            </ChartsGrid>
+          </ChartContainer>
 
-        {/* Request Table */}
-        <div className="table-container">
-          <div className="table-header">
-            <h2 className="table-title">
-              New Technology Requests
-              {activeFilter && (
-                <button 
-                  className="clear-filter-btn"
-                  onClick={() => setActiveFilter(null)}
-                  title="Clear filter"
-                >
-                  ✕ Clear Filter
-                </button>
+          {/* Request Table */}
+          <TableContainer>
+            <TableHeader>
+              <TableTitle>
+                New Technology Requests
+                {activeFilter && (
+                  <ClearFilterBtn 
+                    onClick={() => setActiveFilter(null)}
+                    title="Clear filter"
+                  >
+                    ✕ Clear Filter
+                  </ClearFilterBtn>
+                )}
+              </TableTitle>
+            </TableHeader>
+            
+            <div>
+              {loading ? (
+                <Loading>
+                  <Spinner />
+                  <div>Loading request data...</div>
+                </Loading>
+              ) : requests.length === 0 ? (
+                <EmptyState>
+                  <h3>No Requests Found</h3>
+                  <p>No technology requests have been submitted yet. <a href="/x_snc_newtech_intake.do">Submit your first request</a></p>
+                </EmptyState>
+              ) : (
+                <TableWrapper>
+                  <RequestsTable>
+                  <thead>
+                    <tr>
+                      <TableTh onClick={() => handleSort('number')} className="sortable-header">
+                        Number {getSortIndicator('number')}
+                      </TableTh>
+                      <TableTh onClick={() => handleSort('priority')} className="sortable-header">
+                        Priority {getSortIndicator('priority')}
+                      </TableTh>
+                      <TableTh onClick={() => handleSort('short_description')} className="sortable-header description-column">
+                        Short Description {getSortIndicator('short_description')}
+                      </TableTh>
+                      <TableTh onClick={() => handleSort('opened_by')} className="sortable-header">
+                        Opened By {getSortIndicator('opened_by')}
+                      </TableTh>
+                      <TableTh onClick={() => handleSort('phase')} className="sortable-header">
+                        Phase {getSortIndicator('phase')}
+                      </TableTh>
+                      <TableTh onClick={() => handleSort('status')} className="sortable-header">
+                        Status {getSortIndicator('status')}
+                      </TableTh>
+                      <TableTh onClick={() => handleSort('sys_created_on')} className="sortable-header">
+                        Created {getSortIndicator('sys_created_on')}
+                      </TableTh>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {sortedRequests.map((request) => {
+                      const number = getValue(request.number) || 'N/A'
+                      const priority = getValue(request.x_snc_newtech_priority)
+                      const description = getValue(request.short_description) || 'No description provided'
+                      const openedBy = getValue(request.opened_by) || 'Unknown'
+                      const phase = getValue(request.x_snc_newtech_phase)
+                      const status = getValue(request.x_snc_newtech_status)
+                      const createdDate = getValue(request.sys_created_on)
+                      const sysId = getValue(request.sys_id)
+
+                      return (
+                        <TableRow 
+                          key={sysId} 
+                          onClick={() => openRequest(sysId)}
+                        >
+                          <TableTd><RequestNumber>{number}</RequestNumber></TableTd>
+                          <TableTd>
+                            <StatusBadge $variant={getPriorityClass(priority)}>
+                              {getPriorityDisplay(priority)}
+                            </StatusBadge>
+                          </TableTd>
+                          <TableTd className="description-cell">{description}</TableTd>
+                          <TableTd><strong>{openedBy}</strong></TableTd>
+                          <TableTd className="phase-column">
+                            <StatusBadge $variant={getPhaseClass(phase)}>
+                              {getPhaseDisplay(phase)}
+                            </StatusBadge>
+                          </TableTd>
+                          <TableTd className="status-column">
+                            <StatusBadge $variant={getStatusClass(status)}>
+                              {getStatusDisplay(status)}
+                            </StatusBadge>
+                          </TableTd>
+                          <TableTd className="created-column">{formatDate(createdDate)}</TableTd>
+                        </TableRow>
+                      )
+                    })}
+                  </tbody>
+                </RequestsTable>
+                </TableWrapper>
               )}
-            </h2>
-          </div>
-          
-          <div className="table-content">
-            {loading ? (
-              <div className="loading">
-                <div className="spinner"></div>
-                <div>Loading request data...</div>
-              </div>
-            ) : requests.length === 0 ? (
-              <div className="empty-state">
-                <h3>No Requests Found</h3>
-                <p>No technology requests have been submitted yet. <a href="/x_snc_newtech_intake.do">Submit your first request</a></p>
-              </div>
-            ) : (
-              <div className="table-wrapper">
-                <table className="requests-table">
-                <thead>
-                  <tr>
-                    <th onClick={() => handleSort('number')} className="sortable-header">
-                      Number {getSortIndicator('number')}
-                    </th>
-                    <th onClick={() => handleSort('priority')} className="sortable-header">
-                      Priority {getSortIndicator('priority')}
-                    </th>
-                    <th onClick={() => handleSort('short_description')} className="sortable-header description-column">
-                      Short Description {getSortIndicator('short_description')}
-                    </th>
-                    <th onClick={() => handleSort('opened_by')} className="sortable-header">
-                      Opened By {getSortIndicator('opened_by')}
-                    </th>
-                    <th onClick={() => handleSort('phase')} className="sortable-header phase-column">
-                      Phase {getSortIndicator('phase')}
-                    </th>
-                    <th onClick={() => handleSort('status')} className="sortable-header status-column">
-                      Status {getSortIndicator('status')}
-                    </th>
-                    <th onClick={() => handleSort('sys_created_on')} className="sortable-header created-column">
-                      Created {getSortIndicator('sys_created_on')}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {sortedRequests.map((request) => {
-                    const number = getValue(request.number) || 'N/A'
-                    const priority = getValue(request.x_snc_newtech_priority)
-                    const description = getValue(request.short_description) || 'No description provided'
-                    const openedBy = getValue(request.opened_by) || 'Unknown'
-                    const phase = getValue(request.x_snc_newtech_phase)
-                    const status = getValue(request.x_snc_newtech_status)
-                    const createdDate = getValue(request.sys_created_on)
-                    const sysId = getValue(request.sys_id)
+            </div>
+          </TableContainer>
+        </MainContainer>
 
-                    return (
-                      <tr 
-                        key={sysId} 
-                        onClick={() => openRequest(sysId)}
-                        className="table-row"
-                      >
-                        <td><span className="request-number">{number}</span></td>
-                        <td>
-                          <span className={`status-badge ${getPriorityClass(priority)}`}>
-                            {getPriorityDisplay(priority)}
-                          </span>
-                        </td>
-                        <td className="description-cell">{description}</td>
-                        <td><strong>{openedBy}</strong></td>
-                        <td className="phase-column">
-                          <span className={`status-badge ${getPhaseClass(phase)}`}>
-                            {getPhaseDisplay(phase)}
-                          </span>
-                        </td>
-                        <td className="status-column">
-                          <span className={`status-badge ${getStatusClass(status)}`}>
-                            {getStatusDisplay(status)}
-                          </span>
-                        </td>
-                        <td className="created-column">{formatDate(createdDate)}</td>
-                      </tr>
-                    )
-                  })}
-                </tbody>
-              </table>
-              </div>
-            )}
-          </div>
-        </div>
-      </main>
-
-      {/* Footer */}
-      <footer className="dashboard-footer">
-        <div className="footer-text">
-          Powered by ServiceNow Build Agent – built by Marc.Mouries@ServiceNow.com
-        </div>
-      </footer>
-    </div>
+        {/* Footer */}
+        <DashboardFooter>
+          <FooterText>
+            Powered by ServiceNow Build Agent – built by Marc.Mouries@ServiceNow.com
+          </FooterText>
+        </DashboardFooter>
+      </StyledDashboardApp>
+    </ThemeProvider>
   )
 }
