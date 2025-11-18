@@ -1,8 +1,15 @@
 // Complete Dashboard Styled Components - No More CSS Caching Issues!
 // Version: 2024122001
+// CSS Class Names: Using componentId for better debugging
 
 import styled, { createGlobalStyle, css } from 'styled-components'
 import { theme, mediaQuery } from './theme.js'
+
+// Configure styled-components for better class names
+const styledConfig = {
+  shouldForwardProp: (prop, defaultValidatorFn) => !prop.startsWith('$'),
+  componentId: (componentName) => `ntd-${componentName.toLowerCase()}`
+}
 
 // Global Styles
 export const GlobalStyles = createGlobalStyle`
@@ -22,11 +29,12 @@ export const GlobalStyles = createGlobalStyle`
 `
 
 // Main App Container
-export const DashboardApp = styled.div`
+export const DashboardApp = styled.div.attrs({
+  className: 'dashboard-app'
+})`
   min-height: 100vh;
   background: linear-gradient(135deg, ${props => props.theme.colors.gray.light} 0%, ${props => props.theme.colors.primary.white} 100%);
 `
-DashboardApp.displayName = 'DashboardApp'
 
 // Header Components
 export const AppHeader = styled.header`
@@ -42,6 +50,7 @@ export const AppHeader = styled.header`
     padding: ${props => props.theme.spacing.md};
   }
 `
+AppHeader.displayName = 'AppHeader'
 
 export const HeaderContent = styled.div`
   max-width: 100%;
@@ -56,6 +65,7 @@ export const HeaderContent = styled.div`
     gap: ${props => props.theme.spacing.sm};
   }
 `
+HeaderContent.displayName = 'HeaderContent'
 
 export const Logo = styled.img`
   height: 2.5rem;
@@ -70,6 +80,7 @@ export const Logo = styled.img`
     font-size: ${props => props.theme.typography.fontSize['5xl']};
   }
 `
+Logo.displayName = 'Logo'
 
 export const LogoFallback = styled.div`
   font-size: ${props => props.theme.typography.fontSize['7xl']};
@@ -82,6 +93,7 @@ export const LogoFallback = styled.div`
   box-shadow: ${props => props.theme.shadows.card};
   display: none;
 `
+LogoFallback.displayName = 'LogoFallback'
 
 export const AppTitle = styled.div`
   flex: 1;
@@ -104,6 +116,7 @@ export const AppTitle = styled.div`
     color: ${props => props.theme.colors.primary.white};
   }
 `
+AppTitle.displayName = 'AppTitle'
 
 // Main Container
 export const MainContainer = styled.main`
@@ -116,12 +129,14 @@ export const MainContainer = styled.main`
     padding: ${props => props.theme.spacing.md};
   }
 `
+MainContainer.displayName = 'MainContainer'
 
 // Metrics Container (simplified - no background)
 export const MetricsContainer = styled.div`
   border-radius: ${props => props.theme.borderRadius.large};
   margin-bottom: ${props => props.theme.spacing.md};
 `
+MetricsContainer.displayName = 'MetricsContainer'
 
 export const MetricsGrid = styled.div`
   display: grid;
@@ -133,9 +148,11 @@ export const MetricsGrid = styled.div`
     gap: ${props => props.theme.spacing.sm};
   }
 `
+MetricsGrid.displayName = 'MetricsGrid'
 
-// Metric Cards with Dynamic Styling
-export const MetricCard = styled.div`
+export const MetricCard = styled.div.attrs({
+  className: 'metric-card'
+})`
   background: linear-gradient(135deg, ${props => props.theme.colors.primary.white} 0%, ${props => props.theme.colors.gray.light} 100%);
   border-radius: ${props => props.theme.borderRadius.medium};
   padding: ${props => props.theme.spacing.sm};
@@ -180,12 +197,14 @@ export const MetricCard = styled.div`
     padding: ${props => props.theme.spacing.md};
   }
 `
+MetricCard.displayName = 'MetricCard'
 
 export const MetricIcon = styled.span`
   font-size: 1.5rem;
   margin-bottom: ${props => props.theme.spacing.sm};
   display: block;
 `
+MetricIcon.displayName = 'MetricIcon'
 
 export const MetricValue = styled.div`
   font-size: ${props => props.theme.typography.fontSize['7xl']};
@@ -204,6 +223,7 @@ export const MetricValue = styled.div`
     font-size: ${props => props.theme.typography.fontSize['6xl']};
   }
 `
+MetricValue.displayName = 'MetricValue'
 
 export const MetricLabel = styled.div`
   font-size: ${props => props.theme.typography.fontSize.sm};
@@ -211,11 +231,13 @@ export const MetricLabel = styled.div`
   font-weight: ${props => props.theme.typography.fontWeight.semibold};
   line-height: ${props => props.theme.typography.lineHeight.tight};
 `
+MetricLabel.displayName = 'MetricLabel'
 
 // Chart Container (simplified - no background/padding like metrics)
 export const ChartContainer = styled.div`
   margin-bottom: ${props => props.theme.spacing.md};
 `
+ChartContainer.displayName = 'ChartContainer'
 
 export const ChartsGrid = styled.div`
   display: grid;
@@ -227,11 +249,11 @@ export const ChartsGrid = styled.div`
     gap: ${props => props.theme.spacing.sm};
   }
 `
+ChartsGrid.displayName = 'ChartsGrid'
 
 export const ChartCard = styled.div`
   background: linear-gradient(135deg, ${props => props.theme.colors.primary.white} 0%, ${props => props.theme.colors.gray.light} 100%);
   border-radius: ${props => props.theme.borderRadius.medium};
-  padding: 0.25rem;
   text-align: center;
   border: 2px solid ${props => props.theme.colors.gray.medium};
   transition: ${props => props.theme.transitions.normal};
@@ -257,15 +279,16 @@ export const ChartCard = styled.div`
 
   ${mediaQuery('mobile')} {
     height: 220px;
-    padding: 0.25rem;
   }
 `
+ChartCard.displayName = 'ChartCard'
 
 export const ChartHeader = styled.div`
   border-bottom: 3px solid ${props => props.theme.colors.primary.viridian};
   background: linear-gradient(135deg, ${props => props.theme.colors.gray.light} 0%, ${props => props.theme.colors.primary.white} 100%);
   border-radius: ${props => props.theme.borderRadius.medium};
 `
+ChartHeader.displayName = 'ChartHeader'
 
 export const ChartTitle = styled.h3`
   color: ${props => props.theme.colors.primary.red};
@@ -282,6 +305,7 @@ export const ChartTitle = styled.h3`
     font-size: ${props => props.theme.typography.fontSize.xl};
   }
 `
+ChartTitle.displayName = 'ChartTitle'
 
 export const ChartContent = styled.div`
   height: calc(100% - 50px);
@@ -291,6 +315,7 @@ export const ChartContent = styled.div`
   position: relative;
   min-height: 200px;
 `
+ChartContent.displayName = 'ChartContent'
 
 export const LoadingChart = styled.div`
   display: flex;
@@ -302,10 +327,12 @@ export const LoadingChart = styled.div`
   font-size: ${props => props.theme.typography.fontSize.xl};
   text-align: center;
 `
+LoadingChart.displayName = 'LoadingChart'
 
 export const EmptyChart = styled(LoadingChart)`
   padding: ${props => props.theme.spacing.xl};
 `
+EmptyChart.displayName = 'EmptyChart'
 
 export const SpinnerSmall = styled.div`
   width: 20px;
@@ -321,16 +348,18 @@ export const SpinnerSmall = styled.div`
     100% { transform: rotate(360deg); }
   }
 `
+SpinnerSmall.displayName = 'SpinnerSmall'
 
-// Table Components
-export const TableContainer = styled.div`
+export const TableContainer = styled.div.attrs({
+  className: 'table-container'
+})`
   background: ${props => props.theme.colors.primary.white};
   border-radius: ${props => props.theme.borderRadius.large};
-  padding: ${props => props.theme.spacing.sm};
   margin-bottom: ${props => props.theme.spacing.md};
   box-shadow: ${props => props.theme.shadows.default};
   border: 1px solid ${props => props.theme.colors.gray.medium};
 `
+TableContainer.displayName = 'TableContainer'
 
 export const TableHeader = styled.div`
   border-bottom: 3px solid ${props => props.theme.colors.primary.viridian};
@@ -339,8 +368,8 @@ export const TableHeader = styled.div`
   background: linear-gradient(135deg, ${props => props.theme.colors.gray.light} 0%, ${props => props.theme.colors.primary.white} 100%);
   padding: ${props => props.theme.spacing.md};
   border-radius: ${props => props.theme.borderRadius.medium};
-  margin: -${props => props.theme.spacing.sm} -${props => props.theme.spacing.sm} ${props => props.theme.spacing.md} -${props => props.theme.spacing.sm};
 `
+TableHeader.displayName = 'TableHeader'
 
 export const TableTitle = styled.h2`
   color: ${props => props.theme.colors.primary.red};
@@ -358,6 +387,7 @@ export const TableTitle = styled.h2`
     gap: ${props => props.theme.spacing.sm};
   }
 `
+TableTitle.displayName = 'TableTitle'
 
 export const ClearFilterBtn = styled.button`
   background: ${props => props.theme.colors.primary.orange};
@@ -383,14 +413,18 @@ export const ClearFilterBtn = styled.button`
     padding: 0.4rem 0.8rem;
   }
 `
+ClearFilterBtn.displayName = 'ClearFilterBtn'
 
 export const TableWrapper = styled.div`
   overflow-x: auto;
   margin: 0 -${props => props.theme.spacing.md};
   padding: 0 ${props => props.theme.spacing.md};
 `
+TableWrapper.displayName = 'TableWrapper'
 
-export const RequestsTable = styled.table`
+export const RequestsTable = styled.table.attrs({
+  className: 'requests-table'
+})`
   width: 100%;
   border-collapse: collapse;
   font-size: ${props => props.theme.typography.fontSize.sm};
@@ -400,6 +434,7 @@ export const RequestsTable = styled.table`
     min-width: 700px;
   }
 `
+RequestsTable.displayName = 'RequestsTable'
 
 export const TableTh = styled.th`
   background: linear-gradient(135deg, ${props => props.theme.colors.gray.light} 0%, ${props => props.theme.colors.primary.white} 100%);
@@ -410,6 +445,14 @@ export const TableTh = styled.th`
   color: ${props => props.theme.colors.gray.dark};
   border-bottom: 2px solid ${props => props.theme.colors.primary.viridian};
   position: relative;
+
+  &:first-child {
+    padding-left: 1rem;
+  }
+
+  &:last-child {
+    padding-right: 1rem;
+  }
 
   &.sortable-header {
     cursor: pointer;
@@ -423,6 +466,10 @@ export const TableTh = styled.th`
       transform: translateY(-1px);
     }
 
+    &:last-child.sortable-header {
+      padding-right: 2.5rem !important;
+    }
+
     ${mediaQuery('mobile')} {
       padding-right: 2rem !important;
     }
@@ -430,8 +477,17 @@ export const TableTh = styled.th`
 
   ${mediaQuery('mobile')} {
     padding: 0.6rem 0.8rem;
+    
+    &:first-child {
+      padding-left: 0.8rem;
+    }
+    
+    &:last-child {
+      padding-right: 0.8rem;
+    }
   }
 `
+TableTh.displayName = 'TableTh'
 
 export const SortIndicator = styled.span`
   position: absolute;
@@ -494,11 +550,24 @@ export const SortIndicator = styled.span`
     }
   }
 `
+SortIndicator.displayName = 'SortIndicator'
 
-export const TableTd = styled.td`
-  padding: 0.25rem 0.25rem 0.5rem 0.25rem;
+export const TableTd = styled.td.attrs({
+  className: 'table-td'
+})`
+  padding: 0.5rem;
   border-bottom: 1px solid ${props => props.theme.colors.gray.medium};
   vertical-align: middle;
+
+  /* First column - extra left padding */
+  &:first-child {
+    padding-left: 0.5rem;
+  }
+
+  /* Last column - extra right padding */
+  &:last-child {
+    padding-right: 0.5rem;
+  }
 
   &.description-cell {
     overflow: hidden;
@@ -538,6 +607,7 @@ export const TableTd = styled.td`
     }
   }
 `
+TableTd.displayName = 'TableTd'
 
 export const TableRow = styled.tr`
   transition: all 0.2s ease;
@@ -548,12 +618,14 @@ export const TableRow = styled.tr`
     transform: translateY(-1px);
   }
 `
+TableRow.displayName = 'TableRow'
 
 export const RequestNumber = styled.span`
   font-weight: ${props => props.theme.typography.fontWeight.bold};
   color: ${props => props.theme.colors.primary.viridian};
   font-family: 'Monaco', 'Menlo', monospace;
 `
+RequestNumber.displayName = 'RequestNumber'
 
 // Status Badge Component with Variants
 export const StatusBadge = styled.span`
@@ -683,6 +755,7 @@ export const StatusBadge = styled.span`
     }
   }}
 `
+StatusBadge.displayName = 'StatusBadge'
 
 // Loading and Error States
 export const Loading = styled.div`
@@ -693,6 +766,7 @@ export const Loading = styled.div`
   padding: 4rem;
   color: ${props => props.theme.colors.gray.dark};
 `
+Loading.displayName = 'Loading'
 
 export const Spinner = styled.div`
   width: 40px;
@@ -708,6 +782,7 @@ export const Spinner = styled.div`
     100% { transform: rotate(360deg); }
   }
 `
+Spinner.displayName = 'Spinner'
 
 export const EmptyState = styled.div`
   text-align: center;
@@ -730,6 +805,7 @@ export const EmptyState = styled.div`
     }
   }
 `
+EmptyState.displayName = 'EmptyState'
 
 export const ErrorContainer = styled.div`
   background: rgba(218, 41, 28, 0.1);
@@ -744,6 +820,7 @@ export const ErrorContainer = styled.div`
     margin-top: 0;
   }
 `
+ErrorContainer.displayName = 'ErrorContainer'
 
 export const RetryButton = styled.button`
   margin-top: ${props => props.theme.spacing.md};
@@ -761,6 +838,7 @@ export const RetryButton = styled.button`
     transform: translateY(-2px);
   }
 `
+RetryButton.displayName = 'RetryButton'
 
 // Footer
 export const DashboardFooter = styled.footer`
@@ -769,13 +847,25 @@ export const DashboardFooter = styled.footer`
   margin-top: ${props => props.theme.spacing.xl};
   background: ${props => props.theme.colors.primary.white};
 `
+DashboardFooter.displayName = 'DashboardFooter'
 
 export const FooterText = styled.div`
   font-size: 0.8rem;
   color: #1f4e79;
   font-style: italic;
 `
+FooterText.displayName = 'FooterText'
 
 // Export theme and ThemeProvider
 export { theme } from './theme.js'
 export { ThemeProvider } from 'styled-components'
+
+// Add displayNames for remaining components
+StatusBadge.displayName = 'StatusBadge'
+Loading.displayName = 'Loading'
+Spinner.displayName = 'Spinner'
+EmptyState.displayName = 'EmptyState'
+ErrorContainer.displayName = 'ErrorContainer'
+RetryButton.displayName = 'RetryButton'
+DashboardFooter.displayName = 'DashboardFooter'
+FooterText.displayName = 'FooterText'
