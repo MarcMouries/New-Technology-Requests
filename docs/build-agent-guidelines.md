@@ -58,5 +58,23 @@
 - **Padding Consistency**: Use consistent padding values (0.5rem, 1rem, 1.5rem) across similar components
 - **Hover Effects**: Apply consistent hover effects and transitions across interactive elements
 
+### Styled-Components Standards
+- **displayName Property**: Always add `displayName` to styled-components for better debugging and React DevTools visibility
+- **Example**: 
+  ```jsx
+  const MyComponent = styled.div`
+    // styles
+  `
+  MyComponent.displayName = 'MyComponent'
+  ```
+- **Benefits**: 
+  - **Better Debugging**: Components show up with meaningful names in React DevTools instead of generic names
+  - **Development Experience**: Easier to identify components during inspection
+  - **Component Tracking**: Clearer component hierarchy in debugging tools
+  - **Professional Code**: Follows React best practices for component naming
+- **Cache Elimination**: styled-components completely eliminates CSS caching issues by injecting styles as JavaScript at runtime
+- **Dynamic Styling**: Use props with `$` prefix for conditional styling (e.g., `$variant`, `$active`)
+- **Theme Integration**: Always use ThemeProvider and centralized theme for consistent design tokens
+
 ---
 *Guidelines for ServiceNow Build Agent development - Last updated: 2024-12-19*
