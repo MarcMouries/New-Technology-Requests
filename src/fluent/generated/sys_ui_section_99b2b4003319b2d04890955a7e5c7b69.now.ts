@@ -111,19 +111,6 @@ Record({
     },
 })
 Record({
-    $id: Now.ID['99b2b4003319b2d04890955a7e5c7b69'],
-    table: 'sys_ui_section',
-    data: {
-        header: false,
-        name: 'x_snc_newtech_request',
-        sys_domain: 'global',
-        sys_domain_path: '/',
-        title: true,
-        view: 'Default view',
-        caption: 'Details',
-    },
-})
-Record({
     $id: Now.ID['69db65b92b597654ddf5f27df291bf52'],
     table: 'sys_ui_element',
     data: {
