@@ -132,7 +132,9 @@ export const MainContainer = styled.main`
 MainContainer.displayName = 'MainContainer'
 
 // Metrics Container (simplified - no background)
-export const MetricsContainer = styled.div`
+export const MetricsContainer = styled.div.attrs({
+  className: 'metrics-container'
+})`
   border-radius: ${props => props.theme.borderRadius.large};
   margin-bottom: ${props => props.theme.spacing.md};
 `
@@ -156,13 +158,16 @@ export const MetricCard = styled.div.attrs({
   background: linear-gradient(135deg, ${props => props.theme.colors.primary.white} 0%, ${props => props.theme.colors.gray.light} 100%);
   border-radius: ${props => props.theme.borderRadius.medium};
   padding: ${props => props.theme.spacing.sm};
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: ${props => props.theme.spacing.sm};
   border: 2px solid ${props => props.theme.colors.gray.medium};
   transition: ${props => props.theme.transitions.normal};
   position: relative;
   overflow: hidden;
   cursor: pointer;
   user-select: none;
+  height: 80px;
 
   &:hover {
     transform: translateY(-4px);
@@ -194,20 +199,31 @@ export const MetricCard = styled.div.attrs({
   `}
 
   ${mediaQuery('mobile')} {
-    padding: ${props => props.theme.spacing.md};
+    height: 70px;
+    gap: ${props => props.theme.spacing.xs};
   }
 `
 MetricCard.displayName = 'MetricCard'
 
 export const MetricIcon = styled.span`
-  font-size: 1.5rem;
-  margin-bottom: ${props => props.theme.spacing.sm};
-  display: block;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+
+  ${mediaQuery('mobile')} {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+  }
 `
 MetricIcon.displayName = 'MetricIcon'
 
 export const MetricValue = styled.div`
-  font-size: ${props => props.theme.typography.fontSize['7xl']};
+  font-size: ${props => props.theme.typography.fontSize['6xl']};
   font-weight: ${props => props.theme.typography.fontWeight.extrabold};
   color: ${props => {
     if (props.$active) return props.theme.colors.primary.white + ' !important'
@@ -217,10 +233,15 @@ export const MetricValue = styled.div`
     return props.theme.colors.primary.viridian
   }};
   line-height: 1;
-  margin-bottom: ${props => props.theme.spacing.sm};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 60px;
 
   ${mediaQuery('mobile')} {
-    font-size: ${props => props.theme.typography.fontSize['6xl']};
+    font-size: ${props => props.theme.typography.fontSize['5xl']};
+    min-width: 50px;
   }
 `
 MetricValue.displayName = 'MetricValue'
@@ -230,6 +251,12 @@ export const MetricLabel = styled.div`
   color: ${props => props.$active ? props.theme.colors.primary.white : props.theme.colors.gray.dark};
   font-weight: ${props => props.theme.typography.fontWeight.semibold};
   line-height: ${props => props.theme.typography.lineHeight.tight};
+  flex: 1;
+  text-align: left;
+
+  ${mediaQuery('mobile')} {
+    font-size: ${props => props.theme.typography.fontSize.xs};
+  }
 `
 MetricLabel.displayName = 'MetricLabel'
 
@@ -555,7 +582,7 @@ SortIndicator.displayName = 'SortIndicator'
 export const TableTd = styled.td.attrs({
   className: 'table-td'
 })`
-  padding: 0.5rem;
+  padding: 0.30rem 0.5rem;
   border-bottom: 1px solid ${props => props.theme.colors.gray.medium};
   vertical-align: middle;
 
