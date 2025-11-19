@@ -5,29 +5,89 @@ declare global {
         namespace Internal {
             interface Keys extends KeysRegistry {
                 explicit: {
+                    '11db65b92b597654ddf5f27df291bf0f': {
+                        table: 'sys_ui_element'
+                        id: '11db65b92b597654ddf5f27df291bf0f'
+                    }
+                    '1ddb65b92b597654ddf5f27df291bf05': {
+                        table: 'sys_ui_form_section'
+                        id: '1ddb65b92b597654ddf5f27df291bf05'
+                    }
                     '210c4d48339db2d04890955a7e5c7bcc': {
                         table: 'sys_ui_element'
                         id: '210c4d48339db2d04890955a7e5c7bcc'
+                    }
+                    '21db65b92b597654ddf5f27df291bf56': {
+                        table: 'sys_ui_element'
+                        id: '21db65b92b597654ddf5f27df291bf56'
                     }
                     '250c4d48339db2d04890955a7e5c7bc9': {
                         table: 'sys_ui_element'
                         id: '250c4d48339db2d04890955a7e5c7bc9'
                     }
+                    '25db65b92b597654ddf5f27df291bf53': {
+                        table: 'sys_ui_element'
+                        id: '25db65b92b597654ddf5f27df291bf53'
+                    }
                     '290c4d48339db2d04890955a7e5c7bc6': {
                         table: 'sys_ui_element'
                         id: '290c4d48339db2d04890955a7e5c7bc6'
+                    }
+                    '29db65b92b597654ddf5f27df291bf5b': {
+                        table: 'sys_ui_element'
+                        id: '29db65b92b597654ddf5f27df291bf5b'
+                    }
+                    '2ddb65b92b597654ddf5f27df291bf58': {
+                        table: 'sys_ui_element'
+                        id: '2ddb65b92b597654ddf5f27df291bf58'
+                    }
+                    '51db65b92b597654ddf5f27df291bf11': {
+                        table: 'sys_ui_element'
+                        id: '51db65b92b597654ddf5f27df291bf11'
+                    }
+                    '59db25b92b597654ddf5f27df291bfd5': {
+                        table: 'sys_ui_section'
+                        id: '59db25b92b597654ddf5f27df291bfd5'
+                    }
+                    '61db65b92b597654ddf5f27df291bf58': {
+                        table: 'sys_ui_element'
+                        id: '61db65b92b597654ddf5f27df291bf58'
                     }
                     '650c4d48339db2d04890955a7e5c7bcb': {
                         table: 'sys_ui_element'
                         id: '650c4d48339db2d04890955a7e5c7bcb'
                     }
+                    '65db65b92b597654ddf5f27df291bf55': {
+                        table: 'sys_ui_element'
+                        id: '65db65b92b597654ddf5f27df291bf55'
+                    }
                     '690c4d48339db2d04890955a7e5c7bc8': {
                         table: 'sys_ui_element'
                         id: '690c4d48339db2d04890955a7e5c7bc8'
                     }
+                    '69db65b92b597654ddf5f27df291bf52': {
+                        table: 'sys_ui_element'
+                        id: '69db65b92b597654ddf5f27df291bf52'
+                    }
+                    '69db65b92b597654ddf5f27df291bf5d': {
+                        table: 'sys_ui_element'
+                        id: '69db65b92b597654ddf5f27df291bf5d'
+                    }
                     '6d0c4d48339db2d04890955a7e5c7bc5': {
                         table: 'sys_ui_element'
                         id: '6d0c4d48339db2d04890955a7e5c7bc5'
+                    }
+                    '6ddb65b92b597654ddf5f27df291bf5a': {
+                        table: 'sys_ui_element'
+                        id: '6ddb65b92b597654ddf5f27df291bf5a'
+                    }
+                    '95db25b92b597654ddf5f27df291bff2': {
+                        table: 'sys_ui_form'
+                        id: '95db25b92b597654ddf5f27df291bff2'
+                    }
+                    '95db65b92b597654ddf5f27df291bf10': {
+                        table: 'sys_ui_element'
+                        id: '95db65b92b597654ddf5f27df291bf10'
                     }
                     '99b2b4003319b2d04890955a7e5c7b69': {
                         table: 'sys_ui_section'
@@ -37,13 +97,29 @@ declare global {
                         table: 'sys_ui_element'
                         id: 'a10c4d48339db2d04890955a7e5c7bc5'
                     }
+                    a1db65b92b597654ddf5f27df291bf5a: {
+                        table: 'sys_ui_element'
+                        id: 'a1db65b92b597654ddf5f27df291bf5a'
+                    }
+                    a5db65b92b597654ddf5f27df291bf57: {
+                        table: 'sys_ui_element'
+                        id: 'a5db65b92b597654ddf5f27df291bf57'
+                    }
                     a90c4d48339db2d04890955a7e5c7bca: {
                         table: 'sys_ui_element'
                         id: 'a90c4d48339db2d04890955a7e5c7bca'
                     }
+                    a9db65b92b597654ddf5f27df291bf54: {
+                        table: 'sys_ui_element'
+                        id: 'a9db65b92b597654ddf5f27df291bf54'
+                    }
                     ad0c4d48339db2d04890955a7e5c7bc7: {
                         table: 'sys_ui_element'
                         id: 'ad0c4d48339db2d04890955a7e5c7bc7'
+                    }
+                    addb65b92b597654ddf5f27df291bf5c: {
+                        table: 'sys_ui_element'
+                        id: 'addb65b92b597654ddf5f27df291bf5c'
                     }
                     bom_json: {
                         table: 'sys_module'
@@ -52,6 +128,18 @@ declare global {
                     cost_bands_prop: {
                         table: 'sys_properties'
                         id: '0804c5f82c544e3faaf3a242cbb15c71'
+                    }
+                    d1db65b92b597654ddf5f27df291bf07: {
+                        table: 'sys_ui_form_section'
+                        id: 'd1db65b92b597654ddf5f27df291bf07'
+                    }
+                    d1db65b92b597654ddf5f27df291bf0d: {
+                        table: 'sys_ui_element'
+                        id: 'd1db65b92b597654ddf5f27df291bf0d'
+                    }
+                    d9db65b92b597654ddf5f27df291bf0f: {
+                        table: 'sys_ui_element'
+                        id: 'd9db65b92b597654ddf5f27df291bf0f'
                     }
                     dashboard: {
                         table: 'sys_ui_page'
@@ -180,13 +268,29 @@ declare global {
                         table: 'sys_ui_element'
                         id: 'e10c4d48339db2d04890955a7e5c7bc7'
                     }
+                    e1db65b92b597654ddf5f27df291bf5c: {
+                        table: 'sys_ui_element'
+                        id: 'e1db65b92b597654ddf5f27df291bf5c'
+                    }
                     e50c4d48339db2d04890955a7e5c7bc4: {
                         table: 'sys_ui_element'
                         id: 'e50c4d48339db2d04890955a7e5c7bc4'
                     }
+                    e5db65b92b597654ddf5f27df291bf59: {
+                        table: 'sys_ui_element'
+                        id: 'e5db65b92b597654ddf5f27df291bf59'
+                    }
+                    e9db65b92b597654ddf5f27df291bf56: {
+                        table: 'sys_ui_element'
+                        id: 'e9db65b92b597654ddf5f27df291bf56'
+                    }
                     ed0c4d48339db2d04890955a7e5c7bc9: {
                         table: 'sys_ui_element'
                         id: 'ed0c4d48339db2d04890955a7e5c7bc9'
+                    }
+                    eddb65b92b597654ddf5f27df291bf53: {
+                        table: 'sys_ui_element'
+                        id: 'eddb65b92b597654ddf5f27df291bf53'
                     }
                     'IntakeApp.css': {
                         table: 'sys_ux_theme_asset'
