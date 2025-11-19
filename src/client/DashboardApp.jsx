@@ -464,33 +464,65 @@ export default function DashboardApp() {
     try {
       // Parse the date string (handles both ISO and ServiceNow date formats)
       const date = parseISO(dateString) || new Date(dateString)
+      const now = new Date()
       
-      // Get relative time distance 
-      const relativeTime = formatDistanceToNow(date, { addSuffix: true })
+      // Calculate business days difference (excluding weekends)
+      const businessDaysDiff = calculateBusinessDays(date, now)
       
-      // Convert to shorter format
-      return relativeTime
-        .replace('about ', '')
-        .replace(' ago', ' ago')
-        .replace('in about', 'in')
-        .replace(' seconds', 's')
-        .replace(' second', 's') 
-        .replace(' minutes', 'm')
-        .replace(' minute', 'm')
-        .replace(' hours', 'h')
-        .replace(' hour', 'h')
-        .replace(' days', 'd')
-        .replace(' day', 'd')
-        .replace(' weeks', 'w')
-        .replace(' week', 'w')
-        .replace(' months', 'mo')
-        .replace(' month', 'mo')
-        .replace(' years', 'y')
-        .replace(' year', 'y')
+      // If less than 1 business day, use hours
+      if (businessDaysDiff < 1) {
+        const hoursDiff = Math.floor((now - date) / (1000 * 60 * 60))
+        if (hoursDiff < 1) {
+          const minutesDiff = Math.floor((now - date) / (1000 * 60))
+          return minutesDiff <= 1 ? '1m ago' : `${minutesDiff}m ago`
+        }
+        return hoursDiff === 1 ? '1h ago' : `${hoursDiff}h ago`
+      }
+      
+      // For business days, use cleaner format
+      if (businessDaysDiff === 1) {
+        return '1d ago'
+      } else if (businessDaysDiff < 7) {
+        return `${businessDaysDiff}d ago`
+      } else if (businessDaysDiff < 30) {
+        const weeks = Math.floor(businessDaysDiff / 5) // 5 business days per week
+        return weeks === 1 ? '1w ago' : `${weeks}w ago`
+      } else if (businessDaysDiff < 260) { // ~52 weeks * 5 days
+        const months = Math.floor(businessDaysDiff / 22) // ~22 business days per month
+        return months === 1 ? '1mo ago' : `${months}mo ago`
+      } else {
+        const years = Math.floor(businessDaysDiff / 260) // ~260 business days per year
+        return years === 1 ? '1y ago' : `${years}y ago`
+      }
     } catch (error) {
       console.warn('Error formatting date:', dateString, error)
       return 'Invalid date'
     }
+  }
+
+  const calculateBusinessDays = (startDate, endDate) => {
+    // Ensure startDate is before endDate
+    const start = new Date(Math.min(startDate, endDate))
+    const end = new Date(Math.max(startDate, endDate))
+    
+    let businessDays = 0
+    const current = new Date(start)
+    
+    // Set to start of day to avoid time zone issues
+    current.setHours(0, 0, 0, 0)
+    end.setHours(0, 0, 0, 0)
+    
+    while (current <= end) {
+      const dayOfWeek = current.getDay()
+      // Only count Monday (1) through Friday (5)
+      if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+        businessDays++
+      }
+      current.setDate(current.getDate() + 1)
+    }
+    
+    // Subtract 1 because we don't count the start date itself
+    return Math.max(0, businessDays - 1)
   }
 
   const openRequest = (sysId) => {

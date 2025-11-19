@@ -394,14 +394,15 @@ Display comprehensive list of all technology requests with the following columns
 3. **Short Description** - Brief description of the request
 4. **Opened By** - Name of person who submitted the request
 5. **Phase** - Current phase with color-coded badges (New Request, Initial Review, Architecture Review, Proposal, Funding)
-6. **Created Date** - Formatted date when request was submitted
+6. **Created Date** - Formatted relative date when request was submitted (business days only, excluding weekends)
 
-##### 3. Interactive Features
+##### Interactive Features
 - **Clickable Rows**: Click any table row to open the full request record in a new tab
 - **Real-time Data**: Dashboard loads current data from x_snc_newtech_request table
 - **Loading States**: Professional loading indicators while data is fetched
 - **Error Handling**: Graceful error messages if data cannot be loaded
 - **Responsive Table**: Table adjusts for mobile viewing
+- **Business Days Calculation**: Created date column displays relative time using business days only (Monday-Friday), excluding weekends for more accurate business context
 
 #### Technical Requirements
 
@@ -410,6 +411,17 @@ Display comprehensive list of all technology requests with the following columns
 - **API Endpoint**: ServiceNow Table API with display values
 - **Query Parameters**: Order by sys_created_on DESC, limit 100 records
 - **Authentication**: Use ServiceNow session authentication
+
+##### Date Formatting Algorithm
+- **Business Days Only**: Calculate relative dates excluding weekends (Saturday & Sunday)
+- **Time Ranges**: 
+  - Less than 1 business day: Show hours (e.g., "2h ago") or minutes (e.g., "30m ago")
+  - 1-6 business days: Show days (e.g., "3d ago")  
+  - 1-4 business weeks: Show weeks (e.g., "2w ago")
+  - 1-11 business months: Show months (e.g., "3mo ago")
+  - 12+ business months: Show years (e.g., "1y ago")
+- **Business Day Conversion**: 5 business days = 1 week, 22 business days = 1 month, 260 business days = 1 year
+- **Algorithm**: Iterates through each day from creation date to current date, counting only Monday through Friday
 
 ##### Performance Requirements
 - **Load Time**: Dashboard should load within 3 seconds
@@ -458,7 +470,8 @@ Display comprehensive list of all technology requests with the following columns
 - **Section Title**: "📊 New Technology Requests"
 - **Section Subtitle**: "Complete list of technology request submissions with current status and priority"
 - **Table Headers**: Clear, descriptive column headers
-- **Data Formatting**: Consistent date formats, proper text truncation
+- **Data Formatting**: Consistent date formats using business days only (excludes weekends), proper text truncation
+- **Date Calculation**: Relative dates (e.g., "6d ago") calculated using business days only, excluding Saturday and Sunday
 
 #### Implementation Standards
 
