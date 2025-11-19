@@ -53,10 +53,10 @@ The New Technology Requests Dashboard provides real-time insights into the techn
 - [x] **Professional Styling**: Matches intake form branding exactly with consistent layout
 
 ### Metrics Cards
-1. **📋 # of New Requests (Submitted)** - Counts records with status "1.2 - Submitted"
-2. **⏸️ # of Requests On Hold** - Counts records with status "9.1 - On Hold"  
-3. **❌ # of Requests Rejected** - Counts records with status "9.4 - Rejected"
-4. **🚀 # of Requests Fast Track** - Counts records with priority "1- Fast Track"
+1. **📋 New Requests (Submitted)** - Counts records with status "1.2 - Submitted"
+2. **⏸️ Requests On Hold** - Counts records with status "9.1 - On Hold"  
+3. **❌ Requests Rejected** - Counts records with status "9.4 - Rejected"
+4. **🚀 Requests Fast Track** - Counts records with priority "1- Fast Track"
 
 ### Professional Charts
 Built using Recharts library for enterprise-grade data visualization:
@@ -366,22 +366,22 @@ The New Technology Requests Dashboard provides real-time visibility and analytic
 ##### 1. Metrics Cards (Summary Statistics)
 Display key performance indicators in a 4-card grid layout:
 
-1. **# of New Requests (Submitted)** 
+1. **New Requests (Submitted)** 
    - Count: Records with status = "1.2 - Submitted" 
    - Icon: 📋
    - Color: Default green theme
 
-2. **# of Requests On Hold**
+2. **Requests On Hold**
    - Count: Records with status = "9.1 - On Hold"
    - Icon: ⏸️  
    - Color: Orange theme
 
-3. **# of Requests Rejected**
+3. **Requests Rejected**
    - Count: Records with status = "9.4 - Rejected"
    - Icon: ❌
    - Color: Dark gray theme
 
-4. **# of Requests Fast Track**
+4. **Requests Fast Track**
    - Count: Records with priority = "Fast Track – Urgent and critical"
    - Icon: 🚀
    - Color: Red theme (high priority)

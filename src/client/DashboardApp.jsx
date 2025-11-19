@@ -763,7 +763,7 @@ export default function DashboardApp() {
               >
                 <MetricIcon>📋</MetricIcon>
                 <MetricValue $active={activeFilter === 'submitted'}>{metrics.submitted}</MetricValue>
-                <MetricLabel $active={activeFilter === 'submitted'}># of New Requests<br/>(Submitted)</MetricLabel>
+                <MetricLabel $active={activeFilter === 'submitted'}>New Requests<br/>(Submitted)</MetricLabel>
               </MetricCard>
               
               <MetricCard 
@@ -773,7 +773,7 @@ export default function DashboardApp() {
               >
                 <MetricIcon>⏸️</MetricIcon>
                 <MetricValue $variant="on-hold" $active={activeFilter === 'onHold'}>{metrics.onHold}</MetricValue>
-                <MetricLabel $active={activeFilter === 'onHold'}># of Requests<br/>On Hold</MetricLabel>
+                <MetricLabel $active={activeFilter === 'onHold'}>Requests<br/>On Hold</MetricLabel>
               </MetricCard>
               
               <MetricCard 
@@ -783,7 +783,7 @@ export default function DashboardApp() {
               >
                 <MetricIcon>❌</MetricIcon>
                 <MetricValue $variant="rejected" $active={activeFilter === 'rejected'}>{metrics.rejected}</MetricValue>
-                <MetricLabel $active={activeFilter === 'rejected'}># of Requests<br/>Rejected</MetricLabel>
+                <MetricLabel $active={activeFilter === 'rejected'}>Requests<br/>Rejected</MetricLabel>
               </MetricCard>
               
               <MetricCard 
@@ -793,7 +793,7 @@ export default function DashboardApp() {
               >
                 <MetricIcon>🚀</MetricIcon>
                 <MetricValue $variant="fast-track" $active={activeFilter === 'fastTrack'}>{metrics.fastTrack}</MetricValue>
-                <MetricLabel $active={activeFilter === 'fastTrack'}># of Requests<br/>Fast Track</MetricLabel>
+                <MetricLabel $active={activeFilter === 'fastTrack'}>Requests<br/>Fast Track</MetricLabel>
               </MetricCard>
             </MetricsGrid>
           </MetricsContainer>

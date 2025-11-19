@@ -37,10 +37,12 @@ export const DashboardApp = styled.div.attrs({
 `
 
 // Header Components
-export const AppHeader = styled.header`
+export const AppHeader = styled.header.attrs({
+  className: 'app-header'
+})`
   background: ${props => props.theme.colors.primary.viridian};
   color: ${props => props.theme.colors.primary.white};
-  padding: ${props => props.theme.spacing.lg} ${props => props.theme.spacing.xl};
+  padding: 1rem 2rem;
   box-shadow: ${props => props.theme.shadows.default};
   position: sticky;
   top: 0;
@@ -77,7 +79,7 @@ export const Logo = styled.img`
   box-shadow: ${props => props.theme.shadows.card};
 
   ${mediaQuery('mobile')} {
-    font-size: ${props => props.theme.typography.fontSize['5xl']};
+    font-size: 2rem;
   }
 `
 Logo.displayName = 'Logo'
@@ -222,8 +224,10 @@ export const MetricIcon = styled.span`
 `
 MetricIcon.displayName = 'MetricIcon'
 
-export const MetricValue = styled.div`
-  font-size: ${props => props.theme.typography.fontSize['6xl']};
+export const MetricValue = styled.div.attrs({
+  className: 'metric-value'
+})`
+  font-size: 2.5rem;
   font-weight: ${props => props.theme.typography.fontWeight.extrabold};
   color: ${props => {
     if (props.$active) return props.theme.colors.primary.white + ' !important'
@@ -246,8 +250,10 @@ export const MetricValue = styled.div`
 `
 MetricValue.displayName = 'MetricValue'
 
-export const MetricLabel = styled.div`
-  font-size: ${props => props.theme.typography.fontSize.sm};
+export const MetricLabel = styled.div.attrs({
+  className: 'metric-label'
+})`
+  font-size: 0.85rem;
   color: ${props => props.$active ? props.theme.colors.primary.white : props.theme.colors.gray.dark};
   font-weight: ${props => props.theme.typography.fontWeight.semibold};
   line-height: ${props => props.theme.typography.lineHeight.tight};
@@ -255,7 +261,7 @@ export const MetricLabel = styled.div`
   text-align: left;
 
   ${mediaQuery('mobile')} {
-    font-size: ${props => props.theme.typography.fontSize.xs};
+    font-size: 0.75rem;
   }
 `
 MetricLabel.displayName = 'MetricLabel'
@@ -278,7 +284,9 @@ export const ChartsGrid = styled.div`
 `
 ChartsGrid.displayName = 'ChartsGrid'
 
-export const ChartCard = styled.div`
+export const ChartCard = styled.div.attrs({
+  className: 'chart-card'
+})`
   background: linear-gradient(135deg, ${props => props.theme.colors.primary.white} 0%, ${props => props.theme.colors.gray.light} 100%);
   border-radius: ${props => props.theme.borderRadius.medium};
   text-align: center;
@@ -317,7 +325,9 @@ export const ChartHeader = styled.div`
 `
 ChartHeader.displayName = 'ChartHeader'
 
-export const ChartTitle = styled.h3`
+export const ChartTitle = styled.h3.attrs({
+  className: 'chart-title'
+})`
   color: ${props => props.theme.colors.primary.red};
   font-size: ${props => props.theme.typography.fontSize.xl};
   font-weight: ${props => props.theme.typography.fontWeight.semibold};
@@ -388,25 +398,29 @@ export const TableContainer = styled.div.attrs({
 `
 TableContainer.displayName = 'TableContainer'
 
-export const TableHeader = styled.div`
+export const TableHeader = styled.div.attrs({
+  className: 'table-header'
+})`
   border-bottom: 3px solid ${props => props.theme.colors.primary.viridian};
-  padding-bottom: ${props => props.theme.spacing.md};
-  margin-bottom: ${props => props.theme.spacing.md};
   background: linear-gradient(135deg, ${props => props.theme.colors.gray.light} 0%, ${props => props.theme.colors.primary.white} 100%);
-  padding: ${props => props.theme.spacing.md};
   border-radius: ${props => props.theme.borderRadius.medium};
+  padding: 1rem 2rem;
+  margin-bottom: ${props => props.theme.spacing.md};
 `
 TableHeader.displayName = 'TableHeader'
 
-export const TableTitle = styled.h2`
+export const TableTitle = styled.h2.attrs({
+  className: 'table-title'
+})`
   color: ${props => props.theme.colors.primary.red};
   font-size: ${props => props.theme.typography.fontSize.xl};
   font-weight: ${props => props.theme.typography.fontWeight.semibold};
-  margin: 0 0 ${props => props.theme.spacing.sm} 0;
+  margin: 0;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
+  justify-content: center;
 
   ${mediaQuery('mobile')} {
     flex-direction: column;

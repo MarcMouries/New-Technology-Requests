@@ -51,7 +51,7 @@ export const theme = {
   },
   
   typography: {
-    fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif",
+    fontFamily: "Arial, sans-serif",
     fontSize: {
       xs: '0.65rem',
       sm: '0.7rem', 
