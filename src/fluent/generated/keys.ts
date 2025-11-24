@@ -441,6 +441,16 @@ declare global {
                         table: 'sys_ux_lib_asset'
                         id: 'cd2ffc5b5dba4dcf848c8d1194b30f52'
                     }
+                    'x_snc_newtech/DashboardApp-7FIfS3H3': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'a2415b7d837149dbbb4ce837b5ae2455'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-7FIfS3H3.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '3c9d9f351fc940e2b0e59829aaec2a57'
+                        deleted: true
+                    }
                     'x_snc_newtech/DashboardApp-AEW3pqtD': {
                         table: 'sys_ux_lib_asset'
                         id: 'b0ca056d94fb44b7bd111e8b43a605d9'
@@ -464,10 +474,12 @@ declare global {
                     'x_snc_newtech/DashboardApp-B3FTtr99': {
                         table: 'sys_ux_lib_asset'
                         id: 'fa47633d10b54093ab8a7649f2244074'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-B3FTtr99.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: '276fcff6605145cf9c9320e86a6d5c68'
+                        deleted: true
                     }
                     'x_snc_newtech/DashboardApp-B5Abc-f6': {
                         table: 'sys_ux_lib_asset'
@@ -489,6 +501,16 @@ declare global {
                         id: 'c3b68f821b6e45c3b752e166af6c701c'
                         deleted: true
                     }
+                    'x_snc_newtech/DashboardApp-BBwKIkOW': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'e80a0d5b519c47d8a40c3d50520d3086'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-BBwKIkOW.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'd2c3d30f98d4441fb35482e093bc8def'
+                        deleted: true
+                    }
                     'x_snc_newtech/DashboardApp-Bc3IxXV-': {
                         table: 'sys_ux_lib_asset'
                         id: 'ca04fd7b8cc045acbfdd02f21e89a7a0'
@@ -507,6 +529,16 @@ declare global {
                     'x_snc_newtech/DashboardApp-BdMXU17M.js.map': {
                         table: 'sys_ux_lib_asset'
                         id: 'c73dab0e945f4c788df30b3409237034'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-BgD5KA8P': {
+                        table: 'sys_ux_lib_asset'
+                        id: '82befc2436bf4176bfb5b95e789061b4'
+                        deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-BgD5KA8P.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'fe053c19b7d245748b3ecce3be191266'
                         deleted: true
                     }
                     'x_snc_newtech/DashboardApp-BHG1kGMl': {
@@ -738,6 +770,14 @@ declare global {
                         table: 'sys_ux_lib_asset'
                         id: '1e4ddced3b914e9e9ab802af6399a84b'
                         deleted: true
+                    }
+                    'x_snc_newtech/DashboardApp-DIIQyepf': {
+                        table: 'sys_ux_lib_asset'
+                        id: 'b1424e6c4c8f46618ceb193a3b65481e'
+                    }
+                    'x_snc_newtech/DashboardApp-DIIQyepf.js.map': {
+                        table: 'sys_ux_lib_asset'
+                        id: '605f3db5c9794fa4b56d635c59ca6d3f'
                     }
                     'x_snc_newtech/DashboardApp-DkqJgcsa': {
                         table: 'sys_ux_lib_asset'

@@ -420,7 +420,6 @@ export const TableTitle = styled.h2.attrs({
   align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-  justify-content: center;
 
   ${mediaQuery('mobile')} {
     flex-direction: column;
@@ -429,6 +428,33 @@ export const TableTitle = styled.h2.attrs({
   }
 `
 TableTitle.displayName = 'TableTitle'
+
+export const FilterDescription = styled.p.attrs({
+  className: 'filter-description'
+})`
+  color: ${props => props.theme.colors.gray.dark};
+  font-size: ${props => props.theme.typography.fontSize.base};
+  font-weight: ${props => props.theme.typography.fontWeight.normal};
+  margin: 0;
+  opacity: 0.7;
+  font-style: italic;
+  white-space: nowrap;
+  
+  &:before {
+    content: '(';
+    opacity: 0.6;
+  }
+  
+  &:after {
+    content: ')';
+    opacity: 0.6;
+  }
+
+  ${mediaQuery('mobile')} {
+    font-size: ${props => props.theme.typography.fontSize.sm};
+  }
+`
+FilterDescription.displayName = 'FilterDescription'
 
 export const ClearFilterBtn = styled.button`
   background: ${props => props.theme.colors.primary.orange};

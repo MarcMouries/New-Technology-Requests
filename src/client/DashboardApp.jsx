@@ -34,6 +34,7 @@ import {
   TableContainer,
   TableHeader,
   TableTitle,
+  FilterDescription,
   ClearFilterBtn,
   TableWrapper,
   RequestsTable,
@@ -76,7 +77,6 @@ export default function DashboardApp() {
   }, [])
 
   const loadRequests = async () => {
-    console.log('📡 Loading requests from x_snc_newtech_request table...')
     setLoading(true)
     
     try {
@@ -97,11 +97,8 @@ export default function DashboardApp() {
       setRequests(requestsData)
       
       // Calculate metrics with detailed debugging
-      console.log('🔍 Calculating metrics from', requestsData.length, 'records...')
-      
       const submittedCount = requestsData.filter(r => {
         const status = getValue(r.x_snc_newtech_status)
-        console.log('Status value:', status)
         return status === '1.2 - Submitted' || status === 'one_two_submitted'
       }).length
       
@@ -156,21 +153,15 @@ export default function DashboardApp() {
       }).sort((a, b) => b.count - a.count) // Sort by count, highest first
 
       setRequestTypeData(requestTypeArray)
-      console.log('📈 Request Type Data:', requestTypeArray)
 
       // Calculate phase data for funnel chart
       const phaseCounts = {}
-      console.log('🔄 Calculating phase data from', requestsData.length, 'records...')
       
       requestsData.forEach(request => {
         const phase = getValue(request.x_snc_newtech_phase)
-        console.log('Raw phase value:', phase)
         const phaseDisplay = getPhaseDisplay(phase)
-        console.log('Phase display value:', phaseDisplay)
         phaseCounts[phaseDisplay] = (phaseCounts[phaseDisplay] || 0) + 1
       })
-
-      console.log('🔄 Phase counts:', phaseCounts)
 
       // Convert to array for funnel chart - ordered by typical workflow sequence
       const phaseOrder = ['1 - New Request', '2 - Initial Review', '3 - Architecture Review', '4 - Proposal', '5 - Trigger Funding']
@@ -180,13 +171,11 @@ export default function DashboardApp() {
         fill: getPhaseColor(phase)
       })) // Show all phases, even with 0 count
 
-      console.log('🔄 Final phase array:', phaseArray)
       setPhaseData(phaseArray)
 
       console.log(`✅ Successfully loaded ${requestsData.length} requests`)
       
     } catch (error) {
-      console.error('❌ Error loading requests:', error)
       setError(error.message)
     } finally {
       setLoading(false)
@@ -495,7 +484,6 @@ export default function DashboardApp() {
         return years === 1 ? '1y ago' : `${years}y ago`
       }
     } catch (error) {
-      console.warn('Error formatting date:', dateString, error)
       return 'Invalid date'
     }
   }
@@ -706,16 +694,16 @@ export default function DashboardApp() {
   }
 
   const getFilterDescription = () => {
-    if (!activeFilter) return 'All technology request submissions'
+    if (!activeFilter) return 'All'
     
     const filterMap = {
-      submitted: 'Requests with status "1.2 - Submitted"',
-      onHold: 'Requests with status "9.1 - On Hold"',
-      rejected: 'Requests with status "9.4 - Rejected"',
-      fastTrack: 'Requests with priority "Fast Track"'
+      submitted: 'Submitted only',
+      onHold: 'On Hold only',
+      rejected: 'Rejected only',
+      fastTrack: 'Fast Track priority only'
     }
     
-    return filterMap[activeFilter] || 'Filtered technology requests'
+    return filterMap[activeFilter] || 'Filtered'
   }
 
   if (error) {
@@ -933,17 +921,22 @@ export default function DashboardApp() {
           {/* Request Table */}
           <TableContainer>
             <TableHeader>
-              <TableTitle>
-                New Technology Requests
-                {activeFilter && (
-                  <ClearFilterBtn 
-                    onClick={() => setActiveFilter(null)}
-                    title="Clear filter"
-                  >
-                    ✕ Clear Filter
-                  </ClearFilterBtn>
-                )}
-              </TableTitle>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <TableTitle>
+                  New Technology Requests
+                  {activeFilter && (
+                    <ClearFilterBtn 
+                      onClick={() => setActiveFilter(null)}
+                      title="Clear filter"
+                    >
+                      ✕ Clear Filter
+                    </ClearFilterBtn>
+                  )}
+                </TableTitle>
+                <FilterDescription>
+                  {getFilterDescription()}
+                </FilterDescription>
+              </div>
             </TableHeader>
             
             <div>

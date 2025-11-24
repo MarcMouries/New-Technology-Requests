@@ -90,6 +90,8 @@ Built using Recharts library for enterprise-grade data visualization:
 - **Color-coded Status Badges**: Phase and Status fields use branded color coding with proper contrast
 - **Interactive Filtering**: Metric cards filter table data when clicked
 - **Clear Filter Functionality**: Orange "Clear Filter" button appears when filters are active
+- **Filter Description**: Dynamic filter description appears right after the table title showing current filter state (e.g., "All", "Submitted only", "Fast Track priority only")
+- **Left-aligned Title**: Table title is positioned left-aligned for professional appearance
 - **Responsive Layout**: Horizontal scrolling on mobile devices with 700px minimum width
 
 ### Data Sources
@@ -467,9 +469,14 @@ Display comprehensive list of all technology requests with the following columns
 - **Number Display**: Large, bold numbers with appropriate color coding
 
 ##### Table Section
-- **Section Title**: "📊 New Technology Requests"
-- **Section Subtitle**: "Complete list of technology request submissions with current status and priority"
-- **Table Headers**: Clear, descriptive column headers
+- **Section Title**: "New Technology Requests" (left-aligned, professional appearance)
+- **Filter Description**: Dynamic contextual description positioned right after title in parentheses showing current filter state:
+  - "(All)" when no filter is applied
+  - "(Submitted only)" when filtered by submitted requests
+  - "(On Hold only)" when filtered by on-hold requests
+  - "(Rejected only)" when filtered by rejected requests
+  - "(Fast Track priority only)" when filtered by fast track requests
+- **Table Headers**: Clear, descriptive column headers with professional sort indicators
 - **Data Formatting**: Consistent date formats using business days only (excludes weekends), proper text truncation
 - **Date Calculation**: Relative dates (e.g., "6d ago") calculated using business days only, excluding Saturday and Sunday
 
@@ -550,6 +557,7 @@ Display comprehensive list of all technology requests with the following columns
 | 2024-12-19 | Added React UI Page implementation details | System |
 | 2024-12-19 | Updated with current architecture and access points | System |
 | 2024-12-19 | Simplified phase values to only 5 main workflow phases | System |
+| 2024-12-19 | Updated dashboard table title to left-aligned and added filter description functionality | System |
 
 ---
 *Last updated: 2024-12-19*
